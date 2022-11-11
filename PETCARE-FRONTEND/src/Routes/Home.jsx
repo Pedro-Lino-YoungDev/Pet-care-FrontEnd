@@ -1,8 +1,11 @@
 import Style from '../Style/Home.module.css'
 import Boton from '../Components/Botao'
+import { Navigate } from 'react-router-dom'
 
 function Home(){
-    return(
+
+    if (sessionStorage.getItem("token") != null) {
+        return(
         <div className={Style.ContainerMinimal}>
             <div>
                 <img className={Style.Banner} src="src/Imagens/BannerCachorro.jpg" alt="Imagem de um resgate de animal" />
@@ -28,7 +31,13 @@ function Home(){
                 </div>
         </div>
         </div>
-    )
+    ) 
+    }
+    else{
+        return(
+            <Navigate to="/login" />
+        )
+    }
 }
 
 export default Home

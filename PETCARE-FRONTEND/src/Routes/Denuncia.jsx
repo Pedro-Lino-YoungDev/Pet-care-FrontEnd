@@ -1,5 +1,5 @@
 import Style from '../Style/Home.module.css'
-import { useLocation } from 'react-router-dom';import { Link } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';import { Link } from 'react-router-dom';
 import ButtonStyle from '../Style/Botao.module.css';
 
 function Denuncia(){
@@ -58,7 +58,9 @@ function Denuncia(){
    
     }
     
- return(
+    if (sessionStorage.getItem("token") != null) {
+
+    return(
     <div className={Style.ContainerMinimal}>
     <div>
         <img className={Style.Banner} src={from.picture} alt="imagem do cachorro" />
@@ -112,7 +114,13 @@ function Denuncia(){
         }
         </div>
     </div>
- )
+ )      
+}
+else{
+    return(
+        <Navigate to="/login" />
+    )
+}
 }
 
 export default Denuncia;

@@ -1,20 +1,22 @@
 import { useEffect, useState } from 'react';
 import Style from '../Style/Listagem.module.css';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import ButtonStyle from '../Style/Botao.module.css';
+import axios from 'axios';
+
 
 function Listagem(){
+    
+    
     const[denuncias, setDenuncias] = useState([]);
-    var teste =0;
+
     useEffect(() => {
-    fetch('http://localhost:5000/denuncia',{
-        method: 'GET',
-        headers: {
-            'Content-Type': "application/json",
-            'Accept': "application/json"
-        },
-    }) .then(res => res.json()).then(res => {setDenuncias(res)});
+    axios.post("https://backend-petcare.herokuapp.com/denuncias",sessionStorage.getItem("token"))
+    .then((res) => setDenuncias(res))
     },[]);
+
+    if (sessionStorage.getItem("token") != null) {   
+    
     return(
         
         <div className={Style.ContainerMinimal}>
@@ -48,6 +50,12 @@ function Listagem(){
             )}
         </div>
     )
+}
+else{
+    return(
+        <Navigate to="/login" />
+    )
+}
 }
 
 export default Listagem

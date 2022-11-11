@@ -61,17 +61,21 @@
   .Btn{
     color: #046E8F;
     background-color: #ffff;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 7px;
-    padding-bottom: 7px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     text-decoration: none;
     border-radius: 8px;
     border-color:  #046E8F;
     border-style: solid;
     border-width: 2px;
-    margin-top: 10px;
+    margin-top: 20px;
     cursor: pointer;
+    max-width: 10%;
+    align-self: center;  }
+  .error{
+    color:red;
   }
   .Descricao{
     margin-top: 5px;
@@ -81,4 +85,7 @@
     border-radius: 7px;
     padding: 0%;
     padding-bottom: 70px;
+  }
+  .form{
+    margin-bottom: 40px;
   }
