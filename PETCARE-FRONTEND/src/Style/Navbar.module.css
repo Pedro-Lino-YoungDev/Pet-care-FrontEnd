@@ -1,0 +1,32 @@
+.Nav{
+    background-color: #074365;
+    top: 0%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: fixed;
+    top: 0%;
+    right: 0%;
+    left: 0%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    text-align: center;
+}
+.NavLogo{
+    margin-left: 10px;
+    justify-self: left;
+    margin-right: auto;
+}
+.NavItem{
+    justify-self: right;
+    margin-right: 10px;
+}
+.NavPerfil{
+    margin-right: 10px;
+    border-radius: 50%;
+    background-color: gray;
+    height: 50px;
+    width: 50px;
+    min-width: 50px;
+    min-height: 50px;
+}
