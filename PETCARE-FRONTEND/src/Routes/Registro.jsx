@@ -13,23 +13,22 @@ function Registro(){
     const [senha, setSenha] = useState();
     const [senha_verificada, setSenha_verificada] = useState();
     const [redirecionar, setRedirecionar] = useState();
+    const [erro_imput, setErro_imput] = useState();
+    const [erro_senha, setErro_senha] = useState();
 
     const [resposta, setRespost] = useState();
     const [error, setError] = useState();
 
     const verificar_senha = (e) => {
-        if (senha == '' && e == '' || senha == null && e == null || senha == null && e == '' || senha =='' && e == null) {
+
+        if(senha == '' || senha == null  || e == null || e == '' || nome == '' || nome == null || email == null || email == ''){
             return 1
         }
-        else if(senha == e && nome == '' || nome == null || email == null || email == ''){
-            return 3
-        }
-        else if(senha == e){
+        else if (senha != e ) {
             return 2
         }
-        
-        else{
-            return 4
+        else if(senha == e){
+            return 3
         }
     }
 
@@ -46,10 +45,6 @@ function Registro(){
         .then((res) => setRespost(res))
         .catch((res) => setError(res))
     }
-    sessionStorage.setItem("token",token)
-
-    console.log(senha)
-    console.log(senha_verificada)
 
     return(
         <div className={Style.ContainerMinimal}>
@@ -80,25 +75,43 @@ function Registro(){
                 </div>
                 <br />
             </form>
-            {verificar_senha(senha_verificada) == 1
-            }
-            {verificar_senha(senha_verificada) == 2 && email && nome &&(
-                <a className={Style.Btn} onClick={() => {setRedirecionar(true)}}>enviar
-                </a>
-                )
-            }
-            {verificar_senha(senha_verificada) == 3&&(
+
+            {verificar_senha(senha_verificada) == 1 && erro_imput == true &&(
                 <h4 className={Style.error}>
                     Oops! Preencha todos os campos para se cadastrar com sucesso
                 </h4>
             )
             }
-            {verificar_senha(senha_verificada) == 4 &&(
+
+            {verificar_senha(senha_verificada) == 1 &&(
+                 <a className={Style.Btn} onClick={() => {setErro_imput(true)}}>
+                    enviar
+                </a>
+            )
+            }
+
+            {verificar_senha(senha_verificada) == 2&& erro_senha == true &&(
                 <h4 className={Style.error}>
                 Oops as 2 senhas estão diferentes*
                 </h4>
             )
-            } 
+            }
+
+            {verificar_senha(senha_verificada) == 2 &&(
+                <a className={Style.Btn} onClick={() => {setErro_senha(true)}}>enviar
+                </a>
+            )
+            }
+
+
+
+            {verificar_senha(senha_verificada) == 3&&(
+                <a className={Style.Btn} onClick={() => {setRedirecionar(true)}}>
+                    enviar
+                </a>
+                )
+            }
+
             { redirecionar == true &&(
                 sessionStorage.setItem("token","token_registro"),
                 <Navigate to="/home"/>
