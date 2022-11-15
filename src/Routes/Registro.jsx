@@ -58,7 +58,6 @@ function Registro(){
         <div className={Style.ContainerMinimal}>
 
                 <form action="Registro" method="Post">
-                    @csrf
                 <div className={Style.ContainerItem1}>
                 <label htmlFor="Email">Email:</label>
                 <br />
