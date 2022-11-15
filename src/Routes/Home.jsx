@@ -4,6 +4,8 @@ import { Navigate } from 'react-router-dom'
 
 function Home(){
 
+    console.log(sessionStorage.getItem("token"))
+
     if (sessionStorage.getItem("token") != null) {
         return(
         <div className={Style.ContainerMinimal}>

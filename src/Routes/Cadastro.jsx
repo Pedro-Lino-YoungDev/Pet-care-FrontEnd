@@ -16,8 +16,9 @@ function Contato(){
     const [redirecionar, setRedirecionar] = useState();
     const [resposta, setRespost] = useState();
     const [error, setError] = useState();
-    
+
     const denuncia =[
+        
         {
             "descricao" : descriao,
             "tipo" : tipo,
@@ -29,8 +30,10 @@ function Contato(){
         }
     ]
 
+    
+
     const post = () => {
-        axios.post("https://backend-petcare.herokuapp.com/denuncia",denuncia)
+        axios.defaults.headers.common['X-CSRF-TOKEN'] = $('meta[name="csrf-token"]').attr('content')
         .then((res) => setRespost(res))
         .catch((res) => setError(res))
     }
@@ -38,11 +41,9 @@ function Contato(){
     const verificiar_formulario = (e) =>{
         if (foto == null || foto == '' || tipo == null || tipo == ''  || 
         bairro == null || bairro == '' || rua == null || rua == '' || 
-        PR == null || PR == '' || descriao == null || descriao == '') {
-            return true
-        }
-        else{
-            return false
+        PR == null || PR == '' || descriao == null || descriao == ''
+        ){
+            return true;
         }
     }
     

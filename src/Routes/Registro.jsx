@@ -1,9 +1,8 @@
 import axios from 'axios'
-import { useState } from 'react'
+import { useState , useEffect} from 'react'
 import Style from '../Style/Registro.module.css'
 import ButtonStyle from '../Style/Botao.module.css';
 import { Navigate } from 'react-router-dom';
-
 
 function Registro(){
 
@@ -15,6 +14,7 @@ function Registro(){
     const [redirecionar, setRedirecionar] = useState();
     const [erro_imput, setErro_imput] = useState();
     const [erro_senha, setErro_senha] = useState();
+    const [token_csrf, setToken_csrf] = useState();
 
     const [resposta, setRespost] = useState();
     const [error, setError] = useState();
@@ -40,14 +40,27 @@ function Registro(){
         }
     ]
 
-    const post = () => {
+        useEffect(() => {
+        axios.get("https://backend-petcare.herokuapp.com/token")
+        .then((res) => setToken_csrf(res.data))
+        },[]);
+
+        const post = () => {
+            
+        axios.defaults.headers.post['X-CSRF-TOKEN'] = token_csrf;
+
         axios.post("https://backend-petcare.herokuapp.com/usuario",user)
         .then((res) => setRespost(res))
-        .catch((res) => setError(res))
-    }
+        .catch((res) => setError(res))    }
+
+    console.log(token_csrf)
 
     return(
         <div className={Style.ContainerMinimal}>
+            {
+                
+            }
+
             <form action="Login" method="Post">
 
                 <div className={Style.ContainerItem1}>
@@ -117,6 +130,11 @@ function Registro(){
                 <Navigate to="/home"/>
             )
             }
+
+                <a className={Style.Btn} onClick={post}>
+                    testar api
+                </a>
+
         </div>
     )
 }
