@@ -40,29 +40,25 @@ function Registro(){
         }
     ]
 
+    /*
         useEffect(() => {
-        axios.get("https://backend-petcare.herokuapp.com/token")
-        .then((res) => setToken_csrf(res.data))
+        axios.get('https://backend-petcare.herokuapp.com/token')
+        .then((res) => setToken_csrf(res))
         },[]);
+    */
 
         const post = () => {
-            
-        axios.defaults.headers.post['X-CSRF-TOKEN'] = token_csrf;
-
-        axios.post("https://backend-petcare.herokuapp.com/usuario",user)
+        
+        axios.post('https://backend-petcare.herokuapp.com/usuario',user)
         .then((res) => setRespost(res))
-        .catch((res) => setError(res))    }
-
-    console.log(token_csrf)
+        .catch((res) => setError(res))    
+    }
 
     return(
         <div className={Style.ContainerMinimal}>
-            {
-                
-            }
 
-            <form action="Login" method="Post">
-
+                <form action="Registro" method="Post">
+                    @csrf
                 <div className={Style.ContainerItem1}>
                 <label htmlFor="Email">Email:</label>
                 <br />
