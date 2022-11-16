@@ -6,6 +6,10 @@
     flex-direction: row;
     padding-top: 17px;
     padding-bottom: 40px;
+    position:fixed;
+    bottom: 40px;
+    left: 0px;
+    right: 0px;
 }
 .FooterItem1{
     justify-self: left;
@@ -27,6 +31,10 @@
     padding: 10px;
     align-content: center;
     justify-content: center;
+    position:fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
 }
 .h4{
     margin: 0px;

@@ -3,6 +3,9 @@ import Nav from '../Style/Navbar.module.css'
 import LogoStyle from '../Style/Logo.module.css'
 import Links from './Link'
 import {Link} from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
+import {useState } from 'react'
+
 
 
 function Navbar(){
@@ -15,14 +18,18 @@ function Navbar(){
                 </Link>
             </div>
             <div className={Nav.NavItem}>
-                <Links nome = "Cadastrar Denúncia" url = "/cadastro"/>
+                <Links nome = "Cadastrar" url = "/cadastro"/>
             </div>
             <div className={Nav.NavItem}>
-                <Links nome = "Ver Denúncias Cadastradas" url = "/listagem"/>
+                <Links nome = "Ver Denúncias" url = "/listagem"/>
             </div>
             <div className={Nav.NavPerfil}>
-
+                <a className={Nav.NavIMG} href="/usuario">
+                 
+                </a>
             </div>
+            
+                
         </nav>
 )
 }
