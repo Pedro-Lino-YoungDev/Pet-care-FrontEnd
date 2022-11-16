@@ -1,37 +1,64 @@
 import Style from '../Style/User.module.css'
 import Boton from '../Components/Botao'
 import { Navigate } from 'react-router-dom'
+import jwtDecode from 'jwt-decode'
+import { useEffect } from 'react'
+import axios from 'axios'
+import { useState } from 'react'
 
-function users () {
+
+function users () { 
+
+
+        const token_jwt = sessionStorage.getItem("token");
+        const decodificado = jwtDecode(token_jwt);
+
+    const [usuario,setUsuario] = useState();
+
+    const token ={
+        "token" : token_jwt
+    }
+
+    useEffect(() => {
+        axios.post("https://backend-petcare.herokuapp.com/usuario/"+decodificado.id,token)
+        .then((res) => setUsuario(res.data.user))
+        .catch()
+        },[]);
     
+
+
     if (sessionStorage.getItem("token") != null) {
         return(
-        <div className={Style.ContainerMinimal}>
+
+            
+        <div >
+            {usuario != null &&( 
+            <div className={Style.ContainerMinimal}>
             <div className={Style.ContainerIMG}>
             </div>
             <div>
                 <div>
-                    <h1>
+                    <h4>
                         Nome do Usuario:
-                    </h1>
+                    </h4>
                     <p>
-                        Pedro
+                        {usuario.name}
                     </p>
-                    <h1>
+                    <h4>
                         E-mail do Usuario:
-                    </h1>
+                    </h4>
                     <p>
-                        Pedro:
+                        {usuario.email}
                     </p>
                 </div>
             </div>
             <a className={Style.Btn}> Modificar cadastro</a> 
-            <a className={Style.Logout}>Sair</a>
+            <a onClick={ () => {sessionStorage.removeItem("token")}} className={Style.Logout}>Sair</a>
+            </div>)}
                                
         </div>
     ) 
     {
-        sessionStorage.removeItem("token");
     }
     }
     else{
