@@ -1,20 +1,22 @@
 import axios from 'axios'
 import { useState , useEffect} from 'react'
 import Style from '../Style/Registro.module.css'
-import ButtonStyle from '../Style/Botao.module.css';
 import { Navigate } from 'react-router-dom';
 
 function Registro(){
 
-    const [token,setToken] = useState();
     const [nome, setNome] = useState();
     const [email, setEmail] = useState();
     const [senha, setSenha] = useState();
     const [senha_verificada, setSenha_verificada] = useState();
+
     const [redirecionar, setRedirecionar] = useState();
     const [erro_imput, setErro_imput] = useState();
     const [erro_senha, setErro_senha] = useState();
+
+    /*
     const [token_csrf, setToken_csrf] = useState();
+    */
 
     const [resposta, setRespost] = useState();
     const [error, setError] = useState();
@@ -32,13 +34,13 @@ function Registro(){
         }
     }
 
-    const user = [
+    const user = 
         {
             "name": nome,
             "email": email,
             "password": senha_verificada
         }
-    ]
+    
 
     /*
         useEffect(() => {
@@ -51,8 +53,10 @@ function Registro(){
         
         axios.post('https://backend-petcare.herokuapp.com/usuario',user)
         .then((res) => setRespost(res))
-        .catch((res) => setError(res))    
+        .catch((res) => setError(res))   
+        .then(() => setRedirecionar(true))
     }
+    console.log(user)
 
     return(
         <div className={Style.ContainerMinimal}>
@@ -86,7 +90,7 @@ function Registro(){
 
             {verificar_senha(senha_verificada) == 1 && erro_imput == true &&(
                 <h4 className={Style.error}>
-                    Oops! Preencha todos os campos para se cadastrar com sucesso
+                    Oops! Preencha todos os campos para se cadastrar com sucesso.
                 </h4>
             )
             }
@@ -114,21 +118,16 @@ function Registro(){
 
 
             {verificar_senha(senha_verificada) == 3&&(
-                <a className={Style.Btn} onClick={() => {setRedirecionar(true)}}>
+                <a className={Style.Btn} onClick={post}>
                     enviar
                 </a>
                 )
             }
 
             { redirecionar == true &&(
-                sessionStorage.setItem("token","token_registro"),
-                <Navigate to="/home"/>
+                <Navigate to="/login"/>
             )
             }
-
-                <a className={Style.Btn} onClick={post}>
-                    testar api
-                </a>
 
         </div>
     )

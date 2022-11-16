@@ -15,17 +15,20 @@ function Login(){
     const [resposta, setRespost] = useState();
     const [error, setError] = useState();
 
-    const user =[
+    const user =
+
         {
-            "email" : "email",
-            "password" : "senha"
+            "email" : email,
+            "password" : senha
         }
-    ]
+    
     
     const post = () => {
+
         axios.post("https://backend-petcare.herokuapp.com/login",user)
-        .then((res) => setRespost(res))
+        .then((res) => setRespost(res.data))
         .catch((res) => setError(res))
+        .then(() => setRedirecionar(true))
     }
 
     const Verificar_campos = (e,s) => {
@@ -68,7 +71,7 @@ function Login(){
 
             {
                 Verificar_campos(email,senha) == true &&(
-                    <a className={Style.Btn} onClick={() => {setRedirecionar(true)}}>
+                    <a className={Style.Btn} onClick={() => {post()}}>
                         entrar
                     </a>
                 )
@@ -82,7 +85,7 @@ function Login(){
             }
 
             { redirecionar == true &&(
-                sessionStorage.setItem("token","token loggin"),
+                sessionStorage.setItem("token",resposta.token),
                 <Navigate to="/home"/>
             )
             }

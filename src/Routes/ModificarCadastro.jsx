@@ -1,36 +1,46 @@
-import Style from '../Style/ModificarCadastro.module.css'
+import Style from '../Style/Cadastro.module.css'
 import { Navigate, useLocation } from 'react-router-dom';
 import {useState} from 'react'
 import axios from 'axios';
 
 function ModificarCadastro(){ 
-    const [animal,setAnimal] = useState();
+
     const location = useLocation();
     const { from } = location.state;
 
     const [tipo,setTipo] = useState(from.tipo);
-    const [descricao,setDescricao] = useState(from.descriao);
+    const [descricao,setDescricao] = useState(from.descricao);
     const [rua,setRua] = useState(from.rua);
     const [bairro,setBairro] = useState(from.bairro);
-    const [PR,setPR] = useState(from["Ponto de referencia"]);
+    const [PR,setPR] = useState(from["pontoDeReferencia"]);
     const [foto,setFoto] = useState(from.picture);
+    const [cor,setCor] = useState(from.cor);
 
-    const denuncia =[
+
+    const [redirecionar,setRedirecionar] = useState(false);
+    const [error, setError] = useState();
+
+
+    const denuncia =
         {
-            "descricao" : descricao,
             "tipo" : tipo,
-            "localizacao" : localizacao,
+            "cor" : cor,
+            "localizacao" : "localizacao",
             "rua" : rua,
             "bairro" : bairro,
             "pontoDeReferencia" : PR,
-            "picture" : foto
+            "descricao" : descricao,
+            "token" : sessionStorage.getItem("token")
         }
-    ]
+    
+
+    console.log(denuncia)
 
     const put = () => {
         axios.put("https://backend-petcare.herokuapp.com/denuncia/"+from.id , denuncia)
         .then((res) => setRespost(res))
         .catch((res) => setError(res))
+        .then(() => setRedirecionar(true))
     }
 
     const verificiar_formulario = (e) =>{
@@ -43,34 +53,65 @@ function ModificarCadastro(){
             return false
         }
     } 
+    const verificiar_tipo = (e) =>{
+        if(tipo == "Cachorro"){
+            return 1
+        }
+        else if(tipo == "Gato"){
+            return 2
+        }
+        else{
+            return 3
+        }
+    }
 
     if (sessionStorage.getItem("token") != null) {
 
     return(
-        <div className={Style.ContainerMinimal}>
+     <div className={Style.ContainerMinimal}>
         <form className={Style.form} action="Cadastro" method="Post" encType="multipart/form-data">
             <div className={Style.ItemForm1}>  
                 <label htmlFor="PrimeiraImg">Primeira imagem do Animal: </label>
-                <input className={Style.InputImg} type="file" value={foto} accept="image/*" name="image" id="PrimeiraImg" onChange={(e) => setFoto(e.target.value)}/>
+                <input className={Style.InputImg}  type="file" accept="image/*" name="image" id="PrimeiraImg" onChange={(e) => setFoto(e.target.value)}/>
             </div>
-            <div className={Style.ItemForm}>
+
+            {
+                verificiar_tipo() == 2 && (<div className={Style.ItemForm}>
+                    <label className={Style.Label} htmlFor="Especie">Tipo de animal</label>
+                    <select className={Style.Select} value={tipo} name="EspecieDoAnimal" id="Especie" onChange={(e) => setTipo(e.target.value)}>
+                        <option value="Gato">Gato</option>
+                        <option value="Cachorro">Cachorro</option>
+                        <option value="Outros">Outros</option>
+                    </select>
+                </div>)
+
+            }
+            { verificiar_tipo() == 1  && (<div className={Style.ItemForm}>
                 <label className={Style.Label} htmlFor="Especie">Tipo de animal</label>
-                <select className={Style.Select} name="EspecieDoAnimal" value={tipo} id="Especie" onChange={(e) => setTipo(e.target.value)}>
+                <select className={Style.Select} value={tipo} name="EspecieDoAnimal" id="Especie" onChange={(e) => setTipo(e.target.value)}>
                     <option value="Cachorro">Cachorro</option>
                     <option value="Gato">Gato</option>
                     <option value="Outros">Outros</option>
                 </select>
-            </div>
-            {tipo != null && tipo != "Gato" && tipo != "Cachorro" &&(
+            </div>)
+            }
+            {verificiar_tipo() == 3 &&(
                 <div className={Style.ItemForm}>
-                    <input className={Style.Input} type="Text" id= "Tipo" value={tipo} placeholder= "Exemplo: Cavalo" onChange={(e) => setTipo(e.target.value)}/>
+                    <label className={Style.Label} htmlFor="Especie">Tipo de animal</label>
+                    <select className={Style.Select} value={tipo} name="EspecieDoAnimal" id="Especie" onChange={(e) => setTipo(e.target.value)}>
+                        <option value="Outros">Outros</option>
+                        <option value="Cachorro">Cachorro</option>
+                        <option value="Gato">Gato</option>
+                    </select>
+                    <br />
+                    <input className={Style.Input} value={tipo} type="Text" id= "Tipo" placeholder= "Exemplo: Cavalo" onChange={(e) => setTipo(e.target.value)}/>
                 </div>
             )
             }
             
             <div className={Style.ItemForm}>
                 <label className={Style.Label} htmlFor="Bairro">Bairro:</label>
-                <select className={Style.Input} name="Bairro" value={bairro} id= "Bairro" onChange={(e) => setBairro(e.target.value)}>
+                <select className={Style.Input} value={bairro} name="Bairro" id= "Bairro" onChange={(e) => setBairro(e.target.value)}>
                     <option value="Aloísio Pinto">Aloísio Pinto</option>   
                     <option value="Boa Vista">Boa Vista</option>
                     <option value="Dom Hélder Câmara">Dom Hélder Câmara</option>
@@ -87,16 +128,21 @@ function ModificarCadastro(){
             </div>
 
             <div className={Style.ItemForm}>
+                    <label className={Style.Label} htmlFor="Rua">Cor</label>
+                    <input className={Style.Input} value={cor} type="Text" id= "Cor" placeholder= "Exemplo: Caramelo" onChange={(e) => setCor(e.target.value)}/>
+                </div>
+
+            <div className={Style.ItemForm}>
                 <label className={Style.Label} htmlFor="Rua">Rua</label>
-                <input className={Style.Input} type="Text" id= "Rua" value={rua} placeholder= "Exemplo: Rua Agamenon Magalhães" onChange={(e) => setRua(e.target.value)}/>
+                <input className={Style.Input} value={rua} type="Text" id= "Rua" placeholder= "Exemplo: Rua Agamenon Magalhães" onChange={(e) => setRua(e.target.value)}/>
             </div>
             <div className={Style.ItemForm}>
                 <label className={Style.Label} htmlFor="PontoDeReferencia">Ponto de Referência</label>
-                <input className={Style.Input} type="Text" id= "PontoDeReferencia"value={PR} placeholder= "Exemplo: Proximo ao Assaí" onChange={(e) => setPR(e.target.value)}/>
+                <input className={Style.Input} value={PR} type="Text" id= "PontoDeReferencia" placeholder= "Exemplo: Proximo ao Assaí" onChange={(e) => setPR(e.target.value)}/>
             </div>
             <div className={Style.ItemForm}>
                 <label className={Style.Label} htmlFor="Descricao">Dê um breve resumo sobre a situção do animal:</label>
-                <input className={Style.Descricao} type="Text" id= "Descricao" value={descricao} placeholder= "Máximo de 100 Caracteres" maxLength={100} onChange={(e) => setDescricao(e.target.value)}/>
+                <input className={Style.Descricao} value={descricao} type="Text" id= "Descricao" placeholder= "Máximo de 100 Caracteres" maxLength={100} onChange={(e) => setDescricao(e.target.value)}/>
             </div>
         </form>
         {
@@ -106,7 +152,7 @@ function ModificarCadastro(){
         }
         {
             verificiar_formulario() == false &&(
-                <a className={Style.Btn} onClick={() => {setRedirecionar(true)}}>enviar</a>
+                <a className={Style.Btn} onClick={() => {put()}}>enviar</a>
             )
         }
         { redirecionar == true &&(
@@ -114,7 +160,7 @@ function ModificarCadastro(){
         )
         }
     </div>
-    )
+)
 }
 else{
     return(

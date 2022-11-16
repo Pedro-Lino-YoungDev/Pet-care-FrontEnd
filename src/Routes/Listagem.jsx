@@ -7,19 +7,34 @@ import axios from 'axios';
 
 function Listagem(){
     
-    
     const[denuncias, setDenuncias] = useState([]);
 
+
+    const token = {
+        "token" : sessionStorage.getItem("token")
+    }
+
     useEffect(() => {
-    axios.post("https://backend-petcare.herokuapp.com/denuncias",sessionStorage.getItem("token"))
-    .then((res) => setDenuncias(res))
+    axios.post("https://backend-petcare.herokuapp.com/denuncias",token)
+    .then((res) => setDenuncias(res.data))
+    .catch()
+
     },[]);
+
+    
 
     if (sessionStorage.getItem("token") != null) {   
     
     return(
         
+        
+
         <div className={Style.ContainerMinimal}>
+            {
+                denuncias &&(
+                    console.log(denuncias)
+                )
+            }
             {denuncias.map((den,i)=> <div className={Style.DivItem}>
                 <div className={Style.Ocult}>
                 </div>
@@ -39,8 +54,8 @@ function Listagem(){
                 <h4>
                 data de cadastro:
                 </h4>
-                <p key={den.data}>
-                { den.data}  
+                <p key={den["created_at"]}>
+                {den["created_at"]}  
                 </p>
                 </div>
                 <div className={Style.ContainerBtn}>

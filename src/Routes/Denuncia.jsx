@@ -1,11 +1,13 @@
 import Style from '../Style/Home.module.css'
-import { Navigate, useLocation } from 'react-router-dom';import { Link } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ButtonStyle from '../Style/Botao.module.css';
 
 function Denuncia(){
 
     const location = useLocation();
     const { from } = location.state;
+    
     var validador = new Boolean(false);
 
 
@@ -18,14 +20,14 @@ function Denuncia(){
     const MinutosAtuais = DataAtual.getMinutes();
 
     //Dia da denúncia;
-    const DataDenuncia = from.data;
-    const DataFormatada = DataDenuncia.split("/");
+    const DataDenuncia = from["created_at"];
+    const DataFormatada = DataDenuncia.split("-");
     const DiaDenuncia = parseInt(DataFormatada[0]);
     const MesDenuncia = parseInt(DataFormatada[1]);
     const AnoDenuncia = parseInt(DataFormatada[2]);
 
     //Hora e minutos da denúncia;
-    const HorarioDenuncia = from.horario;
+    const HorarioDenuncia = from["created_at"];
     const HorarioSeparada = HorarioDenuncia.split(":");
     const HoraDenuncia = parseInt(HorarioSeparada[0]);
     const MinutosDenuncia = parseInt(HorarioSeparada[1]);
@@ -76,6 +78,15 @@ function Denuncia(){
         </div>
 
         <div>
+            <h4>
+                Cor do animal:
+            </h4>
+            <p>
+                {from.cor}
+            </p>
+        </div>
+
+        <div>
             <h4> 
                 Rua:
             </h4>
@@ -98,20 +109,20 @@ function Denuncia(){
                 Ponto de Referência:
             </h4>
             <p>
-                {from["Ponto de referencia"]}
+                {from["pontoDeReferencia"]}
             </p>
         </div>
 
         <div>
             <h4>Descrição:</h4>
-            <p>{from.Descricao}</p>
+            <p>{from.descricao}</p>
         </div>
         
-        { validador == false &&
+        
         <div className={Style.ContainerBtn}> 
         <Link className={ButtonStyle.Btn} to ="/modificardenuncia"  state={{from:from}}>Modificar</Link>
         </div>
-        }
+        
         </div>
     </div>
  )      
