@@ -1,5 +1,5 @@
 import Style from '../Style/User.module.css'
-import Boton from '../Components/Botao'
+import { Link } from 'react-router-dom';
 import { Navigate } from 'react-router-dom'
 import jwtDecode from 'jwt-decode'
 import { useEffect } from 'react'
@@ -8,6 +8,9 @@ import { useState } from 'react'
 
 
 function users () { 
+
+    if (sessionStorage.getItem("token") != null) {
+
 
 
         const token_jwt = sessionStorage.getItem("token");
@@ -24,11 +27,10 @@ function users () {
         .then((res) => setUsuario(res.data.user))
         .catch()
         },[]);
-    
 
 
-    if (sessionStorage.getItem("token") != null) {
         return(
+
 
             
         <div >
@@ -52,11 +54,13 @@ function users () {
                     </p>
                 </div>
             </div>
-            <a className={Style.Btn}> Modificar cadastro</a> 
+            <Link className={Style.Btn} to ="/modificarcadastrodousuario"  state={{from: usuario}}>Modificar Cadastro</Link>
             <a onClick={ () => {sessionStorage.removeItem("token")}} className={Style.Logout}>Sair</a>
             </div>)}
                                
         </div>
+
+        
     ) 
     {
     }
