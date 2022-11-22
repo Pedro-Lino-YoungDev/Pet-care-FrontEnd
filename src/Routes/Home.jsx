@@ -7,7 +7,7 @@ function Home(){
         return(
         <div className={Style.ContainerMinimal}>
             <div className={Style.ContainerBanner}>
-                <img className={Style.Banner} src="public/Imagens/BannerCachorro.jpg" alt="Imagem de um resgate de animal" />
+                <img className={Style.Banner} src="/Imagens/BannerCachorro.jpg" alt="Imagem de um resgate de animal" />
             </div>
             <div className={Style.DivText}>
                 <h3>

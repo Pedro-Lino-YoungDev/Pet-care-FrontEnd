@@ -35,7 +35,7 @@ function Navbar(){
         <nav className= {Nav.Nav}>
             <div className={Nav.NavLogo}>
                 <Link to="/home">
-                    <img className={LogoStyle.PetCare} src="public/Imagens/Logo.png" alt="Logo Pet Care" />
+                    <img className={LogoStyle.PetCare} src="/Imagens/Logo.png" alt="Logo Pet Care" />
                 </Link>
             </div>
 
