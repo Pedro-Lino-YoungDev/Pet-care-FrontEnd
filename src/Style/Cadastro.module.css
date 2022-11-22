@@ -3,14 +3,15 @@
     flex-direction: column;
     margin-bottom: 30px;
     margin-top: 90px;
-    margin-left: 45px;
-    margin-right: 45px;
     background-color: #dcdcdc;
     text-align: center;
     border-radius: 10px;
     padding-bottom: 40px;
     align-items: center;
     justify-content: center;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
   }
 
 
