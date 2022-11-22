@@ -1,5 +1,5 @@
 import './App.css'
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import {BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom";
 import BarraDeNavegação from './Components/Navbar'
 import Rodapé from'./Components/Footer'
 import Home from './Routes/Home';
@@ -12,12 +12,12 @@ import Denuncia from './Routes/Denuncia';
 import User from './Routes/User';
 import Modificarcadastrodousuario from './Routes/ModificarCadastroDoUsuario';
 
-
 function App() {
+  
   return (
-    <Router>
-    <BarraDeNavegação />
-    <Routes>
+    <Router >
+    <BarraDeNavegação/>
+    <Routes >
         <Route path="/home" element={<Home />} />
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/listagem" element={<Listagem />} />
@@ -27,10 +27,8 @@ function App() {
         <Route path='/denuncia' element={<Denuncia />} />
         <Route path="/usuario" element={<User/>}/>
         <Route path="/modificarcadastrodousuario" element={< Modificarcadastrodousuario />}/>
-
+        <Route exact path="/" element={ <Navigate to="/home" /> }/>          
     </Routes>
-
-
     <Rodapé />
     </Router>
   )

@@ -8,11 +8,11 @@
     background-color: #dcdcdc;
     text-align: center;
     border-radius: 10px;
-    padding-bottom: 40px;
   }
   .ContainerItem1{
     flex-direction: column;
-    margin-top: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     text-align: left;
     margin-left: 15%;
     margin-right: 15%;
@@ -20,16 +20,18 @@
   .ContainerItem{
     flex-direction: column;
     margin-top: 20px;
+    margin-bottom: 20px;
     text-align: left;
     margin-left: 15%;
     margin-right: 15%;
   }
   .Input{
+
     width: 100%;
     height: 35px;
     border-radius: 8px;
   }
-  .InputBtn{
+  .Btn{
     color: #046E8F;
     background-color: #ffff;
     padding-left: 30px;
@@ -41,21 +43,7 @@
     border-color:  #046E8F;
     border-style: solid;
     border-width: 2px;
-    margin-top: 20px;
-    cursor: pointer;
-  }.Btn{
-    color: #046E8F;
-    background-color: #ffff;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    text-decoration: none;
-    border-radius: 8px;
-    border-color:  #046E8F;
-    border-style: solid;
-    border-width: 2px;
-    margin-top: 20px;
+    margin-bottom: auto;
     cursor: pointer;
     max-width: 10%;
     align-self: center;
@@ -71,7 +59,7 @@
     border-color:  #046E8F;
     border-style: solid;
     border-width: 2px;
-    margin-top: 20px;
+    margin-bottom: auto;
     cursor: pointer;
     max-width: 10%;
     align-self: center;
@@ -80,196 +68,200 @@
   .error{
     color:red;
   }
+  .formulario{
+    margin-top: auto;
+    margin-bottom: auto;
+  }
 
   @media(max-height: 520px) and (min-height: 501px){
     .ContainerMinimal {
   
-        height: 280px;
+        min-height: 280px;
       }
   }
   @media(max-height: 540px) and (min-height: 521px){
     .ContainerMinimal {
   
-        height: 300px;
+        min-height: 300px;
       }
   }
   @media(max-height: 560px) and (min-height: 541px){
     .ContainerMinimal {
   
-        height: 320px;
+        min-height: 320px;
       }
   }
   @media(max-height: 580px) and (min-height: 561px){
     .ContainerMinimal {
   
-        height: 340px;
+        min-height: 340px;
       }
   }
   @media(max-height: 600px) and (min-height: 581px){
     .ContainerMinimal {
   
-        height: 360px;
+        min-height: 360px;
       }
   }
   @media(max-height: 620px) and (min-height: 601px){
     .ContainerMinimal {
   
-        height: 380px;
+        min-height: 380px;
       }
   }
   @media(max-height: 640px) and (min-height: 621px){
     .ContainerMinimal {
   
-        height: 400px;
+        min-height: 400px;
       }
   }
   @media(max-height: 660px) and (min-height: 641px){
     .ContainerMinimal {
   
-        height: 420px;
+        min-height: 420px;
       }
   }
   @media(max-height: 680px) and (min-height: 661px){
     .ContainerMinimal {
   
-        height: 440px;
+        min-height: 440px;
       }
   }
   @media(max-height: 700px) and (min-height: 681px){
     .ContainerMinimal {
   
-        height: 460px;
+        min-height: 460px;
       }
   }
   @media(max-height: 720px) and (min-height: 701px){
     .ContainerMinimal {
   
-        height: 480px;
+        min-height: 480px;
       }
   }
   @media(max-height: 740px) and (min-height: 721px){
     .ContainerMinimal {
   
-        height: 500px;
+        min-height: 500px;
       }
   }
   @media(max-height: 760px) and (min-height: 741px){
     .ContainerMinimal {
   
-        height: 520px;
+        min-height: 520px;
       }
   }
   @media(max-height: 780px) and (min-height: 761px){
     .ContainerMinimal {
   
-        height: 540px;
+        min-height: 540px;
       }
   }
   @media(max-height: 800px) and (min-height: 781px){
     .ContainerMinimal {
   
-        height: 560px;
+        min-height: 560px;
       }
   }
   @media(max-height: 820px) and (min-height: 801px){
     .ContainerMinimal {
   
-        height: 580px;
+        min-height: 580px;
     }
 }
 @media(max-height: 840px) and (min-height: 821px){
     .ContainerMinimal {
   
-        height: 600px;
+        min-height: 600px;
       }
   }
   @media(max-height: 860px) and (min-height: 841px){
     .ContainerMinimal {
   
-        height: 620px;
+        min-height: 620px;
       }
   }
   @media(max-height: 880px) and (min-height: 861px){
     .ContainerMinimal {
   
-        height: 640px;
+        min-height: 640px;
       }
   }
   @media(max-height: 900px) and (min-height: 881px){
     .ContainerMinimal {
   
-        height: 660px;
+        min-height: 660px;
       }
   }
   @media(max-height: 920px) and (min-height: 901px){
     .ContainerMinimal {
   
-        height: 680px;
+        min-height: 680px;
       }
   }
   @media(max-height: 940px) and (min-height: 921px){
     .ContainerMinimal {
   
-        height: 700px;
+        min-height: 700px;
       }
   }
   @media(max-height: 960px) and (min-height: 941px){
     .ContainerMinimal {
   
-        height: 720px;
+        min-height: 720px;
       }
   }
   @media(max-height: 980px) and (min-height: 961px){
     .ContainerMinimal {
   
-        height: 740px;
+        min-height: 740px;
       }
   }
   @media(max-height: 1000px) and (min-height: 981px){
     .ContainerMinimal {
   
-        height: 760px;
+        min-height: 760px;
       }
   }
   @media(max-height: 1020px) and (min-height: 1001px){
     .ContainerMinimal {
   
-        height: 780px;
+        min-height: 780px;
       }
   }
   @media(max-height: 1040px) and (min-height: 1021px){
     .ContainerMinimal {
   
-        height: 800px;
+        min-height: 800px;
       }
   }
   @media(max-height: 1060px) and (min-height: 1041px){
     .ContainerMinimal {
   
-        height: 820px;
+        min-height: 820px;
       }
   }
   @media(max-height: 1080px) and (min-height: 1061px){
     .ContainerMinimal {
   
-        height: 840px;
+        min-height: 840px;
       }
   }
   @media(max-height: 1100px) and (min-height: 1081px){
     .ContainerMinimal {
   
-        height: 860px;
+        min-height: 860px;
       }
   }
   @media(max-height: 1120px) and (min-height: 1101px){
     .ContainerMinimal {
   
-        height: 880px;
+        min-height: 880px;
       }
   }
   @media(max-height: 1140px) and (min-height: 1121px){
     .ContainerMinimal {
   
-        height: 900px;
+        min-height: 900px;
     }
 }

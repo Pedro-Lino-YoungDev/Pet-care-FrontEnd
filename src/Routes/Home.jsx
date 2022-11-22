@@ -1,13 +1,12 @@
 import Style from '../Style/Home.module.css'
 import Boton from '../Components/Botao'
-import { Navigate } from 'react-router-dom'
+
 
 function Home(){
 
-    if (sessionStorage.getItem("token") != null) {
         return(
         <div className={Style.ContainerMinimal}>
-            <div>
+            <div className={Style.ContainerBanner}>
                 <img className={Style.Banner} src="src/Imagens/BannerCachorro.jpg" alt="Imagem de um resgate de animal" />
             </div>
             <div className={Style.DivText}>
@@ -29,15 +28,9 @@ function Home(){
                 <div className={Style.ContainerItem2}>
                     <Boton item="Cadastrar Nova Denuncia" url="/cadastro"/>            
                 </div>
-        </div>
+            </div>
         </div>
     ) 
-    }
-    else{
-        return(
-            <Navigate to="/login" />
-        )
-    }
 }
 
 export default Home
