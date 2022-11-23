@@ -78,7 +78,7 @@ function Listagem(){
                         </div>
                         
                         <div className={Style.ContainerBtn}>
-                            <Link className={ButtonStyle.Btn} to ="/denuncia"  state={{from:denuncias[i]}}>Modificar</Link>
+                            <Link className={ButtonStyle.Btn} to ="/denuncia"  state={{from:denuncias[i]}}>Ver detalhes</Link>
                         </div>
                     </div>
                     )}
