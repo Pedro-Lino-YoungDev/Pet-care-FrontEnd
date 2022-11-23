@@ -68,11 +68,8 @@ function Navbar(){
 
             </div>
             <div className={Nav.NavPerfil}>
-                <a className={Nav.NavIMG} href="/usuario">
-                 
-                </a>
+                <Link className={Nav.NavIMG} to="/usuario"></Link>
             </div>
-            
                 
         </nav>
 )
