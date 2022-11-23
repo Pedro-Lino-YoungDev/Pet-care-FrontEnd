@@ -50,7 +50,7 @@ function Listagem(){
                     <div className={Style.DivItem} key={i}>
 
                         <div >
-                            <img  className={Style.Imagem} src={den.picture} alt="imagem da denúncia cadastrada" />
+                            <img  className={Style.Imagen} src={den.picture} alt="imagem da denúncia cadastrada" />
                         </div>
 
                         <div >

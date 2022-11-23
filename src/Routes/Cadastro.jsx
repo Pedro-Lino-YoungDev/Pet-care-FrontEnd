@@ -65,14 +65,27 @@ function Contato(){
                     return false;
                 }
             }
+            const converter_imagem = (e) =>{
+                if(e != undefined && e != null){
+                    var imagemCarregada = e[0];
+                    var arquivo = new FileReader ();
+
+                    arquivo.onload = function (arquivoCarregado) {
+                        var image= arquivoCarregado.target.result;
+                        setFoto(image);
+                    }
+                    arquivo.readAsDataURL(imagemCarregada);
+                }
+            }
         
             return(
                 <div className={Style.ContainerMinimal}>
                     <div className={Style.ContainerGeral}>
                     <form className={Style.form} action="Cadastro" method="Post" encType="multipart/form-data">
                         <div className={Style.ItemForm1}>  
-                            <label htmlFor="PrimeiraImg">Primeira imagem do Animal: </label>
-                            <input className={Style.InputImg} value={foto} type="file" accept="image/*" name="image" id="PrimeiraImg" onChange={(e) => setFoto(e.target.value)}/>
+                            <label htmlFor="PrimeiraImg">Imagem do Animal: </label>
+                            <br />
+                            <input className={Style.InputImg} type="file" accept="image/*" name="image" id="PrimeiraImg" onChange={(e) => converter_imagem(e.target.files)}/>
                         </div>
                         <div className={Style.ItemForm}>
                             <label className={Style.Label} htmlFor="Especie">Tipo de animal</label>
@@ -88,6 +101,11 @@ function Contato(){
                             </div>
                         )
                         }
+                        {foto != undefined && foto != null &&(
+                            console.log(foto)
+                        )
+                        }
+
                     
                         <div className={Style.ItemForm}>
                             <label className={Style.Label} htmlFor="Bairro">Bairro:</label>
