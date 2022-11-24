@@ -1,8 +1,10 @@
 import axios from 'axios'
-import { useState , useEffect} from 'react'
+import { useState } from 'react'
 import Style from '../Style/Registro.module.css'
 import { Navigate } from 'react-router-dom';
 import jwtDecode from 'jwt-decode'
+import Link from '../Components/Link'
+import Botao from '../Components/Botao'
 
 
 function Registro(){
@@ -43,6 +45,9 @@ function Registro(){
                 return 3
             }
         }
+        const verificar_email = (e) => {
+            
+        }
 
         const user ={
             "name": nome,
@@ -64,23 +69,27 @@ function Registro(){
                     <div className={Style.ContainerItem1}>
                         <label htmlFor="Email">Email:</label>
                         <br />
-                        <input className={Style.Input} type="Email" onChange={(e) =>{setEmail(e.target.value)}}/>
+                        <input className={Style.Input} type="Email" onChange={(e) =>{setEmail(e.target.value) , setErro_imput(false)}}/>
                     </div>
                     <div className={Style.ContainerItem}>
                         <label htmlFor="Name">Nome do Usurio :</label>
                         <br />
-                        <input className={Style.Input} type="Name" onChange={(e) =>{setNome(e.target.value)}}/>
+                        <input className={Style.Input} type="Name" onChange={(e) =>{setNome(e.target.value) , setErro_imput(false)}}/>
                     </div>
                     <div className={Style.ContainerItem}>
                         <label htmlFor="Password">Senha:</label>
                         <br />
-                        <input className={Style.Input} type="Password" onChange={(e) =>{setSenha(e.target.value)}}/>
+                        <input className={Style.Input} type="Password" onChange={(e) =>{setSenha(e.target.value) , setErro_imput(false) , setErro_senha(false)}}/>
                     </div>
                     <div className={Style.ContainerItem}>
                         <label htmlFor="PasswordConfirm">Confirmar Senha:</label>
-                        <input className={Style.Input} type="Password" onChange={(e) =>{setSenha_verificada(e.target.value)}}/>
+                        <input className={Style.Input} type="Password" onChange={(e) =>{setSenha_verificada(e.target.value) , setErro_imput(false) , setErro_senha(false)}}/>
+                        <h4>
+                            Já possui conta? Clique para
+                            <Link tipo="interno" nome="Entrar" url="/Login"/>
+                        </h4>
                     </div>
-                    <br />
+
                 </form>
                 {verificar_senha(senha_verificada) == 1 && erro_imput == true &&(
                     <div>
@@ -92,9 +101,7 @@ function Registro(){
                 )
                 }
                 {verificar_senha(senha_verificada) == 1 &&(
-                    <a className={Style.Btn} onClick={() => {setErro_imput(true)}}>
-                        enviar
-                    </a>
+                    <Botao tipo="interno" nome="Cadastrar" clique={() => {setErro_imput(true)}}></Botao>
                 )
                 }
                 {verificar_senha(senha_verificada) == 2&& erro_senha == true &&(
@@ -107,15 +114,11 @@ function Registro(){
                 )
                 }
                 {verificar_senha(senha_verificada) == 2 &&(
-                    <a className={Style.Btn} onClick={() => {setErro_senha(true)}}>
-                        enviar
-                    </a>
+                    <Botao tipo="interno" nome="Cadastrar" clique={() => {setErro_senha(true)}}></Botao>
                 )
                 } 
                 {verificar_senha(senha_verificada) == 3&&(
-                    <a className={Style.Btn} onClick={post}>
-                        enviar
-                    </a>
+                    <Botao tipo="interno" nome="Cadastrar" clique={post}></Botao>
                     )
                 }
                 {redirecionar == true &&(

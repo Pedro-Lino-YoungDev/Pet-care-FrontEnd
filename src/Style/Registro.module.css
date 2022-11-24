@@ -34,24 +34,11 @@
     border-radius: 8px;
     margin-bottom: 20px;
   }
-  .Btn{
-    color: #046E8F;
-    background-color: #ffff;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    text-decoration: none;
-    border-radius: 8px;
-    border-color:  #046E8F;
-    border-style: solid;
-    border-width: 2px;
-    margin-top: 20px;
-    cursor: pointer;
-    max-width: 10%;
-    align-self: center;  }
   .error{
     color:red;
+  }
+  h4{
+    text-align: center;    
   }
   @media(max-height: 520px) and (min-height: 501px){
     .ContainerMinimal {

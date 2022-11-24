@@ -4,10 +4,23 @@
     padding-right: 3px;
     padding-top: 1px;
     padding-bottom: 1px;
-    color : #fff; 
+    color : white; 
     text-decoration: none;
 }
-a:hover {
-color: lightgreen;
+:hover.Link {
+    color: #CED4DA;
+}
+.LinkInterno{
+    text-align: center;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    color : #495057; 
+    text-decoration: none;
+}
+:hover.LinkInterno{
+    color: black;
+    
 }
 

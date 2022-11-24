@@ -5,7 +5,7 @@ import jwtDecode from 'jwt-decode'
 import { useEffect } from 'react'
 import axios from 'axios'
 import { useState } from 'react'
-
+import Botao from '../Components/Botao'
 
 function users () { 
 
@@ -54,9 +54,7 @@ function users () {
                                 </p>
                             </div>
                             </div>
-                            <Link className={Style.Btn} to ="/modificarcadastrodousuario"  state={{from: usuario}}>
-                                Modificar Cadastro
-                            </Link>
+                            <Botao tipo="redirecionar" nome="Modificar Cadastro" estado={{from:usuario}} rota="/modificarcadastrodousuario"></Botao>
                             <a href="/home" onClick={ () => {sessionStorage.removeItem("token")}} className={Style.Logout}>
                                 Sair
                             </a>

@@ -35,7 +35,7 @@ function Navbar(){
         <nav className= {Nav.Nav}>
             <div className={Nav.NavLogo}>
                 <Link to="/home">
-                    <img className={LogoStyle.PetCare} src="/Imagens/Logo.png" alt="Logo Pet Care" />
+                    <img className={LogoStyle.PetCare} src="/Imagens/logo-v1(1).png" alt="Logo Pet Care" />
                 </Link>
             </div>
 
@@ -43,11 +43,11 @@ function Navbar(){
             <div className={Nav.NavItem}>
 
                 {verificar(validador.pathname) == "com token válido" &&(
-                   <Links nome = "Cadastrar" url = "/cadastro"/>
+                   <Links tipo="navegação" nome = "Cadastrar" url = "/cadastro"/>
                 )
                 }
                 {verificar(validador.pathname) == "sem token válido" &&(
-                    <Links nome = "Registrar-se" url = "/registro"/>  
+                    <Links tipo="navegação" nome = "Registrar-se" url = "/registro"/>  
                 )
                 }
 
@@ -57,12 +57,12 @@ function Navbar(){
 
 
             {verificar(validador.pathname) == "com token válido" &&(
-                <Links nome = "Ver Denúncias" url = "/listagem"/>
+                <Links tipo="navegação" nome = "Ver Denúncias" url = "/listagem"/>
                 )
             }
 
             {verificar(validador.pathname) == "sem token válido" &&(
-                    <Links nome = "Entrar" url = "/login"/>  
+                    <Links tipo="navegação" nome = "Entrar" url = "/login"/>  
                 )
             }
 

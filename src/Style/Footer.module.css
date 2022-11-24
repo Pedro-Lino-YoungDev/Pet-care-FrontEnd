@@ -1,5 +1,5 @@
 .Footer{
-    background-color: #074365;
+    background-color: #353535;
     display: flex;
     align-items: baseline;
     justify-content: center;
@@ -23,7 +23,7 @@
 }
 .Copyright{
     display: flex;
-    background-color:#043653;
+    background-color:#303030;
     text-align: center;
     padding: 10px;
     align-content: center;

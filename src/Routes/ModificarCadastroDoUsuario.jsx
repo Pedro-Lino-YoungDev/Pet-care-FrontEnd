@@ -3,6 +3,8 @@ import {useState} from 'react'
 import axios from 'axios';
 import { Navigate, useLocation } from 'react-router-dom';
 import jwtDecode from 'jwt-decode'
+import Botao from '../Components/Botao'
+
 
 
 function modificarcadastrodousuario() {
@@ -29,6 +31,8 @@ function modificarcadastrodousuario() {
             const [novaSenha, setNovaSenha] = useState();
             const [senhaVerificada, setSenhaVerificada] = useState();
             const [validador,setValidador] = useState(false);
+            const [cancelar,setCancelar] = useState(false);
+
 
             const [resposta,setResposta] = useState();
             const [erro,setErro] = useState();
@@ -141,6 +145,15 @@ function modificarcadastrodousuario() {
                         <a className={Style.Btn} onClick={() => {put()}}>
                             enviar
                         </a>
+                    )
+                    }
+                    <div className={Style.DivBtn}>
+                        <a className={Style.Btn} onClick={() => setCancelar(true)}>
+                            Cancelar
+                        </a>
+                    </div>
+                    { cancelar == true &&(
+                        <Navigate to="/usuario"/>
                     )
                     }
                     { resposta &&(

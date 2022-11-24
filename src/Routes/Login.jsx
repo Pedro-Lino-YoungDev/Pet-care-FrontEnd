@@ -1,9 +1,10 @@
 import Style from '../Style/Login.module.css'
-import Link from "../Components/LinkInterno"
+import Link from "../Components/Link"
 import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode'
+import Botao from '../Components/Botao'
 
 
 function Login(){
@@ -55,46 +56,47 @@ function Login(){
                     <div className={Style.ContainerItem1}>
                         <label htmlFor="Email">Email:</label>
                         <br />
-                        <input className={Style.Input} type="Email" onChange={(e) =>{setEmail(e.target.value)}}/>
+                        <input className={Style.Input} type="Email" onChange={(e) =>{setEmail(e.target.value) , setErro(null) , setError(null)}}/>
                     </div>
 
                     <div className={Style.ContainerItem}>
                         <label htmlFor="Email">Senha:</label>
                         <br />
-                        <input className={Style.Input} type="Password" onChange={(e) =>{setSenha(e.target.value)}}/>
+                        <input className={Style.Input} type="Password" onChange={(e) =>{setSenha(e.target.value) , setErro(null) , setError(null)}}/>
                     </div>
                     <h4>
                         Não possui conta? Clique para se
-                        <Link nome="Registrar" url="/Registro"/>
+                        <Link tipo="interno" nome="Registrar" url="/Registro"/>
                     </h4>
                 </form>
 
                 {erro == true && Verificar_campos(email, senha) == false &&(
-                    <h4  className={Style.error}>
+                    <div className={Style.DivErro}>
+                    <h4  className={Style.erro}>
                         Digite todas as informações para prosseguir*
                     </h4>
+                    </div>
                 )
+                }
+                { finnaly == true && error != null && error.message == "login attempt failed" &&
+                    <div className={Style.DivErro}>
+                    <h4  className={Style.erro}>
+                        seu email ou senha estão incorretos tente novamente*
+                    </h4>
+                    </div>
                 }
 
                 {Verificar_campos(email,senha) == true &&(
-                    <a className={Style.Btn} onClick={() => {post()}}>
-                        entrar
-                    </a>
+                    <Botao tipo="interno" nome="entrar" clique={() => {post()}}></Botao>
                 )
                 }
                 {Verificar_campos(email,senha) == false &&(
-                     <a className={Style.Btn} onClick={() => {setErro(true)}}>
-                        entrar
-                    </a>
+                    <Botao tipo="interno" nome="entrar" clique={() => {setErro(true)}}></Botao>
                 )
                 }
 
 
-                { finnaly == true && error != null && error.message == "login attempt failed" &&
-                    <h4  className={Style.error}>
-                        seu email ou senha estão incorretos tente novamente*
-                    </h4>
-                }
+
                 { finnaly == true  && resposta != null && resposta.message == "successfully logged in" &&(
                     sessionStorage.setItem("token",resposta.token),
                     sessionStorage.setItem("token",resposta.token),

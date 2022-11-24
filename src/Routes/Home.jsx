@@ -23,10 +23,10 @@ function Home(){
             </div>
             <div className={Style.ContainerBtn}>
                 <div className={Style.ContainerItem1}>
-                    <Boton item="Ver Denuncias Cadastradas" url="/listagem"/>
+                    <Boton tipo="redirecionar" nome="Ver Denuncias Cadastradas" rota="/listagem"/>
                 </div>
                 <div className={Style.ContainerItem2}>
-                    <Boton item="Cadastrar Nova Denuncia" url="/cadastro"/>            
+                    <Boton tipo="redirecionar" nome="Cadastrar Nova Denuncia" rota="/cadastro"/>            
                 </div>
             </div>
         </div>

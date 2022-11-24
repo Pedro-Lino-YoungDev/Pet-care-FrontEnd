@@ -4,6 +4,8 @@ import { Link, Navigate } from 'react-router-dom';
 import ButtonStyle from '../Style/Botao.module.css';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode'
+import Botao from '../Components/Botao'
+
 
 
 
@@ -49,7 +51,7 @@ function Listagem(){
                     {denuncias.map((den,i)=> 
                     <div className={Style.DivItem} key={i}>
 
-                        <div >
+                        <div className={Style.DivImg}>
                             <img  className={Style.Imagen} src={den.picture} alt="imagem da denúncia cadastrada" />
                         </div>
 
@@ -78,7 +80,7 @@ function Listagem(){
                         </div>
                         
                         <div className={Style.ContainerBtn}>
-                            <Link className={ButtonStyle.Btn} to ="/denuncia"  state={{from:denuncias[i]}}>Ver detalhes</Link>
+                        <Botao tipo="redirecionar" nome="Ver detalhes" estado={{from:denuncias[i]}} rota="/denuncia"></Botao>
                         </div>
                     </div>
                     )}

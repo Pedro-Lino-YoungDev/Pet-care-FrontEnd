@@ -1,20 +1,23 @@
 .ContainerMinimal {
-    display: block;
+    display: flex;
+    flex-direction: column;
     margin-bottom: 30px;
     margin-top: 90px;
-    margin-left: 45px;
-    margin-right: 45px;
     background-color: #dcdcdc;
     text-align: center;
     border-radius: 10px;
     padding-bottom: 40px;
-    /*
     align-items: center;
     justify-content: center;
-    */
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
   }
-
-
+  .ContainerGeral{
+    margin-top: auto;
+    margin-bottom: auto;
+    min-width: 80%;
+  }
   .ItemForm1{
     padding-top: 20px;
     display: flex;
@@ -24,11 +27,10 @@
     max-width: 100%;
   }
 
-  .InputImg{
-    margin-top: 2px;
-    max-width: 100%;
-    height: 25px;
-    margin-bottom: 10px;
+  .Imagem{
+    max-width: 200px;
+    max-height: 120px;
+    border-radius: 10px;
   }
 
   .ItemForm{
@@ -40,15 +42,7 @@
   .Label{
     text-align: left;
     padding-left: 3%;
-
   }
-  .Select{
-    align-self: center;
-    width: 95%;
-    height: 25px;
-    border-radius: 7px;
-  }
-
   .Input{
     margin-top: 5px;
     align-self: center;
@@ -56,31 +50,51 @@
     height: 25px;
     border-radius: 7px;
     padding: 0%;
-  }
-  .Btn{
-    color: #046E8F;
-    background-color: #ffff;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 7px;
-    padding-bottom: 7px;
-    text-decoration: none;
-    border-radius: 8px;
-    border-color:  #046E8F;
-    border-style: solid;
-    border-width: 2px;
-    margin-top: 10px;
-    cursor: pointer;
+    background-color: #F8F9FA;
+
   }
   .Descricao{
     margin-top: 5px;
+    margin-bottom: 30px;
     align-self: center;
     width: 95%;
     height: 25px;
     border-radius: 7px;
     padding: 0%;
     padding-bottom: 70px;
+    background-color: #F8F9FA;
   }
+.Btn{
+    color: #CED4DA;
+    background-color: #353535;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-decoration: none;
+    border-radius: 10px;
+    border-color:  #CED4DA;
+    border-style: solid;
+    border-width: 2px;
+    align-self: center;
+}
+.ContainerBtn{
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: auto;
+  width: 100%;
+  flex-direction: column;
+}
+.Separacao{
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.DivErro{
+  margin-bottom: auto;
+}
+.erro{
+  color:red;
+}
 
 .Banner{
     max-width: 80%;

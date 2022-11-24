@@ -1,13 +1,18 @@
 .Btn{
-    color: #046E8F;
-    background-color: #ffff;
+    color: #CED4DA;
+    background-color: #353535;
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 10px;
     padding-bottom: 10px;
     text-decoration: none;
     border-radius: 10px;
-    border-color:  #046E8F;
+    border-color:  #CED4DA;
     border-style: solid;
     border-width: 2px;
+    align-self: center;
+}
+:hover.Btn{
+    color: #ffff;
+    border-color: #ffff;
 }

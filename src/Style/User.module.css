@@ -7,7 +7,7 @@
     margin-top: 90px;
     margin-left: 20px;
     margin-right: 20px;
-    background-color: #dcdcdc;
+    background-color: #CED4DA;
     text-align: center;
     border-radius: 10px;
     align-items: center;
@@ -29,43 +29,27 @@
     border-color: black;
     align-self: center;
   }
-  .Btn{
-    color: #4f4f4f;
-    background-color: #d4d4d4;
-    margin-top: auto;  
-    margin-bottom: 30px;
-    width: 140px;
-    padding-bottom: 7px;
-    padding-top: 7px;
-    padding-left: 30px;
-    padding-right: 30px;
-    border-style: solid;
-    border-color:  #046E8F;
-    border-radius: 8px;
-    text-decoration: none;
-
-  }
-  .Btn:hover{
-    color: black;
-  }
   .Logout{
     padding-bottom: 7px;
     padding-top: 7px;
     padding-left: 30px;
     padding-right: 30px;
-    color: black;
+    background-color: #353535;
+    color: #CED4DA;
     border-style: solid;
     border-radius: 8px;
-    border-color: red;
+    border-color: #CED4DA;
     margin-top: 30px;
     margin-bottom: auto;
     margin-left: 20px;
     margin-right: 20px;
     width: 40px;
-    align-self:inherit
+    align-self:inherit;
+    text-decoration: none;
   }
   .Logout:hover{
     color: red;
+    border-color: red;
   }
 
   @media(max-height: 520px) and (min-height: 501px){

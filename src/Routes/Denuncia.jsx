@@ -1,8 +1,10 @@
-import Style from '../Style/Home.module.css'
+import Style from '../Style/Denuncia.module.css'
 import { Navigate, useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import ButtonStyle from '../Style/Botao.module.css';
 import jwtDecode from 'jwt-decode'
+import Botao from '../Components/Botao'
+
 
 
 function Denuncia(){
@@ -68,6 +70,17 @@ function Denuncia(){
         
             }
 
+            const formatar_horario = (e) =>{
+                const DataSeparada = e.split("T");
+                const HorarioSeparado = DataSeparada[1].split(".")
+                return HorarioSeparado[0];
+            }
+
+            const formatar_data = (e) =>{
+                const DataSeparada = e.split("T");
+                return DataSeparada[0];
+            }
+
             return(
                 <div className={Style.ContainerMinimal}>
                     <div>
@@ -118,16 +131,33 @@ function Denuncia(){
                                 {from["pontoDeReferencia"]}
                             </p>
                         </div>
-                
                         <div>
-                            <h4>Descrição:</h4>
+                            <h4>
+                                Data de Cadastro:
+                            </h4>
+                            <p>
+                            {formatar_data(from["created_at"])} as {formatar_horario(from["created_at"])}
+                            </p>
+                        </div>
+                        <div>
+                            <h4>
+                                Ultima Atualização:
+                            </h4>
+                            <p>
+                            {formatar_data(from["updated_at"])} as {formatar_horario(from["updated_at"])}
+                            </p>
+                        </div>
+                        <div>
+                             <h4>
+                                Descrição
+                             </h4>
                             <p>{from.descricao}</p>
                         </div>
                         
                         
                         <div className={Style.ContainerBtn}> 
                             {validador == false &&(
-                                <Link className={ButtonStyle.Btn} to ="/modificardenuncia"  state={{from:from}}>Modificar</Link>
+                                <Botao tipo="redirecionar" nome="Modificar" estado={{from:from}} rota="/modificardenuncia"></Botao>
                             )
                             }
                         </div>

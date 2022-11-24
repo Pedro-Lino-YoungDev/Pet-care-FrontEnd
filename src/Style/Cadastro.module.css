@@ -3,7 +3,7 @@
     flex-direction: column;
     margin-bottom: 30px;
     margin-top: 90px;
-    background-color: #dcdcdc;
+    background-color: #CED4DA;
     text-align: center;
     border-radius: 10px;
     padding-bottom: 40px;
@@ -13,8 +13,6 @@
     margin-left: 5%;
     margin-right: 5%;
   }
-
-
   .ItemForm1{
     padding-top: 20px;
     display: flex;
@@ -42,13 +40,6 @@
     text-align: left;
     padding-left: 3%;
   }
-  .Select{
-    align-self: center;
-    width: 95%;
-    height: 25px;
-    border-radius: 7px;
-  }
-
   .Input{
     margin-top: 5px;
     align-self: center;
@@ -56,8 +47,8 @@
     height: 25px;
     border-radius: 7px;
     padding: 0%;
-    
-  }
+    background-color: #F8F9FA;
+    }
   .ContainerGeral{
     margin-top: auto;
     margin-bottom: auto;
@@ -68,23 +59,10 @@
     margin-bottom: auto;
     width: 100%;
   }
-  .Btn{
-    color: #046E8F;
-    background-color: #ffff;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    text-decoration: none;
-    border-radius: 8px;
-    border-color:  #046E8F;
-    border-style: solid;
-    border-width: 2px;
-    cursor: pointer;
-    max-width: 60%;
-    align-self: center;  
+  .DivErro{
+    margin-bottom: auto;
   }
-  .error{
+  .erro{
     color:red;
   }
   .Descricao{
@@ -95,9 +73,10 @@
     border-radius: 7px;
     padding: 0%;
     padding-bottom: 70px;
+    background-color: #F8F9FA
   }
   .form{
-    margin-bottom: 40px;
+    margin-bottom: 20px;
   }
   @media(max-height: 520px) and (min-height: 501px){
     .ContainerMinimal {
