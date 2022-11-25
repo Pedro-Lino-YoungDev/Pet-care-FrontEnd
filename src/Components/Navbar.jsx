@@ -11,12 +11,12 @@ function Navbar(){
      
      const verificar = (e) =>{
 
-        if (sessionStorage.getItem("token") != null) {
+        if (localStorage.getItem("token") != null) {
  
              const DataAtual = new Date();
              const HorarioTokenFormatado = parseInt(DataAtual.valueOf()/1000);
  
-             const token_jwt = sessionStorage.getItem("token");
+             const token_jwt = localStorage.getItem("token");
              const TokenDecodificado = jwtDecode(token_jwt);
  
              if (TokenDecodificado.exp > HorarioTokenFormatado) {

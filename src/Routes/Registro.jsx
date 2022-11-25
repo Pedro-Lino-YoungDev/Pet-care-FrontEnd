@@ -13,13 +13,13 @@ function Registro(){
     const HorarioTokenFormatado = parseInt(DataAtual.valueOf()/1000);
 
     const VerificarToken = () => {
-        if(sessionStorage.getItem("token") != null){
-            const token_jwt = sessionStorage.getItem("token");
+        if(localStorage.getItem("token") != null){
+            const token_jwt = localStorage.getItem("token");
             const TokenDecodificado = jwtDecode(token_jwt);
             return TokenDecodificado.exp
         }
     }
-    if (sessionStorage.getItem("token") == null || VerificarToken() < HorarioTokenFormatado) {
+    if (localStorage.getItem("token") == null || VerificarToken() < HorarioTokenFormatado) {
         
         const [nome, setNome] = useState();
         const [email, setEmail] = useState();
@@ -27,6 +27,7 @@ function Registro(){
         const [senha_verificada, setSenha_verificada] = useState();
 
         const [redirecionar, setRedirecionar] = useState();
+        const [validador,setValidador] = useState(false);
         const [erro_imput, setErro_imput] = useState();
         const [erro_senha, setErro_senha] = useState();
 
@@ -45,18 +46,34 @@ function Registro(){
                 return 3
             }
         }
-        const verificar_email = (e) => {
+        const verificar_email = () => {
             
         }
 
-        const user ={
-            "name": nome,
-            "email": email,
-            "password": senha_verificada
+        const alterar_dados = (e) =>{
+            if(e == "sem foto"){
+                const user =
+                {
+                    "name": nome,
+                    "email": email,
+                    "password": senha_verificada
+                }
+                return user
+            }
+            else if(e == "com foto"){
+                const user =
+                {
+                    "name": nome,
+                    "email": email,
+                    "password": senha_verificada,
+                    "picture": "picture"
+                }
+                return user
+            }
         }
 
-        const post = () => {
-            axios.post('https://backend-petcare.herokuapp.com/usuario',user)
+        const post = (e) => {
+            axios.post('https://backend-petcare.herokuapp.com/usuario',alterar_dados("sem foto"))
             .then((res) => setRespost(res))
             .catch((res) => setError(res))   
             .then(() => setRedirecionar(true))

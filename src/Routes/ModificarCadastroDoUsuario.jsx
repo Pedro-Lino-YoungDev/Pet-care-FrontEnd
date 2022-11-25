@@ -11,12 +11,12 @@ function modificarcadastrodousuario() {
 
 
 
-    if (sessionStorage.getItem("token") != null) {
+    if (localStorage.getItem("token") != null) {
 
         const DataAtual = new Date();
         const HorarioTokenFormatado = parseInt(DataAtual.valueOf()/1000);
 
-        const token_jwt = sessionStorage.getItem("token");
+        const token_jwt = localStorage.getItem("token");
         const TokenDecodificado = jwtDecode(token_jwt);
 
 
@@ -33,7 +33,6 @@ function modificarcadastrodousuario() {
             const [validador,setValidador] = useState(false);
             const [cancelar,setCancelar] = useState(false);
 
-
             const [resposta,setResposta] = useState();
             const [erro,setErro] = useState();
 
@@ -42,9 +41,8 @@ function modificarcadastrodousuario() {
             const [erro_senha, setErro_senha] = useState();
             const [erroNovaSenha, setErroNovaSenha] = useState();
 
-
             const verificar_campos = () =>{
-                if (nome == "" || nome == null){
+                if (nome == "" || nome == null || nome == from.name){
                     return 1
                 }
                 else if(senha == "" || senha == null) {
@@ -58,11 +56,14 @@ function modificarcadastrodousuario() {
                 if(novaSenha == '' || novaSenha == null  || e == null || e == ''){
                     return 1
                 }
-                else if(novaSenha == senha){
+                else if (novaSenha != e) {
                     return 2
                 }
-                else if (novaSenha == e ) {
+                else if(novaSenha == senha){
                     return 3
+                }
+                else if (novaSenha == e ) {
+                    return 4
                 }
 
             }
@@ -72,7 +73,7 @@ function modificarcadastrodousuario() {
                         "name": nome,
                         "email": email,
                         "password": senha,
-                        "token" : sessionStorage.getItem("token")
+                        "token" : token_jwt
                     }
                     return user;
                 }
@@ -82,7 +83,7 @@ function modificarcadastrodousuario() {
                         "email": email,
                         "password": senha,
                         "newPassword": senhaVerificada,
-                        "token" : sessionStorage.getItem("token")
+                        "token" : token_jwt
                     }
                     return user
                 }
@@ -95,7 +96,7 @@ function modificarcadastrodousuario() {
 
             const put = (e) => {
                 axios.put('https://backend-petcare.herokuapp.com/usuario/'+from.id,dados_post(e))
-                .then((res) => setResposta(res.data))
+                .then((res) => setResposta(res.data.message))
                 .catch((res) => setErro(res.response.data.message))   
             }
 
@@ -112,12 +113,12 @@ function modificarcadastrodousuario() {
                         </div>
                         <div className={Style.ItemForm}>
                             <label className={Style.Label} htmlFor="senha">Senha Atual:</label>
-                            <input className={Style.Input} value={senha} type="password" id= "Senha"onChange={(e) => {setSenha(e.target.value), setErro_senha(false)}}/>
+                            <input className={Style.Input} value={senha} type="password" id= "Senha"onChange={(e) => {setSenha(e.target.value), setErro_senha(false), setErro(null), setErroNovaSenha(false)}}/>
                         </div>
                         <div>
                             <br />
                             <label className={Style.Label} htmlFor="senha">Deseja Modificar a Senha?</label>
-                            <input className={Style.Input} type="checkbox" id= "check" checked={validador} onChange={(e) => {validar(), setNovaSenha(""), setSenhaVerificada("")}}/>
+                            <input className={Style.Input} type="checkbox" id= "check" checked={validador} onChange={(e) => {validar(), setNovaSenha(""), setSenhaVerificada(""), setErroNovaSenha(false)}}/>
                         </div>
                         {validador == true &&(
                         <div className={Style.ItemForm}>
@@ -133,10 +134,23 @@ function modificarcadastrodousuario() {
                         </div>
                         )
                         }
+                        {erro == "login attempt failed" &&(
+                            <h4 className={Style.error}>                
+                                Oops! a sua senha está incorreta     
+                            </h4>
+                        )
+                        }
                     </form>
-                    {verificar_campos() == 1 && erro_imput == true &&(
+                    {verificar_campos() == 1 && erro_imput == true && nome != from.name &&(
                         <h4 className={Style.error}>
                             Oops! Por favor coloque um nome válido
+                        </h4>
+                    )
+                    }
+                    {verificar_campos() == 1 && erro_imput == true && nome == from.name &&(
+                        <h4 className={Style.error}>
+                            Oops! o nome que você colocou é igual ao atual, só é possível
+                             atualizar seus dados caso eles sejam alterados!!
                         </h4>
                     )
                     }
@@ -148,7 +162,7 @@ function modificarcadastrodousuario() {
                     }
                     {verificar_campos() == 2 && erro_senha == true &&(
                         <h4 className={Style.error}>
-                            Oops! Por faavor coloque uma senha válida
+                            Oops! Por favor coloque uma senha válida
                         </h4>
                     )
                     }
@@ -178,7 +192,7 @@ function modificarcadastrodousuario() {
                     }
                     {verificar_campos() == 3 && verificar_senha(senhaVerificada) == 2 && erroNovaSenha == true && validador == true &&(
                         <h4 className={Style.error}>
-                            Oops! Sua nova senha está igual a sua senha atual, por favor coloque uma senha diferente.
+                            Oops! sua nova senha não foi confirmada pois estão diferentes
                         </h4>
                     )
                     }
@@ -188,7 +202,20 @@ function modificarcadastrodousuario() {
                         </a>
                     )
                     }
+
+                    {verificar_campos() == 3 && verificar_senha(senhaVerificada) == 3 && erroNovaSenha == true && validador == true &&(
+                        <h4 className={Style.error}>
+                            Oops! Sua nova senha está igual a sua senha atual, por favor coloque uma senha diferente.
+                        </h4>
+                    )
+                    }
                     {verificar_campos() == 3 && verificar_senha(senhaVerificada) == 3 && validador == true &&(
+                        <a className={Style.Btn} onClick={() => {setErroNovaSenha(true)}}>
+                            enviar
+                        </a>
+                    )
+                    }
+                    {verificar_campos() == 3 && verificar_senha(senhaVerificada) == 4 && validador == true &&(
                         <a className={Style.Btn} onClick={() => {put("com senha nova")}}>
                             enviar
                         </a>
@@ -199,20 +226,23 @@ function modificarcadastrodousuario() {
                             Cancelar
                         </a>
                     </div>
-                    {
-                        console.log(validador)
-                    }
-                    { cancelar == true &&(
+                    {cancelar == true &&(
                         <Navigate to="/usuario"/>
                     )
                     }
-                    { resposta &&(
+                    {resposta == "records updated successfully with new passowrd"&&(
                         <Navigate to="/home"/>
                     )
                     }
+                    {resposta == "records updated successfully old password" &&(
+                        <Navigate to="/home"/>
+                    )}
                     {erro == "token has expired" &&(
                         <Navigate to="/login"/>
                     )
+                    }
+                    {
+                        console.log(resposta)
                     }
                 </div>
             )

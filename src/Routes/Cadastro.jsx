@@ -9,12 +9,12 @@ import Botao from '../Components/Botao'
 
 function Contato(){     
 
-    if(sessionStorage.getItem("token") != null){
+    if(localStorage.getItem("token") != null){
 
         const DataAtual = new Date();
         const HorarioTokenFormatado = parseInt(DataAtual.valueOf()/1000);
 
-        const token_jwt = sessionStorage.getItem("token");
+        const token_jwt = localStorage.getItem("token");
         const TokenDecodificado = jwtDecode(token_jwt);
 
 
@@ -43,7 +43,7 @@ function Contato(){
                 "pontoDeReferencia" : PR,
                 "picture" : foto,
                 "descricao" : descriao,
-                "token" : sessionStorage.getItem("token")
+                "token" : token_jwt
             }
             const post = () => {
                 axios.post("https://backend-petcare.herokuapp.com/denuncia",denuncia)

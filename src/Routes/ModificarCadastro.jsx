@@ -9,12 +9,12 @@ import Botao from '../Components/Botao'
 
 function ModificarCadastro(){
 
-    if (sessionStorage.getItem("token") != null) {
+    if (localStorage.getItem("token") != null) {
 
         const DataAtual = new Date();
         const HorarioTokenFormatado = parseInt(DataAtual.valueOf()/1000);
 
-        const token_jwt = sessionStorage.getItem("token");
+        const token_jwt = localStorage.getItem("token");
         const TokenDecodificado = jwtDecode(token_jwt);
 
 
@@ -56,7 +56,7 @@ function ModificarCadastro(){
                 "bairro" : bairro,
                 "pontoDeReferencia" : PR,
                 "descricao" : descricao,
-                "token" : sessionStorage.getItem("token")
+                "token" : token_jwt
             }
 
             const put = () => {

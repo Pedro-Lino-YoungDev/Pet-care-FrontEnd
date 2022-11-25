@@ -13,13 +13,13 @@ function Login(){
     const HorarioTokenFormatado = parseInt(DataAtual.valueOf()/1000);
     
     const VerificarToken = () => {
-        if(sessionStorage.getItem("token") != null){
-            const token_jwt = sessionStorage.getItem("token");
+        if(localStorage.getItem("token") != null){
+            const token_jwt = localStorage.getItem("token");
             const TokenDecodificado = jwtDecode(token_jwt);
             return TokenDecodificado.exp
         }
     }
-    if (sessionStorage.getItem("token") == null || VerificarToken() < HorarioTokenFormatado) {
+    if (localStorage.getItem("token") == null || VerificarToken() < HorarioTokenFormatado) {
         const [email, setEmail] = useState();
         const [senha, setSenha] = useState();
         const [finnaly, setFinnaly] = useState();
@@ -98,8 +98,7 @@ function Login(){
 
 
                 { finnaly == true  && resposta != null && resposta.message == "successfully logged in" &&(
-                    sessionStorage.setItem("token",resposta.token),
-                    sessionStorage.setItem("token",resposta.token),
+                    localStorage.setItem("token",resposta.token),
                     <Navigate to="/home"/>
                 )
                 }

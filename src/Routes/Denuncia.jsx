@@ -9,9 +9,9 @@ import Botao from '../Components/Botao'
 
 function Denuncia(){
     
-    if (sessionStorage.getItem("token") != null) {
+    if (localStorage.getItem("token") != null) {
 
-        const token_jwt = sessionStorage.getItem("token");
+        const token_jwt = localStorage.getItem("token");
         const decodificado = jwtDecode(token_jwt);
         var validador = new Boolean(false);
 
