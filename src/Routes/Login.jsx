@@ -22,11 +22,11 @@ function Login(){
     if (localStorage.getItem("token") == null || VerificarToken() < HorarioTokenFormatado) {
         const [email, setEmail] = useState();
         const [senha, setSenha] = useState();
-        const [finnaly, setFinnaly] = useState();
-        const [erro, setErro] = useState();
+        const [erroInput, setErroInput] = useState();
 
         const [resposta, setRespost] = useState();
-        const [error, setError] = useState();
+        const [erro, setErro] = useState();
+        const [carregamento, setCarregamento] = useState();
 
         const user ={
             "email" : email,
@@ -36,8 +36,7 @@ function Login(){
         const post = () => {
             axios.post("https://backend-petcare.herokuapp.com/login",user)
             .then((res) => setRespost(res.data))
-            .catch((res) => setError(res.response.data))
-            .then(() => setFinnaly(true))
+            .catch((res) => setErro(res.response.data))
         }
 
         const Verificar_campos = (e,s) => {
@@ -56,21 +55,23 @@ function Login(){
                     <div className={Style.ContainerItem1}>
                         <label htmlFor="Email">Email:</label>
                         <br />
-                        <input className={Style.Input} type="Email" onChange={(e) =>{setEmail(e.target.value) , setErro(null) , setError(null)}}/>
+                        <input className={Style.Input} type="Email" onChange={(e) =>{setEmail(e.target.value), setErroInput(null), setErro(null), setCarregamento(false)}}/>
                     </div>
 
                     <div className={Style.ContainerItem}>
                         <label htmlFor="Email">Senha:</label>
                         <br />
-                        <input className={Style.Input} type="Password" onChange={(e) =>{setSenha(e.target.value) , setErro(null) , setError(null)}}/>
+                        <input className={Style.Input} type="Password" onChange={(e) =>{setSenha(e.target.value), setErroInput(null), setErro(null), setCarregamento(false)}}/>
                     </div>
+                </form>
+                <div>
                     <h4>
                         Não possui conta? Clique para se
                         <Link tipo="interno" nome="Registrar" url="/Registro"/>
                     </h4>
-                </form>
+                </div>
 
-                {erro == true && Verificar_campos(email, senha) == false &&(
+                {erroInput == true && Verificar_campos(email, senha) == false &&(
                     <div className={Style.DivErro}>
                     <h4  className={Style.erro}>
                         Digite todas as informações para prosseguir*
@@ -78,26 +79,31 @@ function Login(){
                     </div>
                 )
                 }
-                { finnaly == true && error != null && error.message == "login attempt failed" &&
+                {erro != null && erro.message == "login attempt failed" &&
                     <div className={Style.DivErro}>
                     <h4  className={Style.erro}>
                         seu email ou senha estão incorretos tente novamente*
                     </h4>
                     </div>
                 }
+                {resposta == null && erro == null && carregamento == true &&(
+                    <div className={Style.Carregamento}></div>
+                )
+                }
 
                 {Verificar_campos(email,senha) == true &&(
-                    <Botao tipo="interno" nome="entrar" clique={() => {post()}}></Botao>
+                    <div className={Style.DivBotao}>
+                        <Botao tipo="interno" nome="entrar" clique={() => {post(), setCarregamento(true)}}></Botao>
+                    </div>
                 )
                 }
                 {Verificar_campos(email,senha) == false &&(
-                    <Botao tipo="interno" nome="entrar" clique={() => {setErro(true)}}></Botao>
+                    <div className={Style.DivBotao}>
+                        <Botao tipo="interno" nome="entrar" clique={() => {setErroInput(true)}}></Botao>
+                    </div>
                 )
                 }
-
-
-
-                { finnaly == true  && resposta != null && resposta.message == "successfully logged in" &&(
+                {resposta != null && resposta.message == "successfully logged in" &&(
                     localStorage.setItem("token",resposta.token),
                     <Navigate to="/home"/>
                 )

@@ -4,6 +4,7 @@ import { Navigate } from 'react-router-dom';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import Botao from '../Components/Botao';
+import { useTimer } from 'react-timer-hook';
 
 
 
@@ -21,7 +22,7 @@ function Listagem(){
         if (TokenDecodificado.exp > HorarioTokenFormatado) {
 
             const[denuncias, setDenuncias] = useState([]);
-            const [error, setError] = useState();
+            const [erro, setErro] = useState();
 
 
             const token = {
@@ -31,7 +32,7 @@ function Listagem(){
             useEffect(() => {
                 axios.post("https://backend-petcare.herokuapp.com/denuncias",token)
                 .then((res) => setDenuncias(res.data))
-                .catch((res) => setError(res))
+                .catch((res) => setErro(res.response.data.message))
             },[]);
 
             const formatar_horario = (e) =>{
@@ -44,47 +45,102 @@ function Listagem(){
                 const DataSeparada = e.split("T");
                 return DataSeparada[0];
             }
-    
-            return(
-                <div className={Style.ContainerMinimal}>
-                    {denuncias.map((den,i)=> 
-                    <div className={Style.DivItem} key={i}>
-
-                        <div className={Style.DivImg}>
-                            <img  className={Style.Imagen} src={den.picture} alt="imagem da denúncia cadastrada" />
-                        </div>
-
-                        <div >
-                            <h4>
-                                Rua
-                            </h4>
-                            <p >
-                                {den.rua}
+            if (erro == "denuncia not found"){
+                return (
+                    <div className={Style.ContainerPadrao}>
+                        <div className={Style.DivRedirecionar}>
+                            <h2>
+                                Você ainda não cadatrou nenhuma denúncia! 
+                            </h2>
+                            <br />
+                            <p className={Style.Tamanho}>
+                                clique no boão a seguir para cadastrar sua primeira denúncia.
                             </p>
                         </div>
-
-                        <div >
-                            <h4>
-                                Data de cadastro:
-                            </h4>
-                            <p>
-                                {formatar_data(den["created_at"])}
-                            </p>
-                            <h4>
-                                Hora de cadastro:
-                            </h4 >
-                            <p>
-                                {formatar_horario(den["created_at"])}
-                            </p>
+                        <div>
+                            <Botao tipo="redirecionar" nome="Cadastrar denúncia" rota="/cadastro"></Botao>
                         </div>
-                        
-                        <div className={Style.ContainerBtn}>
-                        <Botao tipo="redirecionar" nome="Ver detalhes" estado={{from:denuncias[i]}} rota="/denuncia"></Botao>
+                        {
+                            console.clear()
+                        }
+                    </div>
+                )
+            }
+            if (erro == undefined && denuncias == undefined) {
+                return (
+                    <div className={Style.ContainerPadrao}>
+                        <div className={Style.Carregamento}></div>
+                        {
+                            console.clear()
+                        }
+                    </div>
+                )
+            }
+            if (denuncias != undefined){
+
+                const time = new Date ();
+                time.setSeconds(time.getSeconds()+2);
+                const expiryTimestamp = time;
+                const [expirou, setExpirou] = useState();
+                const {  } = useTimer({expiryTimestamp, onExpire: () => setExpirou(true)});
+
+                if(expirou == true){
+
+
+                return(
+                    <div>
+                        <div className={Style.ContainerMinimal}>
+                            {denuncias.map((den,i)=> 
+                            <div className={Style.DivItem} key={i}>
+        
+                                <div className={Style.DivImg}>
+                                    <img  className={Style.Imagen} src={den.picture} alt="imagem da denúncia cadastrada" />
+                                </div>
+        
+                                <div >
+                                    <h4>
+                                        Rua
+                                    </h4>
+                                    <p >
+                                        {den.rua}
+                                    </p>
+                                </div>
+        
+                                <div >
+                                    <h4>
+                                        Data de cadastro:
+                                    </h4>
+                                    <p>
+                                        {formatar_data(den["created_at"])}
+                                    </p>
+                                    <h4>
+                                        Hora de cadastro:
+                                    </h4 >
+                                    <p>
+                                        {formatar_horario(den["created_at"])}
+                                    </p>
+                                </div>
+                                
+                                <div className={Style.ContainerBtn}>
+                                <Botao tipo="redirecionar" nome="Ver detalhes" estado={{from:denuncias[i]}} rota="/denuncia"></Botao>
+                                </div>
+                            </div>
+                            )}
                         </div>
                     </div>
-                    )}
-                </div>
-            )
+                )                
+                }
+                else{
+                    return (
+                        <div className={Style.ContainerPadrao}>
+                            <div className={Style.Carregamento}></div>
+                            {
+                                console.clear()
+                            }
+                        </div>
+                    )
+                }
+            }
         }
         else{
             return <Navigate to="/login" />

@@ -26,13 +26,13 @@ function Registro(){
         const [senha, setSenha] = useState();
         const [senha_verificada, setSenha_verificada] = useState();
 
-        const [redirecionar, setRedirecionar] = useState();
         const [validador,setValidador] = useState(false);
         const [erro_imput, setErro_imput] = useState();
         const [erro_senha, setErro_senha] = useState();
 
-        const [resposta, setRespost] = useState();
+        const [resposta, setResposta] = useState();
         const [error, setError] = useState();
+        const [carregamento, setCarregamento] = useState(false);
 
         const verificar_senha = (e) => {
 
@@ -74,74 +74,93 @@ function Registro(){
 
         const post = (e) => {
             axios.post('https://backend-petcare.herokuapp.com/usuario',alterar_dados("sem foto"))
-            .then((res) => setRespost(res))
-            .catch((res) => setError(res))   
-            .then(() => setRedirecionar(true))
+            .then((res) => setResposta(res.data.message))
+            .catch((res) => setError(res.response.data.message))   
         }
 
         return(
             <div className={Style.ContainerMinimal}>
                 <div className={Style.Container}>
-                <form action="Registro" method="Post">
-                    <div className={Style.ContainerItem1}>
-                        <label htmlFor="Email">Email:</label>
-                        <br />
-                        <input className={Style.Input} type="Email" onChange={(e) =>{setEmail(e.target.value) , setErro_imput(false)}}/>
-                    </div>
-                    <div className={Style.ContainerItem}>
-                        <label htmlFor="Name">Nome do Usurio :</label>
-                        <br />
-                        <input className={Style.Input} type="Name" onChange={(e) =>{setNome(e.target.value) , setErro_imput(false)}}/>
-                    </div>
-                    <div className={Style.ContainerItem}>
-                        <label htmlFor="Password">Senha:</label>
-                        <br />
-                        <input className={Style.Input} type="Password" onChange={(e) =>{setSenha(e.target.value) , setErro_imput(false) , setErro_senha(false)}}/>
-                    </div>
-                    <div className={Style.ContainerItem}>
-                        <label htmlFor="PasswordConfirm">Confirmar Senha:</label>
-                        <input className={Style.Input} type="Password" onChange={(e) =>{setSenha_verificada(e.target.value) , setErro_imput(false) , setErro_senha(false)}}/>
+                    <form action="Registro" method="Post">
+                        <div className={Style.ContainerItem1}>
+                            <label htmlFor="Email">Email:</label>
+                            <br />
+                            <input className={Style.Input} type="Email" onChange={(e) =>{setEmail(e.target.value) , setErro_imput(false) , setCarregamento(false) , setError(null)}}/>
+                        </div>
+                        <div className={Style.ContainerItem}>
+                            <label htmlFor="Name">Nome do Usurio :</label>
+                            <br />
+                            <input className={Style.Input} type="Name" onChange={(e) =>{setNome(e.target.value) , setErro_imput(false) , setCarregamento(false) , setError(null)}}/>
+                        </div>
+                        <div className={Style.ContainerItem}>
+                            <label htmlFor="Password">Senha:</label>
+                            <br />
+                            <input className={Style.Input} type="Password" onChange={(e) =>{setSenha(e.target.value) , setErro_imput(false) , setErro_senha(false) , setCarregamento(false) , setError(null)}}/>
+                        </div>
+                        <div className={Style.ContainerItem}>
+                            <label htmlFor="PasswordConfirm">Confirmar Senha:</label>
+                            <input className={Style.Input} type="Password" onChange={(e) =>{setSenha_verificada(e.target.value) , setErro_imput(false) , setErro_senha(false) , setCarregamento(false) , setError(null)}}/>
+                        </div>
+                    </form>
+                    <div>
                         <h4>
                             Já possui conta? Clique para
                             <Link tipo="interno" nome="Entrar" url="/Login"/>
                         </h4>
                     </div>
-
-                </form>
-                {verificar_senha(senha_verificada) == 1 && erro_imput == true &&(
-                    <div>
-                    <h4 className={Style.error}>
-                        Oops! Preencha todos os campos para se cadastrar com sucesso.
-                    </h4>
-                    <br />
-                    </div>
-                )
-                }
-                {verificar_senha(senha_verificada) == 1 &&(
-                    <Botao tipo="interno" nome="Cadastrar" clique={() => {setErro_imput(true)}}></Botao>
-                )
-                }
-                {verificar_senha(senha_verificada) == 2&& erro_senha == true &&(
-                    <div>
-                    <h4 className={Style.error}>
-                        Oops as 2 senhas estão diferentes*
-                    </h4>
-                    <br />
-                    </div>
-                )
-                }
-                {verificar_senha(senha_verificada) == 2 &&(
-                    <Botao tipo="interno" nome="Cadastrar" clique={() => {setErro_senha(true)}}></Botao>
-                )
-                } 
-                {verificar_senha(senha_verificada) == 3&&(
-                    <Botao tipo="interno" nome="Cadastrar" clique={post}></Botao>
+                    {resposta == null && error == null && carregamento == true &&(
+                        <div>
+                            <div className={Style.Carregamento}></div>
+                        </div>
                     )
-                }
-                {redirecionar == true &&(
-                    <Navigate to="/login"/>
-                )
-                }
+                    }
+                    {verificar_senha(senha_verificada) == 1 && erro_imput == true &&(
+                        <div>
+                            <h4 className={Style.error}>
+                                Oops! Preencha todos os campos para se cadastrar com sucesso.
+                            </h4>
+                        </div>
+                    )
+                    }
+                    {verificar_senha(senha_verificada) == 2&& erro_senha == true &&(
+                        <div>
+                            <h4 className={Style.error}>
+                                Oops as 2 senhas estão diferentes*
+                            </h4>
+                        </div>
+                    )
+                    }
+                    {error == "user already exists" &&(
+                        <div>
+                            <h4 className={Style.error}>
+                                Oops! esse Email já possui uma conta vinculada.
+                            </h4>
+                        </div>
+                    )
+                    }
+                    {verificar_senha(senha_verificada) == 1 &&(
+                        <div className={Style.DivBotao}>
+                            <Botao tipo="interno" nome="Cadastrar" clique={() => {setErro_imput(true)}}></Botao>
+                        </div>
+                    )
+                    }
+
+                    {verificar_senha(senha_verificada) == 2 &&(
+                        <div className={Style.DivBotao}>
+                            <Botao tipo="interno" nome="Cadastrar" clique={() => {setErro_senha(true)}}></Botao>
+                        </div>
+                    )
+                    } 
+                    {verificar_senha(senha_verificada) == 3&&(
+                        <div className={Style.DivBotao}>
+                            <Botao tipo="interno" nome="Cadastrar" clique={(e) => {post(), setCarregamento(true)}}></Botao>
+                        </div>
+                    )
+                    }
+                    {resposta == "user record created" &&(
+                        <Navigate to="/login"/>
+                    )
+                    }
                 </div>
             </div>
         )
