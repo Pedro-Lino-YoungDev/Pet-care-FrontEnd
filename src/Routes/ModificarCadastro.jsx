@@ -3,9 +3,6 @@ import { Navigate, useLocation } from 'react-router-dom';
 import {useState} from 'react'
 import axios from 'axios';
 import jwtDecode from 'jwt-decode'
-import Botao from '../Components/Botao'
-
-
 
 function ModificarCadastro(){
 

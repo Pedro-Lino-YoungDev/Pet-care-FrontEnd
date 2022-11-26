@@ -1,7 +1,5 @@
 import Style from '../Style/Denuncia.module.css'
 import { Navigate, useLocation } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import ButtonStyle from '../Style/Botao.module.css';
 import jwtDecode from 'jwt-decode'
 import Botao from '../Components/Botao'
 

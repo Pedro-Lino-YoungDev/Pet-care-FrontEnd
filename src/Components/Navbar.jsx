@@ -1,9 +1,7 @@
-import Nav from '../Style/Navbar.module.css'
-import LogoStyle from '../Style/Logo.module.css'
+import Style from '../Style/Navbar.module.css'
 import Links from './Link'
 import {Link, useLocation} from 'react-router-dom'
 import jwtDecode from 'jwt-decode'
-import { useState } from 'react'
 
 function Navbar(){
 
@@ -32,15 +30,15 @@ function Navbar(){
          }
      }
     return(
-        <nav className= {Nav.Nav}>
-            <div className={Nav.NavLogo}>
+        <nav className= {Style.Nav}>
+            <div className={Style.NavLogo}>
                 <Link to="/home">
-                    <img className={LogoStyle.PetCare} src="/Imagens/logo-v1(1).png" alt="Logo Pet Care" />
+                    <img className={Style.PetCareLogo} src="/Imagens/logo-v1(1).png" alt="Logo Pet Care" />
                 </Link>
             </div>
 
 
-            <div className={Nav.NavItem}>
+            <div className={Style.NavItem}>
 
                 {verificar(validador.pathname) == "com token válido" &&(
                    <Links tipo="navegação" nome = "Cadastrar" url = "/cadastro"/>
@@ -53,7 +51,7 @@ function Navbar(){
 
 
             </div>
-            <div className={Nav.NavItem}>
+            <div className={Style.NavItem}>
 
 
             {verificar(validador.pathname) == "com token válido" &&(
@@ -67,8 +65,8 @@ function Navbar(){
             }
 
             </div>
-            <div className={Nav.NavPerfil}>
-                <Link className={Nav.NavIMG} to="/usuario"></Link>
+            <div className={Style.NavPerfil}>
+                <Link className={Style.NavIMG} to="/usuario"></Link>
             </div>
                 
         </nav>

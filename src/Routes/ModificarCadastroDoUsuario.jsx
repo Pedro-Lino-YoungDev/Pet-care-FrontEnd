@@ -3,8 +3,6 @@ import {useState} from 'react'
 import axios from 'axios';
 import { Navigate, useLocation } from 'react-router-dom';
 import jwtDecode from 'jwt-decode'
-import Botao from '../Components/Botao'
-
 
 
 function modificarcadastrodousuario() {
@@ -240,9 +238,6 @@ function modificarcadastrodousuario() {
                     {erro == "token has expired" &&(
                         <Navigate to="/login"/>
                     )
-                    }
-                    {
-                        console.log(resposta)
                     }
                 </div>
             )

@@ -1,10 +1,8 @@
 import Style from '../Style/User.module.css'
-import { Link } from 'react-router-dom';
 import { Navigate } from 'react-router-dom'
 import jwtDecode from 'jwt-decode'
-import { useEffect } from 'react'
+import { useEffect , useState } from 'react'
 import axios from 'axios'
-import { useState } from 'react'
 import Botao from '../Components/Botao'
 
 function users () { 
