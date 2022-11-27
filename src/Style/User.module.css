@@ -51,6 +51,23 @@
     color: red;
     border-color: red;
   }
+  .Carregamento{
+    animation: rotacionar 1s infinite;
+    border: 5px solid #6C757D;
+    border-top-color: #3C6E71;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    align-self: center;
+    justify-self: center;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  @keyframes rotacionar{
+    to{
+      transform: rotate(1turn);
+    }
+  }
 
   @media(max-height: 520px) and (min-height: 501px){
     .ContainerMinimal {

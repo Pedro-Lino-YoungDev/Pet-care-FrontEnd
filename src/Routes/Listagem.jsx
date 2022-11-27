@@ -23,6 +23,7 @@ function Listagem(){
 
             const[denuncias, setDenuncias] = useState([]);
             const [erro, setErro] = useState();
+            const [animacao,setAnimacao] = useState(true);
 
 
             const token = {
@@ -33,6 +34,7 @@ function Listagem(){
                 axios.post("https://backend-petcare.herokuapp.com/denuncias",token)
                 .then((res) => setDenuncias(res.data))
                 .catch((res) => setErro(res.response.data.message))
+                .finally(() => setAnimacao(false))
             },[]);
 
             const formatar_horario = (e) =>{
@@ -44,6 +46,16 @@ function Listagem(){
             const formatar_data = (e) =>{
                 const DataSeparada = e.split("T");
                 return DataSeparada[0];
+            }
+            while (animacao == true) {
+                return (
+                    <div className={Style.ContainerPadrao}>
+                        <div className={Style.Carregamento}></div>
+                        {
+                            console.clear()
+                        }
+                    </div>
+                )
             }
             if (erro == "denuncia not found"){
                 return (
@@ -66,27 +78,14 @@ function Listagem(){
                     </div>
                 )
             }
-            if (erro == undefined && denuncias == undefined) {
-                return (
-                    <div className={Style.ContainerPadrao}>
-                        <div className={Style.Carregamento}></div>
-                        {
-                            console.clear()
-                        }
-                    </div>
-                )
-            }
-            if (denuncias != undefined){
-
+            else if (denuncias != undefined){
+                /* Exemplo de Cronometro;
                 const time = new Date ();
                 time.setSeconds(time.getSeconds()+2);
                 const expiryTimestamp = time;
                 const [expirou, setExpirou] = useState();
                 const {  } = useTimer({expiryTimestamp, onExpire: () => setExpirou(true)});
-
-                if(expirou == true){
-
-
+                */
                 return(
                     <div>
                         <div className={Style.ContainerMinimal}>
@@ -128,18 +127,7 @@ function Listagem(){
                             )}
                         </div>
                     </div>
-                )                
-                }
-                else{
-                    return (
-                        <div className={Style.ContainerPadrao}>
-                            <div className={Style.Carregamento}></div>
-                            {
-                                console.clear()
-                            }
-                        </div>
-                    )
-                }
+                )
             }
         }
         else{

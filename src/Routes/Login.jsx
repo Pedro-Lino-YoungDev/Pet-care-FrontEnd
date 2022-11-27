@@ -90,7 +90,6 @@ function Login(){
                     <div className={Style.Carregamento}></div>
                 )
                 }
-
                 {Verificar_campos(email,senha) == true &&(
                     <div className={Style.DivBotao}>
                         <Botao tipo="interno" nome="entrar" clique={() => {post(), setCarregamento(true)}}></Botao>

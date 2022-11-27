@@ -115,7 +115,7 @@ function modificarcadastrodousuario() {
                         </div>
                         <div>
                             <br />
-                            <label className={Style.Label} htmlFor="senha">Deseja Modificar a Senha?</label>
+                            <label className={Style.Label} htmlFor="check">Deseja Modificar a Senha?</label>
                             <input className={Style.Input} type="checkbox" id= "check" checked={validador} onChange={(e) => {validar(), setNovaSenha(""), setSenhaVerificada(""), setErroNovaSenha(false)}}/>
                         </div>
                         {validador == true &&(

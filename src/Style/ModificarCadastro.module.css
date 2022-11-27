@@ -95,13 +95,13 @@
 .erro{
   color:red;
 }
-
 .Banner{
     max-width: 80%;
     border-radius: 10px;
     margin-bottom: 20px;
     margin-top: 20px;
-  }
+}
+
   @media(max-height: 520px) and (min-height: 501px){
     .ContainerMinimal {
   

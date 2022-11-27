@@ -18,6 +18,8 @@ function users () {
         if (TokenDecodificado.exp > HorarioTokenFormatado) {
 
             const [usuario,setUsuario] = useState();
+            const [erro, setErro] = useState();
+            const [animacao,setAnimacao] = useState(true);
 
             const token ={
                 "token" : token_jwt
@@ -26,10 +28,17 @@ function users () {
             useEffect(() => {
                 axios.post("https://backend-petcare.herokuapp.com/usuario/"+TokenDecodificado.id,token)
                 .then((res) => setUsuario(res.data.user))
-                .catch()
+                .catch((res) => setErro(res))
+                .finally(() => setAnimacao(false))
             },[]);
 
-
+            while(animacao == true){
+                return(
+                    <div className={Style.ContainerMinimal}>
+                        <div className={Style.Carregamento}></div>
+                    </div>
+                )
+            }
             return( 
                 <div >
                     {usuario != null &&( 
