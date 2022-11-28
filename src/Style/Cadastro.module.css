@@ -110,7 +110,7 @@
     background: none;
     position:absolute;
     z-index: 1;
-    top: 372px;
+    top: 373px;
   }
   .FileLabel2:hover{
     cursor:pointer;
@@ -128,7 +128,7 @@
     background: none;
     position:absolute;
     z-index: 1;
-    top: 554px;
+    top: 556px;
   }
   .FileLabel3:hover{
     cursor:pointer;
@@ -146,7 +146,7 @@
     background: none;
     position:absolute;
     z-index: 1;
-    top: 527px;
+    top: 528px;
   }
   .FileLabel31:hover{
     cursor: pointer;
@@ -164,7 +164,7 @@
     background: none;
     position:absolute;
     z-index: 1;
-    top: 603px;
+    top: 608px;
   }
   .FileLabel31Erro:hover{
     cursor: pointer;
