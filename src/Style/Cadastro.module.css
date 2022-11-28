@@ -148,6 +148,9 @@
     z-index: 1;
     top: 528px;
   }
+  .FileLabel31:hover{
+    cursor: pointer;
+  }
   .FileLabel31Erro{
     background-color: aqua;
     width: 70px;
@@ -162,6 +165,9 @@
     position:absolute;
     z-index: 1;
     top: 605px;
+  }
+  .FileLabel31Erro:hover{
+    cursor: pointer;
   }
   .FileLabel3Erro{
     background-color: aqua;
