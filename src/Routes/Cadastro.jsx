@@ -154,7 +154,10 @@ function Contato(){
                                 )
                                 }
                                 <label className={Style.FileLabel} htmlFor="PrimeiraImg"> {texto} </label>
+                                { foto != null &&(
                                 <a className={Style.Logout} onClick={() => {setFoto(undefined) , setTexto("Adicionar Imagem") , setChave("2") ,setValidador(false) , setFoto2(null) , setFoto3(null)}}>X</a>
+                                )
+                                }
                                 <input className={Style.InputFile} key={chave} type="file" accept="image/*" name="image" id="PrimeiraImg" onChange ={(e) => {converter_imagem(e.target.files), setErroCampos(false) , setErro(null) , setCarregamento(false) , setTexto("") , setChave("1")}}/>
                             </div>
                             {foto != undefined &&(
@@ -165,7 +168,7 @@ function Contato(){
                                         </h4>
                                     </div>
                                     <div className={Style.CheckBox}>
-                                        <input id="checkbox-1" type="checkbox" checked={validador} onChange={(e) => {validar()}}/>
+                                        <input id="checkbox-1" type="checkbox" checked={validador} onChange={(e) => {validar() , setFoto2(null) , setFoto3(null) , setTexto2("Adicionar Imagem") , setTexto3("Adicionar Imagem")}}/>
                                         <label htmlFor="checkbox-1"></label>
                                     </div>
                                 </div>
@@ -182,7 +185,10 @@ function Contato(){
                                     )
                                     }
                                     <label className={Style.FileLabel2} htmlFor="SegundaImg"> {texto2} </label>
+                                    {foto2 != null &&(
                                     <a className={Style.Logout} onClick={() => {setFoto2(undefined) , setTexto2("Adicionar Imagem") , setChave8("16") , setChave6("12") , setChave4("8"), setChave2("4")}}>X</a>
+                                    )
+                                    }
                                     <input className={Style.InputFile} key={chave2} type="file" accept="image/*" name="image2" id="SegundaImg" onChange ={(e) => {converter_imagem2(e.target.files), setErroCampos(false) , setErro(null) , setCarregamento(false) , setTexto2("") , setChave8("15")  , setChave6("11") , setChave4("7"), setChave2("3") , setErroImg2(null)}}/>
                                     {foto3 != undefined &&(
                                         <img className={Style.Imagem} src={foto3} alt="" />
@@ -192,35 +198,43 @@ function Contato(){
                                         <img className={Style.Imagem} src={null} alt="" />
                                     )
                                     }
-                                    <label className={Style.FileLabel3} htmlFor="TerceiraImg"> {texto3} </label>
+                                    {foto2 == null &&
+                                        <label className={Style.FileLabel31} htmlFor="TerceiraImg"> {texto3} </label>
+                                    }
+                                    {foto2 != null &&(
+                                        <label className={Style.FileLabel3} htmlFor="TerceiraImg"> {texto3} </label>
+                                    )
+                                    }
+                                    {foto3 != null &&(
                                     <a className={Style.Logout} onClick={() => {setFoto3(undefined) , setTexto3("Adicionar Imagem") , setChave9("18") , setChave7("14") , setChave5("10") , setChave3("6")}}>X</a>
+                                    )
+                                    }
                                     <input className={Style.InputFile} key={chave3} type="file" accept="image/*" name="image2" id="TerceiraImg" onChange ={(e) => {converter_imagem3(e.target.files), setErroCampos(false) , setErro(null) , setCarregamento(false) , setTexto3("") , setChave9("17")  , setChave7("13") , setChave5("9") , setChave3("5") , setErroImg3(null)}}/>
                                 </div>
                             }
                             { validador == true && erroimg2 == "imagem repetida" && erroimg3 == null &&
                                 <div className={Style.ItemForm1}>
-                                    {foto2 != undefined &&(
-                                        <img className={Style.Imagem} src={foto2} alt="" />
-                                    )
-                                    }
-                                    {foto2 == undefined &&(
-                                        <img className={Style.Imagem} src={null} alt="" />
-                                    )
-                                    }
+                                    <img className={Style.Imagem} src={null} alt="" />
                                     <label className={Style.FileLabel2} htmlFor="SegundaImg"> {texto2} </label>
-                                    <a className={Style.Logout} onClick={() => {setFoto2(undefined) , setTexto2("Adicionar Imagem") , setChave8("16") , setChave6("12") , setChave4("8"), setChave2("4")}}>X</a>
                                     <input className={Style.InputFile} key={chave4} type="file" accept="image/*" name="image2" id="SegundaImg" onChange ={(e) => {converter_imagem2(e.target.files), setErroCampos(false) , setErro(null) , setCarregamento(false) , setTexto2("") , setChave8("15")  , setChave6("11") , setChave4("7"), setChave2("3") , setErroImg2(null)}}/>
                                         <div  className={Style.DivErro}>
                                             <h4  className={Style.erro}>
-                                                você já selecionou essa imagem antes, por favor selecione outra imagem para seguir
+                                                você já selecionou essa imagem antes
                                             </h4>
                                         </div>
                                     {foto3 != undefined &&(
                                         <img className={Style.Imagem} src={foto3} alt="" />
                                     )
                                     }
-                                    <label className={Style.FileLabel3Erro} htmlFor="TerceiraImg"> {texto3} </label>
+                                    {foto3 == undefined &&(
+                                        <img className={Style.Imagem} src={null} alt="" />
+                                    )
+                                    }
+                                    <label className={Style.FileLabel31Erro} htmlFor="TerceiraImg"> {texto3} </label>
+                                    {foto3 != null &&(
                                     <a className={Style.Logout} onClick={() => {setFoto3(undefined) , setTexto3("Adicionar Imagem") , setChave9("18") , setChave7("14") , setChave5("10") , setChave3("6")}}>X</a>
+                                    )
+                                    }
                                     <input className={Style.InputFile} key={chave5} type="file" accept="image/*" name="image2" id="TerceiraImg" onChange ={(e) => {converter_imagem3(e.target.files), setErroCampos(false) , setErro(null) , setCarregamento(false) , setTexto3("") , setChave9("17")  , setChave7("13") , setChave5("9") , setChave3("5") , setErroImg3(null)}}/>
                                 </div>
                             }
@@ -235,46 +249,44 @@ function Contato(){
                                     )
                                     }
                                     <label className={Style.FileLabel2} htmlFor="SegundaImg"> {texto2} </label>
-                                    <a className={Style.Logout} onClick={() => {setFoto2(undefined) , setTexto2("Adicionar Imagem") , setChave8("16") , setChave6("12") , setChave4("8"), setChave2("4")}}>X</a>
-                                    <input className={Style.InputFile} key={chave6} type="file" accept="image/*" name="image2" id="SegundaImg" onChange ={(e) => {converter_imagem2(e.target.files), setErroCampos(false) , setErro(null) , setCarregamento(false) , setTexto2("") , setChave8("15")  , setChave6("11") , setChave4("7"), setChave2("3") , setErroImg2(null)}}/>
-                                    {foto3 == undefined &&(
-                                        <img className={Style.Imagem} src={null} alt="" />
+                                    { foto2 != null &&(
+                                        <a className={Style.Logout} onClick={() => {setFoto2(undefined) , setTexto2("Adicionar Imagem") , setChave8("16") , setChave6("12") , setChave4("8"), setChave2("4")}}>X</a>
                                     )
                                     }
-                                    <label className={Style.FileLabel3} htmlFor="TerceiraImg"> {texto3} </label>
-                                    <a className={Style.Logout} onClick={() => {setFoto3(undefined) , setTexto3("Adicionar Imagem") , setChave9("18") , setChave7("14") , setChave5("10") , setChave3("6")}}>X</a>
+                                    <input className={Style.InputFile} key={chave6} type="file" accept="image/*" name="image2" id="SegundaImg" onChange ={(e) => {converter_imagem2(e.target.files), setErroCampos(false) , setErro(null) , setCarregamento(false) , setTexto2("") , setChave8("15")  , setChave6("11") , setChave4("7"), setChave2("3") , setErroImg2(null)}}/>
+                                    <img className={Style.Imagem} src={null} alt="" />
+                                    {foto2 != null &&(
+                                        <label className={Style.FileLabel3} htmlFor="TerceiraImg"> {texto3} </label>
+                                    )
+                                    } 
+                                    {foto2 == null &&(
+                                        <label className={Style.FileLabel31} htmlFor="TerceiraImg"> {texto3} </label>
+                                    )
+                                    } 
                                     <input className={Style.InputFile} key={chave7} type="file" accept="image/*" name="image2" id="TerceiraImg" onChange ={(e) => {converter_imagem3(e.target.files), setErroCampos(false) , setErro(null) , setCarregamento(false) , setTexto3("") , setChave9("17")  , setChave7("13") , setChave5("9") , setChave3("5") , setErroImg3(null)}}/>
                                     <div  className={Style.DivErro}>
                                         <h4  className={Style.erro}>
-                                            você já selecinou essa imagem antes, por favor selecione outra imagem para seguir
+                                            você já selecinou essa imagem antes
                                         </h4>
                                     </div>
                                 </div>
                             }
                             { validador == true && erroimg2 == "imagem repetida" && erroimg3 == "imagem repetida" &&
                                 <div className={Style.ItemForm1}>
-                                    {foto2 == undefined &&(
                                         <img className={Style.Imagem} src={null} alt="" />
-                                    )
-                                    }
                                     <label className={Style.FileLabel2} htmlFor="SegundaImg"> {texto2} </label>
-                                    <a className={Style.Logout} onClick={() => {setFoto2(undefined) , setTexto2("Adicionar Imagem") , setChave8("16") , setChave6("12") , setChave4("8"), setChave2("4")}}>X</a>
                                     <input className={Style.InputFile} key={chave8} type="file" accept="image/*" name="image2" id="SegundaImg" onChange ={(e) => {converter_imagem2(e.target.files), setErroCampos(false) , setErro(null) , setCarregamento(false) , setTexto2("") , setChave8("15")  , setChave6("11") , setChave4("7"), setChave2("3"), setErroImg2(null)}}/>
-                                        <div  className={Style.DivErro}>
-                                            <h4  className={Style.erro}>
-                                                você já selecionou essa imagem antes, por favor selecione outra imagem para seguir
-                                            </h4>
-                                        </div>
-                                    {foto3 == undefined &&(
-                                        <img className={Style.Imagem} src={null} alt="" />
-                                    )
-                                    }
-                                    <label className={Style.FileLabel3Erro} htmlFor="TerceiraImg"> {texto3} </label>
-                                    <a className={Style.Logout} onClick={() => {setFoto3(undefined) , setTexto3("Adicionar Imagem") , setChave9("18") , setChave7("14") , setChave5("10") , setChave3("6")}}>X</a>
+                                    <div  className={Style.DivErro}>
+                                        <h4  className={Style.erro}>
+                                            você já selecionou essa imagem antes
+                                        </h4>
+                                    </div>
+                                    <img className={Style.Imagem} src={null} alt="" />
+                                    <label className={Style.FileLabel31Erro} htmlFor="TerceiraImg"> {texto3} </label>
                                     <input className={Style.InputFile} key={chave9} type="file" accept="image/*" name="image2" id="TerceiraImg" onChange ={(e) => {converter_imagem3(e.target.files), setErroCampos(false) , setErro(null) , setCarregamento(false) , setTexto3("") , setChave9("17")  , setChave7("13") , setChave5("9") , setChave3("5") , setErroImg3(null)}}/>
                                     <div  className={Style.DivErro}>
                                         <h4  className={Style.erro}>
-                                            você já selecinou essa imagem antes, por favor selecione outra imagem para seguir
+                                            você já selecinou essa imagem antes
                                         </h4>
                                     </div>
                                 </div>

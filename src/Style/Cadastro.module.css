@@ -61,6 +61,7 @@
   }
   .DivErro{
     margin-bottom: auto;
+    width: 270px;
   }
   .erro{
     color:red;
@@ -93,6 +94,9 @@
     z-index: 1;
     top: 110px;
   }
+  .FileLabel:hover{
+    cursor:pointer;
+  }
   .FileLabel2{
     background-color: aqua;
     width: 70px;
@@ -108,20 +112,8 @@
     z-index: 1;
     top: 373px;
   }
-.FileLabel2Error{
-    background-color: aqua;
-    width: 70px;
-    height: 46px;
-    text-align: center;
-    padding: 25px;
-    padding-top: 37px;
-    padding-bottom: 37px;
-    border: 2px solid #6C757D;
-    border-radius: 10px;
-    background: none;
-    position:absolute;
-    z-index: 1;
-    top: 373px;
+  .FileLabel2:hover{
+    cursor:pointer;
   }
 .FileLabel3{
     background-color: aqua;
@@ -138,6 +130,39 @@
     z-index: 1;
     top: 555px;
   }
+  .FileLabel3:hover{
+    cursor:pointer;
+  }
+  .FileLabel31{
+    background-color: aqua;
+    width: 70px;
+    height: 46px;
+    text-align: center;
+    padding: 25px;
+    padding-top: 37px;
+    padding-bottom: 37px;
+    border: 2px solid #6C757D;
+    border-radius: 10px;
+    background: none;
+    position:absolute;
+    z-index: 1;
+    top: 528px;
+  }
+  .FileLabel31Erro{
+    background-color: aqua;
+    width: 70px;
+    height: 46px;
+    text-align: center;
+    padding: 25px;
+    padding-top: 37px;
+    padding-bottom: 37px;
+    border: 2px solid #6C757D;
+    border-radius: 10px;
+    background: none;
+    position:absolute;
+    z-index: 1;
+    top: 605px;
+  }
   .FileLabel3Erro{
     background-color: aqua;
     width: 70px;
@@ -151,7 +176,10 @@
     background: none;
     position:absolute;
     z-index: 1;
-    top: 634px;
+    top: 615px;
+  }
+  .FileLabel3Erro:hover{
+    cursor:pointer;
   }
   .Logout{
     padding-bottom: 3px;
@@ -166,6 +194,9 @@
     align-self:inherit;
     text-decoration: none;
     text-align: center;
+  }
+  .Logout:hover{
+    cursor: pointer;
   }
   .CheckBox{
     margin-top: 20px;
@@ -189,6 +220,9 @@
     background-position: center;
     border: none;
     padding: 1px;
+  }
+  .CheckBox label:hover{
+    cursor: pointer;
   }
 
   .Logout:hover{
