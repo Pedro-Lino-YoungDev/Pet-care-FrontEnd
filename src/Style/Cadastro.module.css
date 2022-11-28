@@ -87,7 +87,7 @@
     padding: 25px;
     padding-top: 37px;
     padding-bottom: 37px;
-    border: 2px solid #6C757D;
+    border: 3px solid #6C757D;
     border-radius: 10px;
     background: none;
     position:absolute;
@@ -105,12 +105,12 @@
     padding: 25px;
     padding-top: 37px;
     padding-bottom: 37px;
-    border: 2px solid #6C757D;
+    border: 3px solid #6C757D;
     border-radius: 10px;
     background: none;
     position:absolute;
     z-index: 1;
-    top: 373px;
+    top: 374px;
   }
   .FileLabel2:hover{
     cursor:pointer;
@@ -123,12 +123,12 @@
     padding: 25px;
     padding-top: 37px;
     padding-bottom: 37px;
-    border: 2px solid #6C757D;
+    border: 3px solid #6C757D;
     border-radius: 10px;
     background: none;
     position:absolute;
     z-index: 1;
-    top: 556px;
+    top: 557px;
   }
   .FileLabel3:hover{
     cursor:pointer;
@@ -141,12 +141,12 @@
     padding: 25px;
     padding-top: 37px;
     padding-bottom: 37px;
-    border: 2px solid #6C757D;
+    border: 3px solid #6C757D;
     border-radius: 10px;
     background: none;
     position:absolute;
     z-index: 1;
-    top: 528px;
+    top: 529px;
   }
   .FileLabel31:hover{
     cursor: pointer;
@@ -159,7 +159,7 @@
     padding: 25px;
     padding-top: 37px;
     padding-bottom: 37px;
-    border: 2px solid #6C757D;
+    border: 3px solid #6C757D;
     border-radius: 10px;
     background: none;
     position:absolute;
@@ -168,24 +168,6 @@
   }
   .FileLabel31Erro:hover{
     cursor: pointer;
-  }
-  .FileLabel3Erro{
-    background-color: aqua;
-    width: 70px;
-    height: 46px;
-    text-align: center;
-    padding: 25px;
-    padding-top: 37px;
-    padding-bottom: 37px;
-    border: 2px solid #6C757D;
-    border-radius: 10px;
-    background: none;
-    position:absolute;
-    z-index: 1;
-    top: 615px;
-  }
-  .FileLabel3Erro:hover{
-    cursor:pointer;
   }
   .Logout{
     padding-bottom: 3px;
