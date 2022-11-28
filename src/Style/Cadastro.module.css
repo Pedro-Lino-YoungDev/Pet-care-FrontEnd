@@ -61,7 +61,7 @@
   }
   .DivErro{
     margin-bottom: auto;
-    width: 270px;
+    width: 258px;
   }
   .erro{
     color:red;
@@ -110,7 +110,7 @@
     background: none;
     position:absolute;
     z-index: 1;
-    top: 373px;
+    top: 372px;
   }
   .FileLabel2:hover{
     cursor:pointer;
@@ -128,7 +128,7 @@
     background: none;
     position:absolute;
     z-index: 1;
-    top: 555px;
+    top: 554px;
   }
   .FileLabel3:hover{
     cursor:pointer;
@@ -146,7 +146,7 @@
     background: none;
     position:absolute;
     z-index: 1;
-    top: 528px;
+    top: 527px;
   }
   .FileLabel31:hover{
     cursor: pointer;
@@ -164,7 +164,7 @@
     background: none;
     position:absolute;
     z-index: 1;
-    top: 605px;
+    top: 603px;
   }
   .FileLabel31Erro:hover{
     cursor: pointer;

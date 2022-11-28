@@ -273,7 +273,7 @@ function Contato(){
                             }
                             { validador == true && erroimg2 == "imagem repetida" && erroimg3 == "imagem repetida" &&
                                 <div className={Style.ItemForm1}>
-                                        <img className={Style.Imagem} src={null} alt="" />
+                                    <img className={Style.Imagem} src={null} alt="" />
                                     <label className={Style.FileLabel2} htmlFor="SegundaImg"> {texto2} </label>
                                     <input className={Style.InputFile} key={chave8} type="file" accept="image/*" name="image2" id="SegundaImg" onChange ={(e) => {converter_imagem2(e.target.files), setErroCampos(false) , setErro(null) , setCarregamento(false) , setTexto2("") , setChave8("15")  , setChave6("11") , setChave4("7"), setChave2("3"), setErroImg2(null)}}/>
                                     <div  className={Style.DivErro}>
