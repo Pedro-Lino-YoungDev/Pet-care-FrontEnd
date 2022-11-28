@@ -102,9 +102,9 @@ function Registro(){
                             <input className={Style.Input} type="Password" onChange={(e) =>{setSenha_verificada(e.target.value) , setErro_imput(false) , setErro_senha(false) , setCarregamento(false) , setError(null)}}/>
                         </div>
                     </form>
-                    <div>
+                    <div className={Style.Container}>
                         <h4>
-                            Já possui conta? Clique para
+                            Já possui conta?
                             <Link tipo="interno" nome="Entrar" url="/Login"/>
                         </h4>
                     </div>

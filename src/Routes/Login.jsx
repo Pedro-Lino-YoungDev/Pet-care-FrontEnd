@@ -64,26 +64,26 @@ function Login(){
                         <input className={Style.Input} type="Password" onChange={(e) =>{setSenha(e.target.value), setErroInput(null), setErro(null), setCarregamento(false)}}/>
                     </div>
                 </form>
-                <div>
+                <div className={Style.Container}>
                     <h4>
-                        Não possui conta? Clique para se
-                        <Link tipo="interno" nome="Registrar" url="/Registro"/>
+                        Não possui conta?
+                        <Link tipo="interno" nome="Registrar-se" url="/Registro"/>
                     </h4>
                 </div>
 
                 {erroInput == true && Verificar_campos(email, senha) == false &&(
                     <div className={Style.DivErro}>
-                    <h4  className={Style.erro}>
-                        Digite todas as informações para prosseguir*
-                    </h4>
+                        <h4  className={Style.erro}>
+                            Digite todas as informações para prosseguir*
+                        </h4>
                     </div>
                 )
                 }
                 {erro != null && erro.message == "login attempt failed" &&
-                    <div className={Style.DivErro}>
-                    <h4  className={Style.erro}>
-                        seu email ou senha estão incorretos tente novamente*
-                    </h4>
+                    <div className={Style.Container}>
+                        <h4  className={Style.erro}>
+                            seu email ou senha estão incorretos tente novamente*
+                        </h4>
                     </div>
                 }
                 {resposta == null && erro == null && carregamento == true &&(

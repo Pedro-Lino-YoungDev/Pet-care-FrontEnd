@@ -168,7 +168,7 @@ function Contato(){
                                         </h4>
                                     </div>
                                     <div className={Style.CheckBox}>
-                                        <input id="checkbox-1" type="checkbox" checked={validador} onChange={(e) => {validar() , setFoto2(null) , setFoto3(null) , setTexto2("Adicionar Imagem") , setTexto3("Adicionar Imagem")}}/>
+                                        <input id="checkbox-1" type="checkbox" checked={validador} onChange={(e) => {validar() , setFoto2(null) , setFoto3(null) , setTexto2("Adicionar Imagem") , setTexto3("Adicionar Imagem") , setErroImg2(null) , setErroImg3(null)}}/>
                                         <label htmlFor="checkbox-1"></label>
                                     </div>
                                 </div>
@@ -291,6 +291,10 @@ function Contato(){
                                     </div>
                                 </div>
                             }
+                            {validador == true &&(
+                                <p className={Style.Obs}> Obs: imagens adicionais não são obrigatorias</p>
+                            )
+                            }
                             <div className={Style.ItemForm}>
                                 <label className={Style.Label} htmlFor="Especie">Tipo de animal</label>
                                 <select className={Style.Input} name="EspecieDoAnimal" id="Especie" onChange={(e) => {setTipo(e.target.value) , setErroCampos(false) , setErro(null) , setCarregamento(false) , e.target.value = null}}>
@@ -343,7 +347,7 @@ function Contato(){
                                 <input className={Style.Descricao} type="Text" id= "Descricao" placeholder= "Máximo de 100 Caracteres" maxLength={100} onChange={(e) => {setDescricao(e.target.value) , setErroCampos(false) , setErro(null) , setCarregamento(false)}}/>
                             </div>
                             {erroCampos == true &&(
-                            <div  className={Style.DivErro}>
+                            <div  className={Style.DivErroCampos}>
                                 <h4  className={Style.erro}>
                                     Preencha todos os campos para cadastrar a denúncia com sucesso*
                                 </h4>
@@ -351,7 +355,7 @@ function Contato(){
                             )
                             }
                             {erro == "Request failed with status code 500" &&(
-                            <div  className={Style.DivErro}>
+                            <div  className={Style.DivErroCampos}>
                                 <h4  className={Style.erro}>
                                     Não foi possivel efetuar o cadastro da denúncia!
                                 </h4>

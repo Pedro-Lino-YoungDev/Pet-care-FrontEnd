@@ -45,12 +45,12 @@ function Home(){
             <div className={Style.ContainerBtn}>
                 { verificar_token() == "token válido" &&(
                     <div className={Style.ContainerItem1}>
-                        <Boton tipo="redirecionar" nome="Ver Denuncias Cadastradas" rota="/listagem"/>
+                        <Boton tipo="redirecionar" nome="Denuncias Cadastradas" rota="/listagem"/>
                     </div>
                 )
                 }
                 <div className={Style.ContainerItem2}>
-                    <Boton tipo="redirecionar" nome="Cadastrar Nova Denuncia" rota="/cadastro"/>            
+                    <Boton tipo="redirecionar" nome="Cadastrar Denuncia" rota="/cadastro"/>            
                 </div>
             </div>
         </div>

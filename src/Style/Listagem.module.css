@@ -2,26 +2,26 @@
     display:flexbox;
     margin-bottom: 30px;
     margin-top: 90px;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 7%;
+    margin-right: 7%;
     background-color: #CED4DA;
     text-align: center;
     border-radius: 10px;
     padding-top: 30px;
     padding-bottom: 30px;
-    width: 90%;
+    width: 86%;
   }
   .ContainerPadrao{
     display:flex;
     flex-direction: column;
     margin-bottom: 30px;
     margin-top: 90px;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 7%;
+    margin-right: 7%;
     background-color: #CED4DA;
     text-align: center;
     border-radius: 10px;
-    width: 90%;
+    width: 86%;
     justify-content: center;
     align-items: center;
   }
@@ -65,6 +65,8 @@
     border-radius: 50%;
     height: 50px;
     width: 50px;
+    margin-top: 60px;
+    margin-bottom: 60px;
   }
   .DivRedirecionar{
     text-align: center;
@@ -81,6 +83,7 @@
     transform: rotate(1turn);
   }
 }
+
   @media(max-height: 520px) and (min-height: 501px){
     .ContainerMinimal {
   
@@ -277,7 +280,48 @@
 
 
 
+@media(max-height: 380px) and (min-height: 361px){
+  .ContainerPadrao {
 
+      min-height: 140px;
+    }
+}
+@media(max-height: 400px) and (min-height: 381px){
+  .ContainerPadrao {
+
+      min-height: 160px;
+    }
+}
+@media(max-height: 420px) and (min-height: 401px){
+  .ContainerPadrao {
+
+      min-height: 180px;
+    }
+}
+@media(max-height: 440px) and (min-height: 421px){
+  .ContainerPadrao {
+
+      min-height: 200px;
+    }
+}
+@media(max-height: 460px) and (min-height: 441px){
+  .ContainerPadrao {
+
+      min-height: 220px;
+    }
+}
+@media(max-height: 480px) and (min-height: 461px){
+  .ContainerPadrao {
+
+      min-height: 240px;
+    }
+}
+@media(max-height: 500px) and (min-height: 481px){
+  .ContainerPadrao {
+
+      min-height: 260px;
+    }
+}
 @media(max-height: 520px) and (min-height: 501px){
   .ContainerPadrao {
 

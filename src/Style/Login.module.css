@@ -3,13 +3,17 @@
     flex-direction: column;
     margin-bottom: 30px;
     margin-top: 90px;
-    margin-left: 45px;
-    margin-right: 45px;
     background-color: #dcdcdc;
     text-align: center;
     border-radius: 10px;
     padding-bottom: 20px;
     padding-top: 30px;
+    width: 86%;
+    margin-left: 7%;
+    margin-right: 7%;
+  }
+  .Container{
+    margin-bottom: auto;
   }
   .ContainerItem1{
     flex-direction: column;
@@ -35,9 +39,6 @@
   }
   .formulario{
     margin-top: auto;
-    margin-bottom: auto;
-  }
-  .DivErro{
     margin-bottom: auto;
   }
   .erro{
