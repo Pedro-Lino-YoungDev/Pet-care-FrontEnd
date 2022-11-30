@@ -42,9 +42,11 @@ function users () {
             return( 
                 <div >
                     {usuario != null &&( 
+                        
                         <div className={Style.ContainerMinimal}>
                             <div className={Style.Container}>
                             <div className={Style.ContainerIMG}>
+                                <img src={usuario.photo} alt="" />
                             </div>
                             <div >
                                 <h4>
@@ -62,7 +64,7 @@ function users () {
                             </div>
                             </div>
                             <Botao tipo="redirecionar" nome="Modificar Cadastro" estado={{from:usuario}} rota="/modificarcadastrodousuario"></Botao>
-                            <a href="/home" onClick={ () => {localStorage.removeItem("token")}} className={Style.Logout}>
+                            <a href="/home" onClick={ () => {localStorage.removeItem("token"), localStorage.removeItem("foto")}} className={Style.Logout}>
                                 Sair
                             </a>
                         </div>  

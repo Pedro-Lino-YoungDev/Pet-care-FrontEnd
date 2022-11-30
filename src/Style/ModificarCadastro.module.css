@@ -77,6 +77,7 @@
     border-style: solid;
     border-width: 2px;
     align-self: center;
+    cursor:pointer;
 }
 .ContainerBtn{
   display: flex;
@@ -100,6 +101,26 @@
     border-radius: 10px;
     margin-bottom: 20px;
     margin-top: 20px;
+}
+.Carregamento{
+  animation: rotacionar 1s infinite;
+  align-self: center;
+  border: 5px solid #6C757D;
+  border-top-color: #3C6E71;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  margin-bottom: 30px;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-self: center;
+}
+@keyframes rotacionar{
+  to{
+    transform: rotate(1turn);
+  }
+  
 }
 
   @media(max-height: 520px) and (min-height: 501px){

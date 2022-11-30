@@ -27,7 +27,6 @@ function ModificarCadastro(){
             const ruaDenuncia = from.rua;
             const bairroDenuncia = from.bairro;
             const prDenuncia = from["pontoDeReferencia"];
-            const foto = from.picture;
             const corDenuncia = from.cor;
             const id = from.id;
 
@@ -44,6 +43,7 @@ function ModificarCadastro(){
         
             const [resposta, setRespost] = useState();
             const [error, setError] = useState();
+            const [carregamento, setCarregamento] = useState(false);
 
             const denuncia = {
                 "tipo" : tipo,
@@ -57,7 +57,7 @@ function ModificarCadastro(){
             }
 
             const put = () => {
-                axios.put("https://backend-petcare.herokuapp.com/denuncia/"+id , denuncia)
+                axios.put("https://backend-petcare.herokuapp.com/denuncia/"+id, denuncia)
                 .then((res) => setRespost(res))
                 .catch((res) => setError(res))
                 .then(() => setRedirecionar(true))
@@ -173,13 +173,17 @@ function ModificarCadastro(){
 
                         </form>
                     </div>
+                    {resposta == null && error == null && carregamento == true &&(
+                        <div className={Style.Carregamento}></div>
+                    )
+                    }
                     <div className={Style.ContainerBtn}>
                         {verificiar_formulario() == true &&(
                             <a className={Style.Btn} onClick={() => {setErroCampos(true)}}> enviar</a>
                         )
                         }
                         {verificiar_formulario() == false &&(
-                            < a className={Style.Btn} onClick={() => {put()}}> enviar</a>
+                            < a className={Style.Btn} onClick={() => {put() , setCarregamento(true)}}> enviar</a>
                         )
                         }
                         <div className={Style.Separacao} ></div>
