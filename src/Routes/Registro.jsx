@@ -95,7 +95,7 @@ function Registro(){
         return(
             <div className={Style.ContainerMinimal}>
                     <form action="Registro" method="Post" className={Style.form}>
-                                    <h4>
+                                    <h4 className={Style.h4}>
                                         deseja adicianar uma imagem para o seu perfil ?
                                     </h4>
                                 <div className={Style.CheckBox}>
