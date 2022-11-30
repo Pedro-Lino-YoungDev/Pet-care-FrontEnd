@@ -59,12 +59,62 @@
     color: white;
     border-color: white;
   }
-  .error{
+  .erro{
     color:red;
   }
   .form{
     margin-bottom: 40px;
     min-width: 70%;
+  }
+  .FileLabel{
+    background-color: aqua;
+    width: 70px;
+    height: 46px;
+    text-align: center;
+    padding: 25px;
+    padding-top: 37px;
+    padding-bottom: 37px;
+    border: 3px solid #6C757D;
+    border-radius: 10px;
+    background: none;
+    position:absolute;
+    z-index: 1;
+    top: 148px;
+    align-self: center;
+    justify-self: center;
+  }
+  .FileLabel:hover{
+    cursor:pointer;
+  }
+  .InputFile{
+    display: none;
+  }
+  .Imagem{
+    margin-top: 21px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    width: 123px;
+    height: 123px;
+    background-color: white;
+    align-self: center;
+    justify-self: center;
+  }
+  .Logout{
+    padding-bottom: 3px;
+    padding-top: 3px;
+    padding-left: 7px;
+    padding-right: 7px;
+    background-color: #3C6E71;
+    color: #CED4DA;
+    border: 2px solid darkgrey;
+    border-radius: 8px;
+    width: 10px;
+    align-self:center;
+    text-decoration: none;
+    text-align: center;
+  }
+  .Logout:hover{
+    cursor: pointer;
   }
   @media(max-height: 520px) and (min-height: 501px){
     .ContainerMinimal {

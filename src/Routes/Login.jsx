@@ -104,6 +104,7 @@ function Login(){
                 }
                 {resposta != null && resposta.message == "successfully logged in" &&(
                     localStorage.setItem("token",resposta.token),
+                    localStorage.setItem("foto",resposta.photo),
                     <Navigate to="/home"/>
                 )
                 }

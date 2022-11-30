@@ -93,7 +93,7 @@ function Listagem(){
                             <div className={Style.DivItem} key={i}>
         
                                 <div className={Style.DivImg}>
-                                    <img  className={Style.Imagen} src={den.picture} alt="imagem da denúncia cadastrada" />
+                                    <img  className={Style.Imagen} src={den.picture1} alt="imagem da denúncia cadastrada" />
                                 </div>
         
                                 <div >

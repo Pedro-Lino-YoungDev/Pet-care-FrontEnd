@@ -64,7 +64,7 @@ function ModificarCadastro(){
             }
 
             const verificiar_formulario = () =>{
-                if (foto == null || foto == '' || tipo == null || tipo == ''  || 
+                if (tipo == null || tipo == ''  || 
                 bairro == null || bairro == '' || rua == null || rua == '' || 
                 PR == null || PR == '' || descricao == null || descricao == '')
                 {
@@ -91,10 +91,6 @@ function ModificarCadastro(){
                 <div className={Style.ContainerMinimal}>
                     <div className={Style.ContainerGeral}>
                         <form className={Style.form} action="Cadastro" method="Post" encType="multipart/form-data">
-                            <div className={Style.ItemForm1}>  
-                            <img className={Style.Imagem} src={from.picture} alt="Imagem da Denúncia" />
-                            </div>
-
                             {verificiar_tipo() == 2 &&(
                                 <div className={Style.ItemForm}>
                                     <label className={Style.Label} htmlFor="Especie">Tipo de animal</label>

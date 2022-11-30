@@ -23,53 +23,154 @@ function modificarcadastrodousuario() {
             const location = useLocation();
             const { from } = location.state;
 
-            const [email,setEmail] = useState(from.email);
+            const [foto,setFoto] = useState();
+            const [foto2,setFoto2] = useState();
+
             const [nome,setNome] = useState(from.name);
-            const [senha,setSenha] = useState("");
-            const [novaSenha, setNovaSenha] = useState("");
-            const [senhaVerificada, setSenhaVerificada] = useState("");
+            const [senha,setSenha] = useState();
+            const [novaSenha, setNovaSenha] = useState();
+            const [senhaVerificada, setSenhaVerificada] = useState();
             const [validador,setValidador] = useState(false);
             const [cancelar,setCancelar] = useState(false);
 
             const [resposta,setResposta] = useState();
             const [erro,setErro] = useState();
 
+            const [chave, setChave] = useState("1");
+            const [erroGeral, setErroGeral] = useState();
+            const [texto, setTexto] = useState("Adicionar Imagem");
 
-            const [erro_imput, setErro_imput] = useState();
-            const [erro_senha, setErro_senha] = useState();
-            const [erroNovaSenha, setErroNovaSenha] = useState();
-
-            const verificar_campos = () =>{
-                if (nome == "" || nome == null || nome == from.name){
-                    return 1
-                }
-                else if(senha == "" || senha == null) {
-                    return 2
+            const validar_opcoes = () =>{
+                if (foto == from.photo) {
+                    if(nome == null || nome == ""){
+                        return "Seu nome não foi preenchido"
+                    }
+                    else if(nome == from.name && validador == true){
+                        if(senha != null && novaSenha != null && senhaVerificada != null && novaSenha != senha && senhaVerificada == novaSenha){
+                            return "modificando apenas a senha"
+                        }
+                        else if(senha != null && novaSenha != null && senhaVerificada != null && novaSenha != senha && senhaVerificada != novaSenha){
+                            return "sua nova senha está diferente na verificação"
+                        }
+                        else if(senha != null && novaSenha != null && senhaVerificada != null && novaSenha == senha){
+                            return "sua nova senha está igual a sua senha atual"
+                        }
+                        else if(senha != null && novaSenha != null && senhaVerificada == null){
+                            return "seu campo de confirmar a senha não está preenchido"
+                        }
+                        else if(senha != null ){
+                            return "Você não preencheu sua nova senha"
+                        }
+                        else if(senha == null){
+                            return "Sua senha não está preenchida"
+                        }
+                    }
+                    else if(nome == from.name && validador == false){
+                        if (senha == null) {
+                            return "Sua senha não está preenchida"
+                        }
+                        else{
+                            return "Você não modificou nada no seu cadastro"
+                        }
+                    }
+                    else if (nome != from.name && validador == true){
+                        if(senha != null && novaSenha != null && senhaVerificada != null && novaSenha != senha && senhaVerificada == novaSenha){
+                            return "modificando senha e nome"
+                        }
+                        else if(senha != null && novaSenha != null && senhaVerificada != null && novaSenha != senha && senhaVerificada != novaSenha){
+                            return "sua nova senha está diferente na verificação"
+                        }
+                        else if(senha != null && novaSenha != null && senhaVerificada != null && novaSenha == senha){
+                            return "sua nova senha está igual a sua senha atual"
+                        }
+                        else if(senha != null && novaSenha != null && senhaVerificada == null){
+                            return "seu campo de confirmar a senha não está preenchido"
+                        }
+                        else if(senha != null){
+                            return "Você não preencheu sua nova senha"
+                        }
+                        else if(senha == null){
+                            return "Sua senha não está preenchida"
+                        }
+                    }
+                    else if(nome != from.name && validador == false){
+                        if(senha != null){
+                            return "modificando apenas o nome"
+                        }
+                        else {
+                            return "Sua senha não está preenchida"
+                        }
+                    }
                 }
                 else{
-                    return 3
-                }
-            }
-            const verificar_senha = (e) => {
-                if(novaSenha == '' || novaSenha == null  || e == null || e == ''){
-                    return 1
-                }
-                else if (novaSenha != e) {
-                    return 2
-                }
-                else if(novaSenha == senha){
-                    return 3
-                }
-                else if (novaSenha == e ) {
-                    return 4
-                }
+                    if(nome == null || nome == ""){
+                        return "Seu nome não foi preenchido"
+                    }
+                    else if(nome == from.name && validador == true){
+                        if(senha != null && novaSenha != null && senhaVerificada != null && novaSenha != senha && senhaVerificada == novaSenha){
+                            return "modificando senha e foto"
+                        }
+                        else if(senha != null && novaSenha != null && senhaVerificada != null && novaSenha != senha && senhaVerificada != novaSenha){
+                            return "sua nova senha está diferente na verificação"
+                        }
+                        else if(senha != null && novaSenha != null && senhaVerificada != null && novaSenha == senha){
+                            return "sua nova senha está igual a sua senha atual"
+                        }
+                        else if(senha != null && novaSenha != null && senhaVerificada == null){
+                            return "seu campo de confirmar a senha não está preenchido"
+                        }
+                        else if(senha != null ){
+                            return "Você não preencheu sua nova senha"
+                        }
+                        else if(senha == null){
+                            return "Sua senha não está preenchida"
+                        }
+                    }
+                    else if(nome == from.name && validador == false){
+                        if (senha == null) {
+                            return "Sua senha não está preenchida"
+                        }
+                        else{
+                            return "modificando apenas a foto"
+                        }
+                    }
+                    else if (nome != from.name && validador == true){
+                        if(senha != null && novaSenha != null && senhaVerificada != null && novaSenha != senha && senhaVerificada == novaSenha){
+                            return "modificando tudo"
+                        }
+                        else if(senha != null && novaSenha != null && senhaVerificada != null && novaSenha != senha && senhaVerificada != novaSenha){
+                            return "sua nova senha está diferente na verificação"
+                        }
+                        else if(senha != null && novaSenha != null && senhaVerificada != null && novaSenha == senha){
+                            return "sua nova senha está igual a sua senha atual"
+                        }
+                        else if(senha != null && novaSenha != null && senhaVerificada == null){
+                            return "seu campo de confirmar a senha não está preenchido"
+                        }
+                        else if(senha != null){
+                            return "Você não preencheu sua nova senha"
+                        }
+                        else if(senha == null){
+                            return "Sua senha não está preenchida"
+                        }
+                    }
+                    else if(nome != from.name && validador == false){
+                        if(senha == null){
+                            return "Sua senha não está preenchida"
+                        }
+                        else {
+                            return "modificando nome e foto"
+                        }
+                    }
 
+                }
             }
             const dados_post = (e) =>{
                 if(e == "sem senha nova"){
                     const user = {
+                        "photo": foto,
                         "name": nome,
-                        "email": email,
+                        "email": from.email,
                         "password": senha,
                         "token" : token_jwt
                     }
@@ -77,8 +178,9 @@ function modificarcadastrodousuario() {
                 }
                 else if (e == "com senha nova"){
                     const user = {
+                        "photo":foto,
                         "name": nome,
-                        "email": email,
+                        "email": from.email,
                         "password": senha,
                         "newPassword": senhaVerificada,
                         "token" : token_jwt
@@ -86,42 +188,100 @@ function modificarcadastrodousuario() {
                     return user
                 }
             }
-
+            const set_nome = (value) => {
+                if (value == null || value == "") {
+                    setNome(null);
+                }
+                else{
+                    setNome(value);
+                }
+            }
+            const set_senha = (value) =>{
+                if (value == null || value == "") {
+                    setSenha(null);
+                }
+                else{
+                    setSenha(value);
+                }        
+            }
+            const set_nova_senha = (value) =>{
+                if (value == null || value == "") {
+                    setNovaSenha(null);
+                }
+                else{
+                    setNovaSenha(value);
+                }        
+            }
+            const set_nova_senha_verificada = (value) =>{
+                if (value == null || value == "") {
+                    setSenhaVerificada(null);
+                }
+                else{
+                    setSenhaVerificada(value);
+                }
+            }
             const validar = () =>{
                 setValidador(!validador)
             }
-
 
             const put = (e) => {
                 axios.put('https://backend-petcare.herokuapp.com/usuario/'+from.id,dados_post(e))
                 .then((res) => setResposta(res.data.message))
                 .catch((res) => setErro(res.response.data.message))   
             }
+            const converter_imagem = (e) =>{
+                if(e != undefined && e != null){
+                    const imagemCarregada = e[0];
+                    const arquivo = new FileReader ();
+
+                    arquivo.onload = function (arquivoCarregado) {
+                        const image= arquivoCarregado.target.result;
+                        setFoto(image);
+                    }
+                    arquivo.readAsDataURL(imagemCarregada);
+                }
+            }
 
             return(
                 <div className={Style.ContainerMinimal}>
                     <form className={Style.form} action="Cadastro" method="Post" encType="multipart/form-data">
+                            <div className={Style.ItemForm}>
+                                {foto != undefined &&(
+                                    <img className={Style.Imagem} src={foto} alt="" />
+                                )
+                                }
+                                {foto == undefined &&(
+                                    <img className={Style.Imagem} src={null} alt="" />
+                                )
+                                }
+                                <label className={Style.FileLabel} htmlFor="PrimeiraImg"> {texto} </label>
+                                { foto != null &&(
+                                <a className={Style.Logout} onClick={() => {setFoto(undefined) , setTexto("Adicionar Imagem") , setChave("2")}}>X</a>
+                                )
+                                }
+                                <input className={Style.InputFile} key={chave} type="file" accept="image/*" name="image" id="PrimeiraImg" onChange ={(e) => {converter_imagem(e.target.files) , setTexto("") , setChave("1")}}/>
+                            </div>
                         <div className={Style.ItemForm}>
                             <label className={Style.Label} htmlFor="Nome">Nome:</label>
-                            <input className={Style.Input}  value={nome} type="Text" id= "Nome" placeholder= "Exemplo: Caramelo" onChange={(e) => {setNome(e.target.value), setErro_imput(false)}}/>
+                            <input className={Style.Input}  value={nome} type="Text" id= "Nome" placeholder= "Exemplo: Caramelo" onChange={(e) => {set_nome(e.target.value), setErroGeral(null)}}/>
                         </div>
                         <div className={Style.ItemForm}>
                             <label className={Style.Label} htmlFor="Email">Email:</label>
-                            <input className={Style.Input} value={email} type="Text" id= "Email" placeholder= "Exemplo: Caramelo" disabled/>
+                            <input className={Style.Input} value={from.email} type="Text" id= "Email" placeholder= "Exemplo: Caramelo" disabled/>
                         </div>
                         <div className={Style.ItemForm}>
                             <label className={Style.Label} htmlFor="senha">Senha Atual:</label>
-                            <input className={Style.Input} value={senha} type="password" id= "Senha"onChange={(e) => {setSenha(e.target.value), setErro_senha(false), setErro(null), setErroNovaSenha(false)}}/>
+                            <input className={Style.Input} value={senha} type="password" id= "Senha"onChange={(e) => {set_senha(e.target.value), setErroGeral(null)}}/>
                         </div>
                         <div>
                             <br />
                             <label className={Style.Label} htmlFor="check">Deseja Modificar a Senha?</label>
-                            <input className={Style.Input} type="checkbox" id= "check" checked={validador} onChange={(e) => {validar(), setNovaSenha(""), setSenhaVerificada(""), setErroNovaSenha(false)}}/>
+                            <input className={Style.Input} type="checkbox" id= "check" checked={validador} onChange={(e) => {validar(), set_nova_senha("") , set_nova_senha_verificada("") , setErroGeral(null)}}/>
                         </div>
                         {validador == true &&(
                         <div className={Style.ItemForm}>
                             <label className={Style.Label} htmlFor="Nome">Nova Senha:</label>
-                            <input className={Style.Input} value={novaSenha} type="password" id= "SenhaNova"onChange={(e) => {setNovaSenha(e.target.value), setErroNovaSenha(false)}}/>
+                            <input className={Style.Input} value={novaSenha} type="password" id= "SenhaNova"onChange={(e) => {setNovaSenha(e.target.value), setErroGeral(null)}}/>
                         </div>
                         )
                         }
@@ -139,86 +299,97 @@ function modificarcadastrodousuario() {
                         )
                         }
                     </form>
-                    {verificar_campos() == 1 && erro_imput == true && nome != from.name &&(
-                        <h4 className={Style.error}>
-                            Oops! Por favor coloque um nome válido
+                    {erroGeral != null &&(
+                        <h4 className={Style.erro}>
+                            {erroGeral}
                         </h4>
                     )
                     }
-                    {verificar_campos() == 1 && erro_imput == true && nome == from.name &&(
-                        <h4 className={Style.error}>
-                            Oops! o nome que você colocou é igual ao atual, só é possível
-                             atualizar seus dados caso eles sejam alterados!!
-                        </h4>
+                    {validar_opcoes() == "Seu nome não foi preenchido" &&(
+                        <div className={Style.DivBtn}>
+                            <a className={Style.Btn} onClick={() => setErroGeral("Seu nome não foi preenchido")}>Enviar</a>
+                        </div>
                     )
                     }
-                    {verificar_campos() == 1 &&(
-                        <a className={Style.Btn} onClick={() => {setErro_imput(true)}}>
-                            enviar
-                        </a>
+                    {validar_opcoes() == "Você não modificou nada no seu cadastro" &&(
+                        <div className={Style.DivBtn}>
+                            <a className={Style.Btn} onClick={() => setErroGeral("Você não modificou nada no seu cadastro")}>Enviar</a>
+                        </div>
                     )
                     }
-                    {verificar_campos() == 2 && erro_senha == true &&(
-                        <h4 className={Style.error}>
-                            Oops! Por favor coloque uma senha válida
-                        </h4>
+                    {validar_opcoes() == "Sua senha não está preenchida" &&(
+                        <div className={Style.DivBtn}>
+                            <a className={Style.Btn} onClick={() => setErroGeral("Sua senha não está preenchida")}>Enviar</a>
+                        </div>      
                     )
                     }
-                    {verificar_campos() == 2 &&(
-                        <a className={Style.Btn} onClick={() => {setErro_senha(true)}}>
-                            enviar
-                        </a>
+                    {validar_opcoes() == "Você não preencheu sua nova senha" &&(
+                        <div className={Style.DivBtn}>
+                            <a className={Style.Btn} onClick={() => setErroGeral("Você não preencheu sua nova senha")}>Enviar</a>
+                        </div>   
                     )
                     }
-                    {verificar_campos() == 3 && validador == false &&(
-                        <a className={Style.Btn} onClick={() => {put("sem senha nova")}}>
-                            enviar
-                        </a>
+                    {validar_opcoes() == "seu campo de confirmar a senha não está preenchido" &&(
+                        <div className={Style.DivBtn}>
+                            <a className={Style.Btn} onClick={() => setErroGeral("seu campo de confirmar a senha não está preenchido")}>Enviar</a>
+                        </div>   
                     )
                     }
-                    {verificar_campos() == 3 && verificar_senha(senhaVerificada) == 1 && erroNovaSenha == true && validador == true &&(
-                        <h4 className={Style.error}>
-                            Oops! Sua nova senha está vazia por favor Preencha todos os campos para alterar seus dados com sucesso!
-                        </h4>
+                    {validar_opcoes() == "sua nova senha está igual a sua senha atual" &&(
+                        <div className={Style.DivBtn}>
+                            <a className={Style.Btn} onClick={() => setErroGeral("sua nova senha está igual a sua senha atual")}>Enviar</a>
+                        </div>   
                     )
                     }
-                    {verificar_campos() == 3 && verificar_senha(senhaVerificada) == 1 && validador == true &&(
-                        <a className={Style.Btn} onClick={() => {setErroNovaSenha(true)}}>
-                            enviar
-                        </a>
+                    {validar_opcoes() == "sua nova senha está diferente na verificação" &&(
+                        <div className={Style.DivBtn}>
+                            <a className={Style.Btn} onClick={() => setErroGeral("sua nova senha está diferente na verificação")}>Enviar</a>
+                        </div>   
                     )
                     }
-                    {verificar_campos() == 3 && verificar_senha(senhaVerificada) == 2 && erroNovaSenha == true && validador == true &&(
-                        <h4 className={Style.error}>
-                            Oops! sua nova senha não foi confirmada pois estão diferentes
-                        </h4>
+                    {validar_opcoes() == "modificando apenas a foto" &&(
+                        <div className={Style.DivBtn}>
+                            <a className={Style.Btn} onClick={() => put("sem senha nova")}>Enviar</a>
+                        </div>   
                     )
                     }
-                    {verificar_campos() == 3 && verificar_senha(senhaVerificada) == 2 && validador == true &&(
-                        <a className={Style.Btn} onClick={() => {setErroNovaSenha(true)}}>
-                            enviar
-                        </a>
+                    {validar_opcoes() == "modificando apenas o nome" &&(
+                        <div className={Style.DivBtn}>
+                            <a className={Style.Btn} onClick={() => put("sem senha nova")}>Enviar</a>
+                        </div>   
+                    )
+                    }
+                    {validar_opcoes() == "modificando nome e foto" &&(
+                        <div className={Style.DivBtn}>
+                            <a className={Style.Btn} onClick={() => put("sem senha nova")}>Enviar</a>
+                        </div>   
+                    )
+                    }
+                    {validar_opcoes() == "modificando apenas a senha" &&(
+                        <div className={Style.DivBtn}>
+                            <a className={Style.Btn} onClick={() => put("com senha nova")}>Enviar</a>
+                        </div>   
+                    )
+                    }
+                    {validar_opcoes() == "modificando senha e foto" &&(
+                        <div className={Style.DivBtn}>
+                            <a className={Style.Btn} onClick={() => put("com senha nova")}>Enviar</a>
+                        </div>   
+                    )
+                    }
+                    {validar_opcoes() == "modificando senha e nome" &&(
+                        <div className={Style.DivBtn}>
+                            <a className={Style.Btn} onClick={() => put("com senha nova")}>Enviar</a>
+                        </div>   
+                    )
+                    }
+                    {validar_opcoes() == "modificando tudo" &&(
+                        <div className={Style.DivBtn}>
+                            <a className={Style.Btn} onClick={() => put("com senha nova")}>Enviar</a>
+                        </div>   
                     )
                     }
 
-                    {verificar_campos() == 3 && verificar_senha(senhaVerificada) == 3 && erroNovaSenha == true && validador == true &&(
-                        <h4 className={Style.error}>
-                            Oops! Sua nova senha está igual a sua senha atual, por favor coloque uma senha diferente.
-                        </h4>
-                    )
-                    }
-                    {verificar_campos() == 3 && verificar_senha(senhaVerificada) == 3 && validador == true &&(
-                        <a className={Style.Btn} onClick={() => {setErroNovaSenha(true)}}>
-                            enviar
-                        </a>
-                    )
-                    }
-                    {verificar_campos() == 3 && verificar_senha(senhaVerificada) == 4 && validador == true &&(
-                        <a className={Style.Btn} onClick={() => {put("com senha nova")}}>
-                            enviar
-                        </a>
-                    )
-                    }
                     <div className={Style.DivBtn}>
                         <a className={Style.Btn} onClick={() => setCancelar(true)}>
                             Cancelar

@@ -82,8 +82,20 @@ function Denuncia(){
             return(
                 <div className={Style.ContainerMinimal}>
                     <div>
-                        <img className={Style.Banner} src={from.picture} alt="imagem do cachorro" />
-                    </div> 
+                        <img className={Style.Banner} src={from.picture1} alt="imagem do cachorro" />
+                    </div>
+                    {from.picture2 != null &&(
+                    <div>
+                        <img className={Style.Banner} src={from.picture2} alt="imagem do cachorro" />
+                    </div>
+                    )
+                    }
+                    {from.picture3 != null &&(
+                    <div>
+                        <img className={Style.Banner} src={from.picture3} alt="imagem do cachorro" />
+                    </div>
+                    )
+                    }
                     <div className={Style.DivText}>
                         <div>
                             <h4>

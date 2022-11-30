@@ -7,7 +7,7 @@ import Botao from '../Components/Botao'
 
 
 
-function Contato(){     
+function Contato(){
 
     if(localStorage.getItem("token") != null){
 
@@ -55,21 +55,66 @@ function Contato(){
             const [erroimg2,setErroImg2] = useState();
             const [erroimg3,setErroImg3] = useState();
 
-
-
-            const denuncia = {
-                "tipo" : tipo,
-                "cor" : cor,
-                "localizacao" : "localizacao",
-                "rua" : rua,
-                "bairro" : bairro,
-                "pontoDeReferencia" : PR,
-                "picture" : foto,
-                "descricao" : descriao,
-                "token" : token_jwt
+            const quantidade_de_imagens = () =>{
+                if (foto2 != null && foto3 != null) {
+                    return{
+                        "tipo" : tipo,
+                        "cor" : cor,
+                        "localizacao" : "localizacao",
+                        "rua" : rua,
+                        "bairro" : bairro,
+                        "pontoDeReferencia" : PR,
+                        "picture1" : foto,
+                        "picture2" : foto2,
+                        "picture3" : foto3,
+                        "descricao" : descriao,
+                        "token" : token_jwt
+                    }
+                }
+                else if (foto2 == null && foto3 != null){
+                    return{
+                        "tipo" : tipo,
+                        "cor" : cor,
+                        "localizacao" : "localizacao",
+                        "rua" : rua,
+                        "bairro" : bairro,
+                        "pontoDeReferencia" : PR,
+                        "picture1" : foto,
+                        "picture2" : foto3,
+                        "descricao" : descriao,
+                        "token" : token_jwt
+                    }
+                }
+                else if (foto2 != null && foto3 == null){
+                    return{
+                        "tipo" : tipo,
+                        "cor" : cor,
+                        "localizacao" : "localizacao",
+                        "rua" : rua,
+                        "bairro" : bairro,
+                        "pontoDeReferencia" : PR,
+                        "picture1" : foto,
+                        "picture2" : foto2,
+                        "descricao" : descriao,
+                        "token" : token_jwt
+                    }
+                }
+                else{
+                    return {
+                        "tipo" : tipo,
+                        "cor" : cor,
+                        "localizacao" : "localizacao",
+                        "rua" : rua,
+                        "bairro" : bairro,
+                        "pontoDeReferencia" : PR,
+                        "picture1" : foto,
+                        "descricao" : descriao,
+                        "token" : token_jwt
+                    }
+                }
             }
             const post = () => {
-                axios.post("https://backend-petcare.herokuapp.com/denuncia",denuncia)
+                axios.post("https://backend-petcare.herokuapp.com/denuncia",quantidade_de_imagens())
                 .then((res) => setResposta(res))
                 .catch((res) => setErro(res.message))
                 .then(() => {setRedirecionar(true) , console.clear()})
@@ -94,7 +139,27 @@ function Contato(){
 
                     arquivo.onload = function (arquivoCarregado) {
                         const image= arquivoCarregado.target.result;
-                        setFoto(image);
+                        if (image != foto2 && image != foto3) {
+                            setFoto(image);
+                        }
+                        else if (image != foto2 && image == foto3) {
+                            setFoto(image);
+                            setFoto3(undefined);
+                            setTexto3("Adicionar Imagem");
+                            setChave9("18");
+                            setChave7("14");
+                            setChave5("10");
+                            setChave3("6")
+                        }
+                        else if (image == foto2) {
+                            setFoto(image);
+                            setFoto2(undefined);
+                            setTexto2("Adicionar Imagem");
+                            setChave8("16");
+                            setChave6("12"); 
+                            setChave4("8");
+                            setChave2("4");
+                        }
                     }
                     arquivo.readAsDataURL(imagemCarregada);
                 }
@@ -206,7 +271,7 @@ function Contato(){
                                     )
                                     }
                                     {foto3 != null &&(
-                                    <a className={Style.Logout} onClick={() => {setFoto3(undefined) , setTexto3("Adicionar Imagem") , setChave9("18") , setChave7("14") , setChave5("10") , setChave3("6")}}>X</a>
+                                        <a className={Style.Logout} onClick={() => {setFoto3(undefined) , setTexto3("Adicionar Imagem") , setChave9("18") , setChave7("14") , setChave5("10") , setChave3("6")}}>X</a>
                                     )
                                     }
                                     <input className={Style.InputFile} key={chave3} type="file" accept="image/*" name="image2" id="TerceiraImg" onChange ={(e) => {converter_imagem3(e.target.files), setErroCampos(false) , setErro(null) , setCarregamento(false) , setTexto3("") , setChave9("17")  , setChave7("13") , setChave5("9") , setChave3("5") , setErroImg3(null)}}/>
@@ -297,7 +362,7 @@ function Contato(){
                             }
                             <div className={Style.ItemForm}>
                                 <label className={Style.Label} htmlFor="Especie">Tipo de animal</label>
-                                <select className={Style.Input} name="EspecieDoAnimal" id="Especie" onChange={(e) => {setTipo(e.target.value) , setErroCampos(false) , setErro(null) , setCarregamento(false) , e.target.value = null}}>
+                                <select className={Style.Input} name="EspecieDoAnimal" id="Especie" onChange={(e) => {setTipo(e.target.value) , setErroCampos(false) , setErro(null) , setCarregamento(false)}}>
                                     <option value="Cachorro">Cachorro</option>
                                     <option value="Gato">Gato</option>
                                     <option value="Outros">Outros</option>
@@ -380,6 +445,9 @@ function Contato(){
                         {redirecionar == true && resposta != null &&(
                             <Navigate to="/home"/>
                         )
+                        }
+                        {
+                            console.log(quantidade_de_imagens())
                         }
                     </div>
                 </div>
