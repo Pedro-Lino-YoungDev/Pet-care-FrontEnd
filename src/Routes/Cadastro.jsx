@@ -427,6 +427,9 @@ function Contato(){
                             </div>
                             )
                             }
+                            {
+                                erro != null && setCarregamento(false)
+                            }
                             {resposta == null && erro == null && carregamento == true &&(
                                 <div className={Style.Carregamento}></div>
                             )
@@ -438,7 +441,7 @@ function Contato(){
                             <Botao tipo="interno" nome="enviar" clique={() => {setErroCampos(true)}}></Botao>
                         )
                         }
-                        {verificiar_formulario() == false &&(
+                        {verificiar_formulario() == false && carregamento != true &&(
                             <Botao tipo="interno" nome="enviar" clique={() => {post() , setCarregamento(true)}}></Botao>
                         )
                         }

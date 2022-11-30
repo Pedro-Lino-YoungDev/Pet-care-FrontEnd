@@ -11,6 +11,9 @@ import ModificarCadastro from './Routes/ModificarCadastro'
 import Denuncia from './Routes/Denuncia';
 import User from './Routes/User';
 import Modificarcadastrodousuario from './Routes/ModificarCadastroDoUsuario';
+import Sobre from "./Routes/Sobre"
+import Contato from "./Routes/Contato"
+import Politicas from "./Routes/Politicas"
 
 function App() {
   
@@ -27,7 +30,10 @@ function App() {
         <Route path='/denuncia' element={<Denuncia />} />
         <Route path="/usuario" element={<User/>}/>
         <Route path="/modificarcadastrodousuario" element={< Modificarcadastrodousuario />}/>
-        <Route exact path="/" element={ <Navigate to="/home" /> }/>          
+        <Route path="/sobre" element={<Sobre/>}/>
+        <Route path="/politicas_da_empresa" element={<Politicas/>}/>
+        <Route path="/Contato" element={<Contato/>}/>
+        <Route exact path="/" element={ <Navigate to="/home"/> }/>
     </Routes>
     <Rodapé />
     </Router>

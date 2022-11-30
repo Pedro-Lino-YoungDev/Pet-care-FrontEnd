@@ -165,7 +165,7 @@ function Registro(){
                         </div>
                     )
                     }
-                    {error == "user already exists" &&(
+                    {error == "user already exists" && setCarregamento(false) &&(
                         <div>
                             <h4 className={Style.error}>
                                 Oops! esse Email já possui uma conta vinculada.
@@ -186,9 +186,9 @@ function Registro(){
                         </div>
                     )
                     } 
-                    {verificar_senha(senha_verificada) == 3&&(
+                    {verificar_senha(senha_verificada) == 3 && carregamento != true &&(
                         <div className={Style.DivBotao}>
-                            <Botao tipo="interno" nome="Cadastrar" clique={(e) => {post(), setCarregamento(true)}}></Botao>
+                            <Botao tipo="interno" nome="Cadastrar" clique={() => {post(), setCarregamento(true)}}></Botao>
                         </div>
                     )
                     }
