@@ -1,6 +1,6 @@
 import Style from '../Style/Navbar.module.css'
 import Links from './Link'
-import {Link, useLocation, Navigate} from 'react-router-dom'
+import {Link, useLocation} from 'react-router-dom'
 import jwtDecode from 'jwt-decode'
 
 function Navbar(){
@@ -70,7 +70,7 @@ function Navbar(){
             {localStorage.getItem("foto") != null &&(
                 <div className={Style.NavPerfil}>
                     <Links tipo="navegação"nome ={
-                    <img onClick={<Navigate to="/usuario"/>} src={localStorage.getItem("foto")} alt="" />
+                    <img src={localStorage.getItem("foto")} alt="" />
                     } 
                     url = "/usuario"/>
                 </div>
