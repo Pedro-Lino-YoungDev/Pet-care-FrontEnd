@@ -92,13 +92,13 @@ function Login(){
                 }
                 {Verificar_campos(email,senha) == true &&(
                     <div className={Style.DivBotao}>
-                        <Botao tipo="interno" nome="entrar" clique={() => {post(), setCarregamento(true)}}></Botao>
+                        <Botao tipo="interno" nome="Entrar" clique={() => {post(), setCarregamento(true)}}></Botao>
                     </div>
                 )
                 }
                 {Verificar_campos(email,senha) == false &&(
                     <div className={Style.DivBotao}>
-                        <Botao tipo="interno" nome="entrar" clique={() => {setErroInput(true)}}></Botao>
+                        <Botao tipo="interno" nome="Entrar" clique={() => {setErroInput(true)}}></Botao>
                     </div>
                 )
                 }

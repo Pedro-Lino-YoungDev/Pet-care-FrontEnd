@@ -32,12 +32,12 @@ function Home(){
             </div>
             <div className={Style.DivText}>
                 <h3>
-                    Ajude-nos nessa luta
+                    Ajude-nos nessa luta!
                 </h3>
                 <p>
-                    Animais em situação de rua é algo recorrente na atualidade e isso afeta 
+                    Animais em situação de rua é algo recorrente na atualidade, o que afeta 
                     tanto a saúde dos animais quanto a saúde e segurança das pessoas. Para 
-                    tentar por um fim nessa situação nós desenvolvemos o Pet Care, para 
+                    por um fim nesse quadro nós desenvolvemos o Pet Care. Para 
                     contribuir conosco basta cadastrar um animal que você encontrar em situação 
                     de rua, desde já agradecemos sua ateção e contriubuição.
                 </p>
@@ -45,12 +45,12 @@ function Home(){
             <div className={Style.ContainerBtn}>
                 { verificar_token() == "token válido" &&(
                     <div className={Style.ContainerItem1}>
-                        <Boton tipo="redirecionar" nome="Denuncias Cadastradas" rota="/listagem"/>
+                        <Boton tipo="redirecionar" nome="Denúncias cadastradas" rota="/listagem"/>
                     </div>
                 )
                 }
                 <div className={Style.ContainerItem2}>
-                    <Boton tipo="redirecionar" nome="Cadastrar Denuncia" rota="/cadastro"/>            
+                    <Boton tipo="redirecionar" nome="Cadastrar denúncia" rota="/cadastro"/>            
                 </div>
             </div>
         </div>

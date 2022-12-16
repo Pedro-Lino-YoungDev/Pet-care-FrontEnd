@@ -11,7 +11,7 @@ function Denuncia(){
 
         const token_jwt = localStorage.getItem("token");
         const decodificado = jwtDecode(token_jwt);
-        var validador = new Boolean(false);
+        var validador = new Boolean(true);
 
         //Data e horario atual;
         const DataAtual = new Date();
@@ -29,56 +29,249 @@ function Denuncia(){
             const location = useLocation();
             const { from } = location.state;
 
-            //Data completa da denúncia;
-            const DataDenuncia = from["created_at"].split("T");
-
-            //Dia da denúncia;
-            const DataFormatada = DataDenuncia[0].split("-");
-            const DiaDenuncia = parseInt(DataFormatada[2]);
-            const MesDenuncia = parseInt(DataFormatada[1]);
-            const AnoDenuncia = parseInt(DataFormatada[0]);
-
-            //Hora e minutos da denúncia;
-            const HorarioDenuncia = DataDenuncia[1].split(".");
-            const HorarioSeparada = HorarioDenuncia[0].split(":");
-            const HoraDenuncia = parseInt(HorarioSeparada[0]);
-            const MinutosDenuncia = parseInt(HorarioSeparada[1]);
-
-            //validando a data da denúncia;
-            if(AnoAtual>AnoDenuncia ){
-                validador = true;
-            }
-            else{
-                if(MesAtual>MesDenuncia ){
-                    validador = true;
+            const ano_bissexto = (year) =>{
+                if(year % 400 == 0){
+                    return true
+                }
+                else if(year % 4 == 0 && year % 100 != 0){
+                    return true
                 }
                 else{
-                    if (DiaAtual>DiaDenuncia+1){
-                        validador = true;
-                    }
-                    else if(DiaAtual>DiaDenuncia){
-                        if(HoraAtual>HoraDenuncia){
-                            validador = true;
-                        }
-                        else if(HoraAtual==HoraDenuncia && MinutosAtuais>= MinutosDenuncia){
-                            validador = true;
-                        }
-                    }
+                    return false
                 }
-        
             }
 
             const formatar_horario = (e) =>{
                 const DataSeparada = e.split("T");
                 const HorarioSeparado = DataSeparada[1].split(".")
-                return HorarioSeparado[0];
+                const HorarioFormatado = HorarioSeparado[0].split(":")
+                const HorarioInt = parseInt(HorarioFormatado[0])
+                if(HorarioInt == 0){
+                    return ""+21+""+HorarioFormatado[1]+HorarioFormatado[2]
+                }
+                else if(HorarioInt == 1){  
+                    return ""+22+":"+HorarioFormatado[1]+":"+HorarioFormatado[2]
+                }
+                else if(HorarioInt == 2){  
+                    return ""+23+":"+HorarioFormatado[1]+":"+HorarioFormatado[2]
+                }
+                else{  
+                    return ""+HorarioInt-3+":"+HorarioFormatado[1]+":"+HorarioFormatado[2]
+                }
             }
 
             const formatar_data = (e) =>{
                 const DataSeparada = e.split("T");
-                return DataSeparada[0];
+                const HorarioSeparado = DataSeparada[1].split(".")
+                const HorarioFormatado = HorarioSeparado[0].split(":")
+                const HorarioInt = parseInt(HorarioFormatado[0])
+                if(HorarioInt == 0 || HorarioInt == 1 || HorarioInt == 2){
+                    const DataFormatada = DataSeparada[0].split("-")
+                    if (parseInt(DataFormatada[2]) == 1) {
+                        const mes = parseInt(DataFormatada[1])-1
+                        if(ano_bissexto(parseInt(DataFormatada[0])) == true){
+                            if(parseInt(DataFormatada[1]) == 1){
+                                return ""+31+"/"+12+"/"+parseInt(DataFormatada[0])-1
+                            }
+                            else if(parseInt(DataFormatada[1]) == 3){
+                                return ""+29+"/"+mes+"/"+DataFormatada[0]
+                            }
+                            else if (parseInt(DataFormatada[1]) == 2 || parseInt(DataFormatada[1]) == 4 || parseInt(DataFormatada[1]) == 6 || parseInt(DataFormatada[1]) == 8 || parseInt(DataFormatada[1]) == 9 || parseInt(DataFormatada[1]) == 11) {
+                                return ""+31+"/"+mes+"/"+DataFormatada[0]
+                            }
+                            else{
+                                return ""+30+"/"+mes+"/"+DataFormatada[0]
+                            }
+                        }
+                        else{
+                            if(parseInt(DataFormatada[1]) == 1){
+                                return ""+31+"/"+12+"/"+parseInt(DataFormatada[0])-1
+                            }
+                            else if(parseInt(DataFormatada[1]) == 3){
+                                return ""+28+"/"+mes+"/"+DataFormatada[0]
+                            }
+                            else if (parseInt(DataFormatada[1]) == 2 || parseInt(DataFormatada[1]) == 4 || parseInt(DataFormatada[1]) == 6 || parseInt(DataFormatada[1]) == 8 || parseInt(DataFormatada[1]) == 9 || parseInt(DataFormatada[1]) == 11) {
+                                return ""+31+"/"+mes+"/"+DataFormatada[0]
+                            }
+                            else{
+                                return ""+30+"/"+mes+"/"+DataFormatada[0]
+                            }
+                        }
+                    }
+                    else{
+                        const dia = parseInt(DataFormatada[2])-1
+                        return ""+dia+"/"+DataFormatada[1]+"/"+DataFormatada[0]
+                    }
+                }
+                else{  
+                    const DataFormatada = DataSeparada[0].split("-")
+                    return DataFormatada[2]+"/"+DataFormatada[1]+"/"+DataFormatada[0]
+                }
             }
+            //Dia da denúncia;
+            const DataFormatada = formatar_data(from["created_at"]).split("/");
+            const DiaDenuncia = parseInt(DataFormatada[0]);
+            const MesDenuncia = parseInt(DataFormatada[1]);
+            const AnoDenuncia = parseInt(DataFormatada[2]);
 
+            //Hora e minutos da denúncia;
+            const HorarioDenuncia = formatar_horario(from["created_at"]);
+            const HorarioSeparada = HorarioDenuncia[0].split(":");
+            const HoraDenuncia = parseInt(HorarioSeparada[0]);
+            const MinutosDenuncia = parseInt(HorarioSeparada[1]);
+
+            //validando a data da denúncia;
+            if(AnoAtual == AnoDenuncia+ 1){
+                if(MesDenuncia == 12 && MesAtual == 1){
+                    if(DiaAtual == 1 && DiaDenuncia == 31){
+                        if (HoraAtual < HoraDenuncia ) {
+                            validador = true;
+                        }
+                        else if(HoraAtual == HoraDenuncia && MinutosAtuais < MinutosDenuncia){
+                            validador = true;
+                        }
+                        else{
+                            validador = false;
+                        }
+                    }
+                    else{
+                        validador = false;
+                    }
+                }
+                else{
+                    validador = false
+                }
+            }
+            else if (AnoAtual > AnoDenuncia+1){
+                validador = false;
+            }
+            else{
+                if(MesAtual == MesDenuncia+1){
+                    if (ano_bissexto(AnoDenuncia) == true){
+                        //meses com 31 dias == 1, 3, 5, 7, 8, 10, 12.
+                        if(MesDenuncia == 1 || MesDenuncia == 3 || MesDenuncia == 5 || MesDenuncia == 7 || MesDenuncia == 8 || MesDenuncia == 10){
+                            if (DiaAtual == 1 && DiaDenuncia == 31) {
+                                if (HoraAtual < HoraDenuncia ) {
+                                    validador = true;
+                                }
+                                else if(HoraAtual == HoraDenuncia && MinutosAtuais < MinutosDenuncia){
+                                    validador = true;
+                                }
+                                else{
+                                    validador = false;
+                                }
+                            }
+                            else{
+                                validador = false;
+                            }
+                        }
+                        else if(MesDenuncia == 2){
+                            if (DiaAtual == 1 && DiaDenuncia == 29) {
+                                if (HoraAtual < HoraDenuncia) {
+                                    validador = true;
+                                }
+                                else if(HoraAtual == HoraDenuncia && MinutosAtuais < MinutosDenuncia){
+                                    validador = true;
+                                }
+                                else{
+                                    validador = false;
+                                }
+                            }
+                            else{
+                                validador = false;
+                            }
+                        }
+                        else{
+                            if (DiaAtual == 1 && DiaDenuncia == 30) {
+                                if (HoraAtual < HoraDenuncia ) {
+                                    validador = true;
+                                }
+                                else if(HoraAtual == HoraDenuncia && MinutosAtuais < MinutosDenuncia){
+                                    validador = true;
+                                }
+                                else{
+                                    validador = false;
+                                }
+                            }
+                            else{
+                                validador = false;
+                            }
+                        }
+                    }
+                    else{
+                        if(MesDenuncia == 1 || MesDenuncia == 3 || MesDenuncia == 5 || MesDenuncia == 7 || MesDenuncia == 8 || MesDenuncia == 10){
+                            if (DiaAtual == 1 && DiaDenuncia == 31) {
+                                if (HoraAtual < HoraDenuncia ) {
+                                    validador = true;
+                                }
+                                else if(HoraAtual == HoraDenuncia && MinutosAtuais < MinutosDenuncia){
+                                    validador = true;
+                                }
+                                else{
+                                    validador = false;
+                                }
+                            }
+                            else{
+                                validador = false;
+                            }
+                        }
+                        else if(MesDenuncia == 2){
+                            if (DiaAtual == 1 && DiaDenuncia == 28) {
+                                if (HoraAtual < HoraDenuncia) {
+                                    validador = true;
+                                }
+                                else if(HoraAtual == HoraDenuncia && MinutosAtuais < MinutosDenuncia){
+                                    validador = true;
+                                }
+                                else{
+                                    validador = false;
+                                }
+                            }
+                            else{
+                                validador = false;
+                            }
+                        }
+                        else{
+                            if (DiaAtual == 1 && DiaDenuncia == 30) {
+                                if (HoraAtual < HoraDenuncia ) {
+                                    validador = true;
+                                }
+                                else if(HoraAtual == HoraDenuncia && MinutosAtuais < MinutosDenuncia){
+                                    validador = true;
+                                }
+                                else{
+                                    validador = false;
+                                }
+                            }
+                            else{
+                                validador = false;
+                            }
+                        }
+                    }
+                }
+                else if(MesAtual > MesDenuncia+1){
+                    validador = false;
+                }
+                else{
+                    if (DiaAtual == DiaDenuncia+1){
+                        if (HoraAtual < HoraDenuncia) {
+                            validador = true;
+                        }
+                        else if(HoraAtual == HoraDenuncia && MinutosAtuais < MinutosDenuncia){
+                            validador = true;
+                        }
+                        else{
+                            validador = false;
+                        }
+                    }
+                    else if(DiaAtual>DiaDenuncia+1){
+                        validador = false
+                    }
+                    else{
+                        validador = true;
+                    }
+                }
+            }
             return(
                 <div className={Style.ContainerMinimal}>
                     <div>
@@ -166,7 +359,7 @@ function Denuncia(){
                         
                         
                         <div className={Style.ContainerBtn}> 
-                            {validador == false &&(
+                            {validador == true &&(
                                 <Botao tipo="redirecionar" nome="Modificar" estado={{from:from}} rota="/modificardenuncia"></Botao>
                             )
                             }

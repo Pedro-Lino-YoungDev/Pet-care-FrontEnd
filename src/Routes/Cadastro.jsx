@@ -361,7 +361,7 @@ function Contato(){
                             )
                             }
                             <div className={Style.ItemForm}>
-                                <label className={Style.Label} htmlFor="Especie">Tipo de animal</label>
+                                <label className={Style.Label} htmlFor="Especie">Tipo de animal:</label>
                                 <select className={Style.Input} name="EspecieDoAnimal" id="Especie" onChange={(e) => {setTipo(e.target.value) , setErroCampos(false) , setErro(null) , setCarregamento(false)}}>
                                     <option value="Cachorro">Cachorro</option>
                                     <option value="Gato">Gato</option>
@@ -393,17 +393,17 @@ function Contato(){
                             </div>
 
                             <div className={Style.ItemForm}>
-                                <label className={Style.Label} htmlFor="Rua">Cor</label>
+                                <label className={Style.Label} htmlFor="Cor">Cor:</label>
                                 <input className={Style.Input} type="Text" id= "Cor" placeholder= "Exemplo: Caramelo" onChange={(e) => {setCor(e.target.value) , setErroCampos(false) , setErro(null) , setCarregamento(false)}}/>
                             </div>
 
                             <div className={Style.ItemForm}>
-                                <label className={Style.Label} htmlFor="Rua">Rua</label>
+                                <label className={Style.Label} htmlFor="Rua">Rua:</label>
                                 <input className={Style.Input} type="Text" id= "Rua" placeholder= "Exemplo: Rua Agamenon Magalhães" onChange={(e) => {setRua(e.target.value) , setErroCampos(false) , setErro(null) , setCarregamento(false)}}/>
                             </div>
 
                             <div className={Style.ItemForm}>
-                                <label className={Style.Label} htmlFor="PontoDeReferencia">Ponto de Referência</label>
+                                <label className={Style.Label} htmlFor="PontoDeReferencia">Ponto de Referência:</label>
                                 <input className={Style.Input} type="Text" id= "PontoDeReferencia" placeholder= "Exemplo: Proximo ao Assaí" onChange={(e) => {setPR(e.target.value) , setErroCampos(false) , setErro(null) , setCarregamento(false)}}/>
                             </div>
 
@@ -438,11 +438,11 @@ function Contato(){
                     </div>
                     <div className={Style.ContainerBtn}>
                         {verificiar_formulario() == true  &&(
-                            <Botao tipo="interno" nome="enviar" clique={() => {setErroCampos(true)}}></Botao>
+                            <Botao tipo="interno" nome="Enviar" clique={() => {setErroCampos(true)}}></Botao>
                         )
                         }
                         {verificiar_formulario() == false && carregamento != true &&(
-                            <Botao tipo="interno" nome="enviar" clique={() => {post() , setCarregamento(true)}}></Botao>
+                            <Botao tipo="interno" nome="Enviar" clique={() => {post() , setCarregamento(true)}}></Botao>
                         )
                         }
                         {redirecionar == true && resposta != null &&(

@@ -54,7 +54,7 @@ function Navbar(){
 
 
             {verificar(validador.pathname) == "com token válido" &&(
-                <Links tipo="navegação" nome = "Ver Denúncias" url = "/listagem"/>
+                <Links tipo="navegação" nome = "Ver denúncias" url = "/listagem"/>
                 )
             }
 

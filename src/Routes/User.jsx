@@ -67,7 +67,11 @@ function users () {
                             <a href="/home" onClick={ () => {localStorage.removeItem("token"), localStorage.removeItem("foto")}} className={Style.Logout}>
                                 Sair
                             </a>
-                        </div>  
+                            {
+                                console.log(usuario)
+                            }
+                        </div>
+                        
                     )
                     }
                 </div>

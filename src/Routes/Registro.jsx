@@ -94,7 +94,7 @@ function Registro(){
             <div className={Style.ContainerMinimal}>
                     <form action="Registro" method="Post" className={Style.form}>
                                     <h4 className={Style.h4}>
-                                        deseja adicianar uma imagem para o seu perfil ?
+                                        Deseja adicianar uma imagem para o seu perfil?
                                     </h4>
                                 <div className={Style.CheckBox}>
                                     <input id="checkbox-1" type="checkbox" checked={validador} onChange={() => {validar() ,setFoto(null) , setChave("2")}}/>
@@ -123,7 +123,7 @@ function Registro(){
                             <input className={Style.Input} type="Email" onChange={(e) =>{setEmail(e.target.value) , setErro_imput(false) , setCarregamento(false) , setError(null)}}/>
                         </div>
                         <div className={Style.ContainerItem}>
-                            <label htmlFor="Name">Nome do Usurio :</label>
+                            <label htmlFor="Name">Nome do usuário:</label>
                             <br />
                             <input className={Style.Input} type="Name" onChange={(e) =>{setNome(e.target.value) , setErro_imput(false) , setCarregamento(false) , setError(null)}}/>
                         </div>
@@ -133,7 +133,7 @@ function Registro(){
                             <input className={Style.Input} type="Password" onChange={(e) =>{setSenha(e.target.value) , setErro_imput(false) , setErro_senha(false) , setCarregamento(false) , setError(null)}}/>
                         </div>
                         <div className={Style.ContainerItem}>
-                            <label htmlFor="PasswordConfirm">Confirmar Senha:</label>
+                            <label htmlFor="PasswordConfirm">Confirmar senha:</label>
                             <input className={Style.Input} type="Password" onChange={(e) =>{setSenha_verificada(e.target.value) , setErro_imput(false) , setErro_senha(false) , setCarregamento(false) , setError(null)}}/>
                         </div>
                     </form>
