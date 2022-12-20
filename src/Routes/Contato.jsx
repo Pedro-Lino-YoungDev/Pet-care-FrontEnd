@@ -31,7 +31,7 @@ function Contato() {
             </div>
 
 
-            <div className={Style.ContainerBlock}>
+            <div className={Style.ContainerBlockinvertido}>
                 <h1 className={Style.ContainerBlockH1R}>
                     <img className={Style.ContainerBlockImgR}  src="/Imagens/JoãoVitor.jpg" alt="" />
                 </h1>
