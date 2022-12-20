@@ -19,7 +19,8 @@ function Contato(){
 
 
         if (TokenDecodificado.exp > HorarioTokenFormatado) {
-
+            console.log(TokenDecodificado.exp)
+            console.log(HorarioTokenFormatado)
             const [tipo,setTipo] = useState("Cachorro");
             const [descriao,setDescricao] = useState();
             const [localizacao,setLocalizacao] = useState();
@@ -448,9 +449,6 @@ function Contato(){
                         {redirecionar == true && resposta != null &&(
                             <Navigate to="/home"/>
                         )
-                        }
-                        {
-                            console.log(quantidade_de_imagens())
                         }
                     </div>
                 </div>

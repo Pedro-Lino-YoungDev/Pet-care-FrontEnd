@@ -165,7 +165,7 @@ function Registro(){
                         </div>
                     )
                     }
-                    {error == "user already exists" && setCarregamento(false) &&(
+                    {error == "user already exists" &&(
                         <div>
                             <h4 className={Style.error}>
                                 Oops! esse Email já possui uma conta vinculada.

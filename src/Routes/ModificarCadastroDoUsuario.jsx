@@ -265,6 +265,9 @@ function modificarcadastrodousuario() {
 
             return(
                 <div className={Style.ContainerMinimal}>
+                    {
+                        console.clear()
+                    }
                     <form className={Style.form} action="Cadastro" method="Post" encType="multipart/form-data">
                             <div className={Style.ItemForm}>
                                 {foto != undefined &&(
@@ -280,11 +283,11 @@ function modificarcadastrodousuario() {
                                     <a className={Style.Logout} onClick={() => {setFoto(null) , setTexto("Adicionar Imagem") , setChave("2")}}>X</a>
                                 )
                                 }
-                                <input className={Style.InputFile} key={chave} type="file" accept="image/*" name="image" id="PrimeiraImg" onChange ={(e) => {converter_imagem(e.target.files) , setTexto("") , setChave("1")}}/>
+                                <input className={Style.InputFile} key={chave} type="file" accept="image/*" name="image" id="PrimeiraImg" onChange ={(e) => {converter_imagem(e.target.files) , setTexto("") , setChave("1"), console.clear()}}/>
                             </div>
                         <div className={Style.ItemForm}>
                             <label className={Style.Label} htmlFor="Nome">Nome:</label>
-                            <input className={Style.Input}  value={nome} type="Text" id= "Nome" placeholder= "Exemplo: Caramelo" onChange={(e) => {set_nome(e.target.value), setErroGeral(null)}}/>
+                            <input className={Style.Input}  value={nome} type="Text" id= "Nome" placeholder= "Exemplo: Caramelo" onChange={(e) => {set_nome(e.target.value), setErroGeral(null), console.clear()}}/>
                         </div>
                         <div className={Style.ItemForm}>
                             <label className={Style.Label} htmlFor="Email">Email:</label>
@@ -292,24 +295,24 @@ function modificarcadastrodousuario() {
                         </div>
                         <div className={Style.ItemForm}>
                             <label className={Style.Label} htmlFor="senha">Senha Atual:</label>
-                            <input className={Style.Input} value={senha} type="password" id= "Senha"onChange={(e) => {set_senha(e.target.value), setErroGeral(null)}}/>
+                            <input className={Style.Input} value={senha} type="password" id= "Senha"onChange={(e) => {set_senha(e.target.value), setErroGeral(null), console.clear()}}/>
                         </div>
                         <div>
                             <br />
                             <label className={Style.Label} htmlFor="check">Deseja Modificar a Senha?</label>
-                            <input className={Style.Input} type="checkbox" id= "check" checked={validador} onChange={(e) => {validar(), set_nova_senha("") , set_nova_senha_verificada("") , setErroGeral(null)}}/>
+                            <input className={Style.Input} type="checkbox" id= "check" checked={validador} onChange={(e) => {validar(), set_nova_senha("") , set_nova_senha_verificada("") , setErroGeral(null), console.clear()}}/>
                         </div>
                         {validador == true &&(
                         <div className={Style.ItemForm}>
                             <label className={Style.Label} htmlFor="Nome">Nova Senha:</label>
-                            <input className={Style.Input} value={novaSenha} type="password" id= "SenhaNova"onChange={(e) => {setNovaSenha(e.target.value), setErroGeral(null)}}/>
+                            <input className={Style.Input} value={novaSenha} type="password" id= "SenhaNova"onChange={(e) => {setNovaSenha(e.target.value), setErroGeral(null), console.clear()}}/>
                         </div>
                         )
                         }
                         {validador == true &&(
                         <div className={Style.ItemForm}>
                             <label className={Style.Label} htmlFor="Nome">Confirmar Nova Senha:</label>
-                            <input className={Style.Input} value={senhaVerificada} type="password" id= "SenhaVerificada"onChange={(e) => {setSenhaVerificada(e.target.value), setErroNovaSenha(false)}}/>
+                            <input className={Style.Input} value={senhaVerificada} type="password" id= "SenhaVerificada"onChange={(e) => {setSenhaVerificada(e.target.value), setErroGeral(false), console.clear()}}/>
                         </div>
                         )
                         }
@@ -410,7 +413,6 @@ function modificarcadastrodousuario() {
                         </div>   
                     )
                     }
-
                     <div className={Style.DivBtn}>
                         <a className={Style.Btn} onClick={() => setCancelar(true)}>
                             Cancelar
@@ -425,17 +427,17 @@ function modificarcadastrodousuario() {
                         <Navigate to="/home"/>
                     )
                     }
-                    {resposta == "records updated successfully old password" && foto != null &&(
+                    {resposta == "records updated successfully with old password" && foto != null &&(
                         localStorage.setItem("foto",foto),
                         <Navigate to="/home"/>
                     )
                     }
-                    {resposta == "records updated successfully with new passowrd" && foto == null&&(
+                    {resposta == "records updated successfully with old password" && foto == null&&(
                         localStorage.setItem("foto",FotoGeral),
                         <Navigate to="/home"/>
                     )
                     }
-                    {resposta == "records updated successfully old password" && foto == null &&(
+                    {resposta == "records updated successfully with old password" && foto == null &&(
                         localStorage.setItem("foto",FotoGeral),
                         <Navigate to="/home"/>
                     )
