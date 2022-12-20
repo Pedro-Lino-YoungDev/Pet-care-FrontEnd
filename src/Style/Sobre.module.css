@@ -10,7 +10,79 @@
     width: 86%;
     margin-left: 7%;
     margin-right: 7%;
+    align-items: center;
   }
+.ContainerTranslucido{
+  background: none;
+  width:calc(100% - 30px);
+}
+.ContainerTranslucido h1{
+  margin: 0px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 0px;
+  text-align: left;
+  margin-bottom: 0px;
+  color: #3C6E71;
+}
+.ContainerTranslucido h3{
+  margin: 0px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  padding: 0px;
+  text-align: left;
+  color: #3C6E71;
+}
+.ContainerTranslucido p{
+  margin: 20px;
+  margin-top: 0px;
+  padding: 0px;
+  text-align: left;
+  color: #3C6E71;
+}
+.ContainerVerde{
+  width:calc(100% - 30px);
+  border-radius: 10px;
+  background-color: #3C6E71;
+}
+.ContainerVerde h1{
+  margin: 0px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 0px;
+  text-align: left;
+  margin-bottom: 0px;
+  color: rgb(240, 240, 240);
+}
+.ContainerVerde h3{
+  margin: 0px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  padding: 0px;
+  text-align: left;
+  color: #e2e7eb;
+}
+.ContainerVerde p{
+  margin: 20px;
+  margin-top: 0px;
+  padding: 0px;
+  text-align: left;
+  color: white;
+}
+.Bold {
+  font-weight: bold;
+}
+.Italic {
+  font-style: italic;
+}
+
+
   @media(max-height: 520px) and (min-height: 501px){
     .ContainerMinimal {
   

@@ -10,6 +10,23 @@
     width: 86%;
     margin-left: 7%;
     margin-right: 7%;
+    align-items: center;
+
+  }
+  .ContainerTranslucido{
+      background: none;
+      width:calc(100% - 30px);
+  }
+  .ContainerTranslucido h2, h3, p{
+    text-align: left;
+  }
+  .ContainerTranslucido h3{
+    font-weight:normal;
+  }
+
+  .ContainerTranslucido li{
+    text-align: left;
+    padding: 0px;
   }
   @media(max-height: 520px) and (min-height: 501px){
     .ContainerMinimal {
