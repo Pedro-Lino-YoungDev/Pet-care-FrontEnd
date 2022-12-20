@@ -20,17 +20,15 @@
   .ContainerBlockH2{
     display: inline-block;
     margin-top: 30px;
-    text-align: left;
+    text-align:left;
     max-width: 53%;
     float: left;
-  }
-  .alinhar{
-    text-align: right;
   }
   .ContainerBlockH2R{
     display: inline-block;
     margin-top: 30px;
     text-align: left;
+    text-align: justify;
     max-width: 53%;
     float: right;
   }
@@ -57,11 +55,13 @@
     font-weight: normal;
     font-size:medium;
     margin: 0px;
+    text-align: justify;
   } 
   .ContainerBlockPR{
     display: inline-block;
     font-weight: normal;
     font-size:medium;
+    text-align: justify;
     margin: 0px;
   }
 

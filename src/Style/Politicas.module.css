@@ -6,27 +6,40 @@
     background-color: #CED4DA;
     text-align: center;
     border-radius: 10px;
-    padding-bottom: 40px;
     width: 86%;
     margin-left: 7%;
     margin-right: 7%;
     align-items: center;
+    justify-content: center;
 
   }
   .ContainerTranslucido{
-      background: none;
+      background: #3C6E71;
+      height: calc(100% - 60px);
+      color: rgb(240, 240, 240);
       width:calc(100% - 30px);
+      border-radius: 10px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      margin-top: 15px;
+      margin-bottom: 15px;
   }
-  .ContainerTranslucido h2, h3, p{
+  .ContainerTranslucido h2{
     text-align: left;
+    margin-left: 20px;
   }
+  
   .ContainerTranslucido h3{
+    text-align: left;
     font-weight:normal;
+    color: #e2e7eb;
+    margin-left: 20px;
   }
 
   .ContainerTranslucido li{
     text-align: left;
     padding: 0px;
+    color: white;
   }
   @media(max-height: 520px) and (min-height: 501px){
     .ContainerMinimal {

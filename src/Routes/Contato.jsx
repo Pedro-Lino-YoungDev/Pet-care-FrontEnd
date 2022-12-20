@@ -13,7 +13,7 @@ function Contato() {
                     <p className={Style.espaço}></p>
                     <p className={Style.ContainerBlockP}>
                         &emsp;Desenvolvedor especializado em Front-End com forte conhecimento em React.Js,
-                        foi de vital importância para o desenvolvimento do projeto. Nascido em 2003 o Jovem 
+                        foi de vital importância para o desenvolvimento do projeto. Nascido em 2003 o jovem 
                         Jupience estuda atualmente no IFPE -<span className={Style.Italic}>{" Campus "}
                         </span>Garanhuns.
                     </p>
@@ -22,7 +22,7 @@ function Contato() {
                     </h4>
                     <p className={Style.espaço}></p>
                     <p className={Style.ContainerBlockP}>
-                        Email: <a href="mailto:pedrolinoyoungdev@gmail.com">pedrolinoyoungdev@gmail.com</a>
+                        E-mail: <a href="mailto:pedrolinoyoungdev@gmail.com">pedrolinoyoungdev@gmail.com</a>
                         <br />
                         GitHub: <a href="https://github.com/Pedro-Lino-YoungDev">PedroLino YoungDev</a>
                         <br />
@@ -50,7 +50,7 @@ function Contato() {
                     </h4>
                     <p className={Style.espaço}></p>
                     <p className={Style.ContainerBlockP}>
-                        Email: <a href="mailto:isidorojoao21@gmail.com">isidorojoao21@gmail.com</a>
+                        E-mail: <a href="mailto:isidorojoao21@gmail.com">isidorojoao21@gmail.com</a>
                         <br />
                         GitHub: <a href="https://github.com/vitoroambicioso">github.com/vitoroambicioso</a>
                         <br />
@@ -66,17 +66,16 @@ function Contato() {
                     <p className={Style.espaço}></p>
                     <p className={Style.ContainerBlockP}>
                         &emsp;Estudante com foco em Designer e experiencia do usuário, foi responsavel por
-                        auxiliar no designer do site e também contribuiu na documentação.
-                        . Nascido em 2004 o Jovem 
-                        Jupience estuda atualmente no IFPE -<span className={Style.Italic}>{" Campus "}
-                        </span>Garanhuns.
+                        auxiliar no designer do site e também contribuiu na documentação. Nascido em 
+                        2004 o jovem Jupience estuda atualmente no IFPE -<span className={Style.Italic}>
+                        {" Campus "}</span>Garanhuns.
                     </p>
                     <h4 className={Style.ContainerBlockH4}>
                         contato:
                     </h4>
                     <p className={Style.espaço}></p>
                     <p className={Style.ContainerBlockP}>
-                        Email: <a href="mailto:iecs@discente.ifpe.edu.br">iecs@discente.ifpe.edu.br</a>
+                        E-mail: <a href="mailto:iecs@discente.ifpe.edu.br">iecs@discente.ifpe.edu.br</a>
                         <br />
                         GitHub: <a href="https://github.com/islanifpe">Islan IFPE</a>
                         <br />

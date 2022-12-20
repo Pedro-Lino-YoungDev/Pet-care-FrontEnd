@@ -9,7 +9,7 @@ function Politicas() {
                     Políticas da Pet Care
                 </h2>
                 <h3>
-                    &emsp;Ao acessar nossos serviços você está disposto a ceder dados pessoais como:
+                    Ao acessar nossos serviços você está disposto a ceder dados pessoais como:
                 </h3>
                 <ul>
                     <li>
