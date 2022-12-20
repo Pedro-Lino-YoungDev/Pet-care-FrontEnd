@@ -46,7 +46,14 @@
     margin-top: auto;
     margin-bottom: auto;
     margin-left:5%;
+    text-align: center;
     margin-right: 5%;
+  }
+  .DivText h3{
+    text-align: center;
+  }
+  .DivText p{
+    text-align: justify;
   }
 
   @media(max-height: 520px) and (min-height: 501px){

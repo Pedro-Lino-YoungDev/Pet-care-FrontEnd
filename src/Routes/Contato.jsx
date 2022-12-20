@@ -33,7 +33,7 @@ function Contato() {
 
             <div className={Style.ContainerBlock}>
                 <h1 className={Style.ContainerBlockH1R}>
-                    <img className={Style.ContainerBlockImgR}  src="/Imagens/FotoCortada.jpg" alt="" />
+                    <img className={Style.ContainerBlockImgR}  src="/Imagens/JoãoVitor.jpg" alt="" />
                 </h1>
                 <h2 className={Style.ContainerBlockH2R}>
                     João Vitor Clemente

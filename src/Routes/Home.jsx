@@ -35,7 +35,7 @@ function Home(){
                     Ajude-nos nessa luta!
                 </h3>
                 <p>
-                    Animais em situação de rua é algo recorrente na atualidade, o que afeta 
+                    &emsp;Animais em situação de rua é algo recorrente na atualidade, o que afeta 
                     tanto a saúde dos animais quanto a saúde e segurança das pessoas. Para 
                     por um fim nesse quadro nós desenvolvemos o Pet Care. Para 
                     contribuir conosco basta cadastrar um animal que você encontrar em situação 
