@@ -51,7 +51,6 @@ function Registro(){
             senha == "012345678" || senha == "987654321" || senha =="9876543210" || senha == "876543210"){
                 return 5
             }
-            
             else if (senha != e ) {
                 return 2
             }
