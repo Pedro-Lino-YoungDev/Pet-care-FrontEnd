@@ -64,7 +64,7 @@ function ModificarCadastro(){
             }
 
             const verificiar_formulario = () =>{
-                if (tipo == null || tipo == ''  || 
+                if (tipo == null || tipo == ''  || cor == null || cor == '' ||
                 bairro == null || bairro == '' || rua == null || rua == '' || 
                 PR == null || PR == '' || descricao == null || descricao == '')
                 {
@@ -179,11 +179,11 @@ function ModificarCadastro(){
                     }
                     <div className={Style.ContainerBtn}>
                         {verificiar_formulario() == true &&(
-                            <a className={Style.Btn} onClick={() => {setErroCampos(true)}}> enviar</a>
+                            <a className={Style.Btn} onClick={() => {setErroCampos(true)}}> Enviar</a>
                         )
                         }
                         {verificiar_formulario() == false &&(
-                            < a className={Style.Btn} onClick={() => {put() , setCarregamento(true)}}> enviar</a>
+                            < a className={Style.Btn} onClick={() => {put() , setCarregamento(true)}}> Enviar</a>
                         )
                         }
                         <div className={Style.Separacao} ></div>
