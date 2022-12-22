@@ -46,7 +46,9 @@ function Registro(){
             else if(re.test(email) == false){
                 return 4
             }
-            else if(senha.length < 8 || senha == "12345678" || senha == "87654321" || senha == "01234567" || senha == "76543210"){
+            else if(senha.length < 8 || senha == "12345678" || senha == "87654321" || 
+            senha == "01234567" || senha == "76543210" || senha == "0123456789" || senha == "123456789" || 
+            senha == "012345678" || senha == "987654321" || senha =="9876543210" || senha == "876543210"){
                 return 5
             }
             

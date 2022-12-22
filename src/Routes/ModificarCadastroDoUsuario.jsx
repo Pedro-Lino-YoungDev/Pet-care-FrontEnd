@@ -280,7 +280,7 @@ function modificarcadastrodousuario() {
                                 }
                                 <label className={Style.FileLabel} htmlFor="PrimeiraImg"> {texto} </label>
                                 { foto != null &&(
-                                    <a className={Style.Logout} onClick={() => {setFoto(null) , setTexto("Adicionar Imagem") , setChave("2")}}>X</a>
+                                    <a className={Style.Logout} onClick={() => {setFoto(null) , setTexto("Adicionar Imagem") , setChave("2"), setErroGeral(null), console.clear()}}>X</a>
                                 )
                                 }
                                 <input className={Style.InputFile} key={chave} type="file" accept="image/*" name="image" id="PrimeiraImg" onChange ={(e) => {converter_imagem(e.target.files) , setTexto("") , setChave("1"), console.clear()}}/>

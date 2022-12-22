@@ -193,7 +193,6 @@ function ModificarCadastro(){
                         {cancelar == true &&(
                             <Navigate to="/listagem"/>
                         )
-
                         }
                         {redirecionar == true &&(
                             <Navigate to="/home"/>
