@@ -134,7 +134,7 @@ function Listagem(){
                             </h2>
                             <br />
                             <p className={Style.Tamanho}>
-                                clique no boão a seguir para cadastrar sua primeira denúncia.
+                                Clique no boão a seguir para cadastrar sua primeira denúncia.
                             </p>
                         </div>
                         <div>

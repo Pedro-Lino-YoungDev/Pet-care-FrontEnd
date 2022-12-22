@@ -122,8 +122,8 @@ function Contato(){
 
             const verificiar_formulario = () =>{
 
-                if (foto == null || foto == '' || tipo == null || tipo == ''  || 
-                bairro == null || bairro == '' || rua == null || rua == '' || 
+                if (foto == null || foto == '' || tipo == null || tipo == ''  || cor == null ||
+                cor == '' || bairro == null || bairro == '' || rua == null || rua == '' || 
                 PR == null || PR == '' || descriao == null || descriao == ''
                 ){
                     return true;
