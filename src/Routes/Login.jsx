@@ -23,7 +23,7 @@ function Login(){
         const [email, setEmail] = useState();
         const [senha, setSenha] = useState();
         const [erroInput, setErroInput] = useState();
-
+        const [erro_email, setErro_email] = useState();
         const [resposta, setRespost] = useState();
         const [erro, setErro] = useState();
         const [carregamento, setCarregamento] = useState();
@@ -40,11 +40,15 @@ function Login(){
         }
 
         const Verificar_campos = (e,s) => {
-            if(e != null && e != '' && s != null && s != ''){
-                return true
+            var re = /\S+@\S+\.\S+/;
+            if(e == null || e == '' || s == null || s == ''){
+                return false
+            }
+            else if(re.test(e) == false){
+                return 4
             }
             else{
-                return false
+                return true
             }
         }
 
@@ -55,7 +59,7 @@ function Login(){
                     <div className={Style.ContainerItem1}>
                         <label htmlFor="Email">Email:</label>
                         <br />
-                        <input className={Style.Input} type="Email" onChange={(e) =>{setEmail(e.target.value), setErroInput(null), setErro(null), setCarregamento(false)}}/>
+                        <input className={Style.Input} type="Email" onChange={(e) =>{setEmail(e.target.value), setErroInput(null), setErro_email(null), setErro(null), setCarregamento(false)}}/>
                     </div>
 
                     <div className={Style.ContainerItem}>
@@ -79,6 +83,14 @@ function Login(){
                     </div>
                 )
                 }
+                {erro_email == true && Verificar_campos(email, senha) == 4 &&(
+                    <div className={Style.DivErro}>
+                        <h4  className={Style.erro}>
+                            Seu e-mail não é válido*
+                        </h4>
+                    </div>
+                )
+                }
                 {erro != null && erro.message == "login attempt failed" &&
                     <div className={Style.Container}>
                         <h4  className={Style.erro}>
@@ -93,6 +105,12 @@ function Login(){
                 {Verificar_campos(email,senha) == true &&(
                     <div className={Style.DivBotao}>
                         <Botao tipo="interno" nome="Entrar" clique={() => {post(), setCarregamento(true)}}></Botao>
+                    </div>
+                )
+                }
+                {Verificar_campos(email,senha) == 4 &&(
+                    <div className={Style.DivBotao}>
+                        <Botao tipo="interno" nome="Entrar" clique={() => {setErro_email(true)}}></Botao>
                     </div>
                 )
                 }

@@ -28,6 +28,7 @@ function Registro(){
 
         const [validador,setValidador] = useState(false);
         const [erro_imput, setErro_imput] = useState();
+        const [erro_email, setErro_email] = useState();
         const [erro_senha, setErro_senha] = useState();
         const [chave, setChave] = useState("1");
         const [texto, setTexto] = useState("Adicionar Imagem");
@@ -37,10 +38,18 @@ function Registro(){
         const [carregamento, setCarregamento] = useState(false);
 
         const verificar_senha = (e) => {
+            var re = /\S+@\S+\.\S+/;
 
             if(senha == '' || senha == null  || e == null || e == '' || nome == '' || nome == null || email == null || email == ''){
                 return 1
             }
+            else if(re.test(email) == false){
+                return 4
+            }
+            else if(senha.length < 8 || senha == "12345678" || senha == "87654321" || senha == "01234567" || senha == "76543210"){
+                return 5
+            }
+            
             else if (senha != e ) {
                 return 2
             }
@@ -120,7 +129,7 @@ function Registro(){
                         <div className={Style.ContainerItem}>
                         <label htmlFor="Email">Email:</label>
                             <br />
-                            <input className={Style.Input} type="Email" onChange={(e) =>{setEmail(e.target.value) , setErro_imput(false) , setCarregamento(false) , setError(null)}}/>
+                            <input className={Style.Input} type="email" onChange={(e) =>{setEmail(e.target.value) , setErro_imput(false), setErro_email(false) , setCarregamento(false) , setError(null)}}/>
                         </div>
                         <div className={Style.ContainerItem}>
                             <label htmlFor="Name">Nome do usuário:</label>
@@ -130,11 +139,11 @@ function Registro(){
                         <div className={Style.ContainerItem}>
                             <label htmlFor="Password">Senha:</label>
                             <br />
-                            <input className={Style.Input} type="Password" onChange={(e) =>{setSenha(e.target.value) , setErro_imput(false) , setErro_senha(false) , setCarregamento(false) , setError(null)}}/>
+                            <input className={Style.Input} type="Password" onChange={(e) =>{setSenha(e.target.value) , setErro_imput(false), setErro_senha(false) , setCarregamento(false) , setError(null)}}/>
                         </div>
                         <div className={Style.ContainerItem}>
                             <label htmlFor="PasswordConfirm">Confirmar senha:</label>
-                            <input className={Style.Input} type="Password" onChange={(e) =>{setSenha_verificada(e.target.value) , setErro_imput(false) , setErro_senha(false) , setCarregamento(false) , setError(null)}}/>
+                            <input className={Style.Input} type="Password" onChange={(e) =>{setSenha_verificada(e.target.value) , setErro_imput(false), setErro_senha(false) , setCarregamento(false) , setError(null)}}/>
                         </div>
                     </form>
                     <div className={Style.Container}>
@@ -157,10 +166,26 @@ function Registro(){
                         </div>
                     )
                     }
-                    {verificar_senha(senha_verificada) == 2&& erro_senha == true &&(
+                    {verificar_senha(senha_verificada) == 2 && erro_senha == true &&(
                         <div>
                             <h4 className={Style.error}>
-                                Oops as 2 senhas estão diferentes*
+                                Oops! as 2 senhas estão diferentes*
+                            </h4>
+                        </div>
+                    )
+                    }
+                    {verificar_senha(senha_verificada) == 4 && erro_email == true &&(
+                        <div>
+                            <h4 className={Style.error}>
+                                Oops! seu email não é válido*
+                            </h4>
+                        </div>
+                    )
+                    }
+                    {verificar_senha(senha_verificada) == 5 && erro_senha == true &&(
+                        <div>
+                            <h4 className={Style.error}>
+                                Oops! Sua senha está muito fraca digite uma senha maior que 8 caractéres e sem sequência númerica*
                             </h4>
                         </div>
                     )
@@ -180,6 +205,12 @@ function Registro(){
                     )
                     }
 
+                    {verificar_senha(senha_verificada) == 5 &&(
+                        <div className={Style.DivBotao}>
+                            <Botao tipo="interno" nome="Cadastrar" clique={() => {setErro_senha(true)}}></Botao>
+                        </div>
+                    )
+                    } 
                     {verificar_senha(senha_verificada) == 2 &&(
                         <div className={Style.DivBotao}>
                             <Botao tipo="interno" nome="Cadastrar" clique={() => {setErro_senha(true)}}></Botao>
@@ -192,6 +223,12 @@ function Registro(){
                         </div>
                     )
                     }
+                    {verificar_senha(senha_verificada) == 4 &&(
+                        <div className={Style.DivBotao}>
+                            <Botao tipo="interno" nome="Cadastrar" clique={() => {setErro_email(true)}}></Botao>
+                        </div>
+                    )
+                    } 
                     {
                     }
                     {resposta == "user record created" &&(

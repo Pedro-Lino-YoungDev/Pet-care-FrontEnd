@@ -295,12 +295,12 @@ function modificarcadastrodousuario() {
                         </div>
                         <div className={Style.ItemForm}>
                             <label className={Style.Label} htmlFor="senha">Senha Atual:</label>
-                            <input className={Style.Input} value={senha} type="password" id= "Senha"onChange={(e) => {set_senha(e.target.value), setErroGeral(null), console.clear()}}/>
+                            <input className={Style.Input} value={senha} type="password" id= "Senha"onChange={(e) => {set_senha(e.target.value), setErroGeral(null) , setErro(null), console.clear()}}/>
                         </div>
                         <div>
                             <br />
                             <label className={Style.Label} htmlFor="check">Deseja Modificar a Senha?</label>
-                            <input className={Style.Input} type="checkbox" id= "check" checked={validador} onChange={(e) => {validar(), set_nova_senha("") , set_nova_senha_verificada("") , setErroGeral(null), console.clear()}}/>
+                            <input className={Style.Input} type="checkbox" id= "check" checked={validador} onChange={(e) => {validar(), set_nova_senha("") , set_nova_senha_verificada(""), setErroGeral(null), console.clear()}}/>
                         </div>
                         {validador == true &&(
                         <div className={Style.ItemForm}>
@@ -317,7 +317,7 @@ function modificarcadastrodousuario() {
                         )
                         }
                         {erro == "login attempt failed" &&(
-                            <h4 className={Style.error}>                
+                            <h4 className={Style.erro}>                
                                 Oops! a sua senha está incorreta     
                             </h4>
                         )

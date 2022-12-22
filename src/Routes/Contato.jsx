@@ -59,7 +59,7 @@ function Contato() {
             </div>
             <div className={Style.ContainerBlock}>
                 <h1 className={Style.ContainerBlockH1}>
-                    <img className={Style.ContainerBlockImgL} src="/Imagens/FotoCortada.jpg" alt="" />
+                    <img className={Style.ContainerBlockImgL} src="/Imagens/IslanEliezer.jpg" alt="" />
                 </h1>
                 <h2 className={Style.ContainerBlockH2}>
                     Islan Elizer
@@ -81,7 +81,11 @@ function Contato() {
                         <br />
                     </p>
                 </h2>
+
             </div>
+            {
+                console.clear()
+            }
         </div>
     )
 }
