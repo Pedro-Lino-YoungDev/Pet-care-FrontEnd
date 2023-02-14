@@ -4,9 +4,6 @@ import { Navigate } from 'react-router-dom';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import Botao from '../Components/Botao';
-import { useTimer } from 'react-timer-hook';
-
-
 
 
 function Listagem(){
@@ -31,7 +28,7 @@ function Listagem(){
             }
         
             useEffect(() => {
-                axios.post("https://backend-petcare.herokuapp.com/denuncias",token)
+                axios.post("https://backend-petcare.herokuapp.com/denuncias/"+TokenDecodificado.id,token)
                 .then((res) => setDenuncias(res.data))
                 .catch((res) => setErro(res.response.data.message))
                 .finally(() => setAnimacao(false))

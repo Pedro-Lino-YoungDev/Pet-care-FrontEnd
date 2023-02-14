@@ -14,6 +14,7 @@ import Modificarcadastrodousuario from './Routes/ModificarCadastroDoUsuario';
 import Sobre from "./Routes/Sobre"
 import Contato from "./Routes/Contato"
 import Politicas from "./Routes/Politicas"
+import EstadoDenuncia from './Routes/EstadoDenuncia';
 
 function App() {
   
@@ -28,6 +29,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/modificardenuncia" element={<ModificarCadastro />} />
         <Route path='/denuncia' element={<Denuncia />} />
+        <Route path="/estado" element={<EstadoDenuncia />} />
         <Route path="/usuario" element={<User/>}/>
         <Route path="/modificarcadastrodousuario" element={< Modificarcadastrodousuario />}/>
         <Route path="/sobre" element={<Sobre/>}/>

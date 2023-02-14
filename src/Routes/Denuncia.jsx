@@ -360,7 +360,10 @@ function Denuncia(){
                         
                         <div className={Style.ContainerBtn}> 
                             {validador == true &&(
-                                <Botao tipo="redirecionar" nome="Modificar" estado={{from:from}} rota="/modificardenuncia"></Botao>
+                                <>                                    
+                                    <Botao tipo="redirecionar" nome="Estado" estado={{from:from.id}} rota="/estado"></Botao>
+                                    <Botao tipo="redirecionar" nome="Modificar" estado={{from:from}} rota="/modificardenuncia"></Botao>
+                                </>
                             )
                             }
                         </div>
