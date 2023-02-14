@@ -50,8 +50,7 @@ function Contato() {
                     </h4>
                     <p className={Style.espaço}></p>
                     <p className={Style.ContainerBlockP}>
-                        E-mail: <a href="mailto:isidorojoao21@gmail.com">isidorojoao21@gmail.com</a>
-                        <br />
+                        E-mail: <a href="mailto:jvcs5@discente.ifpe.edu">jvcs5@discente.ifpe.edu</a>                        <br />
                         GitHub: <a href="https://github.com/vitoroambicioso">github.com/vitoroambicioso</a>
                         <br />
                     </p>
