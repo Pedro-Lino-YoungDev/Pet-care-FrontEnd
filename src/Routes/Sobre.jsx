@@ -30,9 +30,9 @@ function Sobre() {
                         {" Pet Care "}
                     </span>
                     desenvolvemos este site para ajudar no controle de animais nas ruas, tendo como
-                    beneficio tanto uma melhora para os animais, mas também uma melhora para as pessoas 
-                    que irão usufruir de uma segurança e saúde nas ruas, como também uma melhor 
-                    qualidade  no ambiente, tanto no que diz respeito a limpeza e na diminiuição 
+                    benefício tanto para os animais, mas também uma melhora para as pessoas 
+                    que irão usufruir de uma segurança e saúde nas ruas, além de uma melhor 
+                    qualidade  no ambiente no que diz respeito a limpeza e na diminiuição 
                     de possiveis ataques de animais.
                 </p>
 
