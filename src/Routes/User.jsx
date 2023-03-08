@@ -20,6 +20,11 @@ function users () {
             const [usuario,setUsuario] = useState();
             const [erro, setErro] = useState();
             const [animacao,setAnimacao] = useState(true);
+            const [popup, setPopup] = useState(false);
+            const [avanco, setAvanco] = useState(false);
+            const [password, setPassword] = useState();
+            const [resposta, setResposta] = useState();
+            const [errodel, setErrodel] = useState();
 
             const token ={
                 "token" : token_jwt
@@ -38,6 +43,16 @@ function users () {
                         <div className={Style.Carregamento}></div>
                     </div>
                 )
+            }
+            const del = () => {
+                axios.delete("https://backend-petcare.herokuapp.com/usuario/"+TokenDecodificado.id,{
+                "data":{
+                    "password": password,
+                    "token": token_jwt
+                }
+            })
+                .then((res) => setResposta(res.data.message))
+                .catch((res) => setErrodel(res.response.data.message))
             }
             return( 
                 <div >
@@ -64,12 +79,59 @@ function users () {
                             </div>
                             </div>
                             <Botao tipo="redirecionar" nome="Modificar Cadastro" estado={{from:usuario}} rota="/modificarcadastrodousuario"></Botao>
+                            <a onClick = {()=> setPopup(true)} className={Style.Excluir}>
+                                Excluir Conta
+                            </a>
                             <a href="/home" onClick={ () => {localStorage.removeItem("token"), localStorage.removeItem("foto")}} className={Style.Logout}>
                                 Sair
                             </a>
+                            
                         </div>
-                        
                     )
+                    }
+                    {popup == true &&(
+                    <div className={Style.popup}>
+                        {avanco == false &&(
+                        <div className={Style.Divisao}>
+                        <h3>Atenção</h3>
+                        <p className={Style.text}>
+                            Ao excluir sua conta suas denúncias permaneceram em nosso banco de dados e você não tera mais acesso a elas
+                        </p>
+                        <a onClick = {()=> setAvanco(true)} className={Style.Cancelar}>
+                            Avançar
+                        </a>
+                        <a onClick = {()=> setPopup(false)} className={Style.Cancelar}>
+                            Cancelar
+                        </a>
+                        </div>
+                        )}
+                        {avanco == true &&(
+                        <div className={Style.Divisao}>
+                            <label className={Style.Label} htmlFor="password"> Digite sua senha para prosseguir:</label>
+                            <input className={Style.Input} type="password" id="password" onChange={(e) => {setPassword(e.target.value)}}/>
+                            {errodel != null && errodel=="login attempt failed" &&(
+                            <p className={Style.text} style={{color: 'red'}}>
+                            *Senha incorreta
+                        </p>
+                        )}
+                        <a onClick = {()=>del()} className={Style.Logout}>
+                            Enviar
+                        </a>
+                        <a onClick = {()=> {setAvanco(false), setErrodel(null), setPassword(null)}} className={Style.Cancelar}>
+                            Cancelar
+                        </a>
+                        </div>
+                        )}
+                    </div>
+                    )}
+                    {
+                        resposta != null && resposta == "user records deleted" &&(
+                        <>
+                            {localStorage.removeItem("token")}
+                            {console.clear()}
+                            <Navigate to="/home" /> 
+                        </>
+                        )
                     }
                 </div>
             )

@@ -13,6 +13,43 @@
     align-items: center;
     width: 86%;
   }
+  .popup{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 300px;
+    width: 300px;
+    top: calc(50% - 150px);
+    left: calc(50% - 150px);
+    background-image: linear-gradient(#CED4DA,#929da7);
+    background-color: #CED4DA;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: solid white 2px;
+  }
+  .Divisao{
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    width: 300px;
+    justify-content: center;
+    align-items: center;
+  }
+  .text{
+    padding: 10px;
+    text-align: justify;
+    margin: 0px;
+  }
+  .Label{
+    margin-top: 50px;
+    margin-bottom: 10px;
+  }
+  .Input{
+    border-radius: 10px;
+    height: 25px;
+    width: 234.031px;
+  }
   .Container{
     display: flex;
     flex-direction: column;
@@ -53,6 +90,52 @@
   .Logout:hover{
     color: #3e8488;
     border-color: #3e8488;
+  }
+  .Cancelar{
+    padding-bottom: 7px;
+    padding-top: 7px;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: #353535;
+    color: #CED4DA;
+    border-style: solid;
+    border-radius: 8px;
+    border-color: #CED4DA;
+    margin-top: 10px;
+    margin-bottom: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 60px;
+    align-self:inherit;
+    text-decoration: none;
+  }
+  .Cancelar:hover{
+    color: white;
+    border-color: white;
+    cursor: pointer;
+  }
+  .Excluir{
+    padding-bottom: 7px;
+    padding-top: 7px;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: #353535;
+    color: #CED4DA;
+    border-style: solid;
+    border-radius: 8px;
+    border-color: #CED4DA;
+    margin-top: 30px;
+    margin-bottom: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 95px;
+    align-self:inherit;
+    text-decoration: none;
+  }
+  .Excluir:hover{
+    color: red;
+    border-color: red;
+    cursor: pointer;
   }
   .Carregamento{
     animation: rotacionar 1s infinite;
